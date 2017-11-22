@@ -1,4 +1,6 @@
-package bayart.ayouaz.huit.americain;
+package Model;
+
+import bayart.ayouaz.huit.americain.Interface.Strategie;
 
 public class Ia extends Joueur{
 	

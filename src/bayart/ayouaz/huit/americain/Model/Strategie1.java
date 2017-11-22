@@ -1,6 +1,8 @@
-package bayart.ayouaz.huit.americain;
+package Model;
 
 import java.util.ArrayList;
+
+import bayart.ayouaz.huit.americain.Interface.Strategie;
 
 public class Strategie1 implements Strategie {
 

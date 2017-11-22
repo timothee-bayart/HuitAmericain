@@ -1,4 +1,4 @@
-package bayart.ayouaz.huit.americain;
+package bayart.ayouaz.huit.americain.Enum;
 
 public enum Motif {
 	AS,
