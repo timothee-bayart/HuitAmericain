@@ -2,7 +2,7 @@ package bayart.ayouaz.huit.americain.Interface;
 
 import java.util.ArrayList;
 
-import Model.Carte;
+import bayart.ayouaz.huit.americain.Model.Carte;
 
 public interface Strategie {
 

@@ -1,4 +1,4 @@
-package Model;
+package bayart.ayouaz.huit.americain.Model;
 
 import java.util.List;
 

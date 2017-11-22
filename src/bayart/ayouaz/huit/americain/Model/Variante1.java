@@ -1,4 +1,4 @@
-package Model;
+package bayart.ayouaz.huit.americain.Model;
 
 public class Variante1 extends Regle {
     public String nomVariante;

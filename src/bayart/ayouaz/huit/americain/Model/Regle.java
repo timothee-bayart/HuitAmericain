@@ -1,4 +1,4 @@
-package Model;
+package bayart.ayouaz.huit.americain.Model;
 
 public abstract class Regle {
     protected int nbPaquets;
