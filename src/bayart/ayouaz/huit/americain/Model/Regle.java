@@ -9,6 +9,6 @@ public abstract class Regle {
 
     public abstract boolean isCoupJouable(Carte coupJoue, Carte carteDefausse);
 
-    public abstract int conditionVictoire(GroupeDeCarte paquetDuJoueurEnCours);
+    public abstract boolean aGagne(GroupeDeCarte paquetDuJoueurEnCours);
 
 }

@@ -12,13 +12,13 @@ public class Variante1 extends Regle {
 	@Override
 	public boolean isCoupJouable(Carte coupJoue, Carte carteDefausse) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
-	public int conditionVictoire(GroupeDeCarte paquetDuJoueurEnCours) {
+	public boolean aGagne(GroupeDeCarte paquetDuJoueurEnCours) {
 		// TODO Auto-generated method stub
-		return 0;
+		return paquetDuJoueurEnCours.getNombreDeCartes()==0;
 	}
 
 }
