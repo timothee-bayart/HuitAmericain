@@ -1,6 +1,7 @@
 package bayart.ayouaz.huit.americain.Model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.InputMismatchException;
@@ -38,10 +39,10 @@ public class Partie {
 	
     private int nbManche;
     private int nbMancheTotal;
-    private boolean sens;
+    //private boolean sens = true;
     private GroupeDeCarte pioche;
     private Carte carteDefausse;
-	private LinkedHashSet<Joueur> joueurs = new LinkedHashSet<Joueur>();
+	private LinkedHashSet <Joueur> joueurs = new LinkedHashSet<Joueur>();
     private Joueur joueurQuiJoue;
     private Iterator<Joueur> joueursIt;
     
@@ -160,7 +161,6 @@ public class Partie {
     	do {
     		this.changerTour();
         	this.jouerCoup();
-        	System.out.println("<"+this.joueurQuiJoue.getNom()+" a joué, il a "+this.joueurQuiJoue.getMain().getNombreDeCartes()+" cartes>\n");
         	
         	try {
 				Thread.sleep(500);
@@ -186,7 +186,7 @@ public class Partie {
 
 
     public void jouerCoup() {
-    	
+    	System.out.println("--- À "+this.joueurQuiJoue+" de jouer ---");
         Carte carteJouee;
     	
     	if(this.joueurQuiJoue instanceof Ia) {
@@ -212,17 +212,24 @@ public class Partie {
 	    		}
 	    		
 	    	} while(!isCarteJouee);
+    		
+    		//this.changerSens(); //test
     	}
     	
     	if(carteJouee == null){ //piocher
     		this.joueurQuiJoue.piocher(this.pioche.retirerCarte());
+        	System.out.println("<"+this.joueurQuiJoue.getNom()+" a pioché, il a "+this.joueurQuiJoue.getMain().getNombreDeCartes()+" cartes>");
     	} else {
+        	System.out.println("<"+this.joueurQuiJoue.getNom()+" a joué "+carteJouee+", il a "+this.joueurQuiJoue.getMain().getNombreDeCartes()+" cartes>");
+        	
         	if(this.carteDefausse!=null) {
         		this.pioche.ajouterCarte(this.carteDefausse);
         	}
         	this.joueurQuiJoue.getMain().retirerCarte(carteJouee);
         	this.carteDefausse = carteJouee;
     	}
+    	
+    	System.out.println("-> Défausse : "+this.carteDefausse+" \n");
     }
 
     public void finJeu() {
@@ -230,14 +237,28 @@ public class Partie {
     
 
     private void changerTour(){
-    	if(!this.joueursIt.hasNext()) {
-        	this.joueursIt = this.joueurs.iterator();
+		if(!this.joueursIt.hasNext()) {
+			this.joueursIt = this.joueurs.iterator();
     	}
-    	
     	this.joueurQuiJoue = joueursIt.next();
     }
     
     private void changerSens() {
-    	this.sens = !this.sens;
+    	//this.sens = !this.sens;
+    	ArrayList<Joueur> list = new ArrayList<Joueur>(this.joueurs); //creer une liste à partir d'un set
+    	Collections.reverse(list); //inverser l'ordre des éléments dans la liste
+    	 
+        this.joueurs = new LinkedHashSet<Joueur>(list); //transformer la liste inversée en set
+    	
+    	Iterator<Joueur> iterator = this.joueurs.iterator();
+    	
+    	//Il faut mettre à jour l'itérateur des joueurs pour que le prochain joueur a jouer respecte le nouvel ordre du set
+    	Joueur joueur;
+    	do {
+    		joueur = iterator.next();
+    		if(joueur == this.joueurQuiJoue) {
+    			this.joueursIt = iterator;
+    		}
+    	} while(iterator.hasNext() && joueur != this.joueurQuiJoue);
     }
 }

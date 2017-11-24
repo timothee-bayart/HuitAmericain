@@ -73,4 +73,8 @@ public class Joueur {
 	public static boolean isNomValide(String nom) {
 	    return nom.trim().length()>0 && nom.matches("[A-zÀ-ÿ]+");
 	}
+	
+	public String toString() {
+		return this.getNom();
+	}
 }
