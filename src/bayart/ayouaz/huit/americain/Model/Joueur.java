@@ -41,10 +41,10 @@ public class Joueur {
 			        	carte = this.main.getCarte(index - 1);
 		            }
 	            } else {
-	        		System.out.println("Mauvaise entrée !");
+                                Affichage.erreurInput();
 	            }
         	} catch(InputMismatchException e) {
-        		System.out.println("Mauvaise entrée !");
+                        Affichage.erreurInput();
         		Partie.CLAVIER.next();
         	}
             
@@ -71,7 +71,7 @@ public class Joueur {
 	
 	
 	public static boolean isNomValide(String nom) {
-	    return nom.trim().length()>0 && nom.matches("[A-zÀ-ÿ]+");
+	    return nom.trim().length()>0 && nom.matches("[A-zï¿½-ï¿½]+");
 	}
 	
 	public String toString() {

@@ -10,5 +10,7 @@ public abstract class Regle {
     public abstract boolean isCoupJouable(Carte coupJoue, Carte carteDefausse);
 
     public abstract boolean aGagne(GroupeDeCarte paquetDuJoueurEnCours);
+    
+    public abstract int leProchainJoueurDevra();
 
 }
