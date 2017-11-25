@@ -13,30 +13,14 @@ import java.util.TreeSet;
 
 
 public class Partie {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		Partie partie = new Partie();
-		partie.initParamsDuJeu();
-		partie.demarrerJeu();
-	}
-	
-	
-	
 	
     public static final Scanner CLAVIER = new Scanner(System.in);
-    public static final String[] MENU_PRINCIPAL = new String[] {
-        	"Démarrer la partie",
-        	"Ajouter un joueur",
-        	"Quitter"
-        };
 
-	private final static int NOMBRE_DE_CARTE_A_DISTRIBUER = 7;
-	private final static int NOMBRE_DE_JOUEURS_MINIMUM = 2;
+    private final static int NOMBRE_DE_CARTE_A_DISTRIBUER = 7;
+    private final static int NOMBRE_DE_JOUEURS_MINIMUM = 2;
 	
     public static Regle regle;
-	
+    private Affichage fenetre;
     private int nbManche;
     private int nbMancheTotal;
     //private boolean sens = true;
@@ -51,24 +35,21 @@ public class Partie {
        
     
     public Partie() {
+        fenetre = new Affichage();
     }
 
 
-    private int afficherMenu(String[] menu) {
-    	
+    private int afficherMenu() {
     	boolean exit = false;
     	
     	while(!exit) {
 
-        	System.out.println("*****************************************");
-        	for(int i=0; i<menu.length; i++) {
-            	System.out.println("["+i+"] "+menu[i]);
-        	}
+        	fenetre.afficherMenu();
         	
         	try {
             	int index = CLAVIER.nextInt();
             	
-            	if(index>=0 && index<menu.length){
+            	if(index>=0 && index<3){
             		exit = true;
             		return index;
             	}
@@ -87,12 +68,12 @@ public class Partie {
     
     public void initParamsDuJeu() {
 
-    	System.out.println("************* Huit Américain (Timothée BAYART & Idris AYOUAZ *************");
+    	fenetre.intro();
     	
     	//demander nom joueur
     	boolean joueurAjoute = false;
     	while(!joueurAjoute) {
-        	System.out.println("Veuillez saisir votre nom (alphabétique) de joueur : ");
+        	fenetre.demanderNomJoueur();
     		
     		try {
         		String nomJoueur = Partie.CLAVIER.nextLine();
@@ -114,14 +95,14 @@ public class Partie {
     	
     	while(!partieParametree) {
         	//ajouter les joueurs, choisir la variante
-    		int choix  = afficherMenu(Partie.MENU_PRINCIPAL);
+    		int choix = afficherMenu();
     		
     		switch(choix) {
     			case 0:
     				if(this.joueurs.size() >= Partie.NOMBRE_DE_JOUEURS_MINIMUM) {
     					partieParametree = true;
     				} else {
-    					System.out.println("Veuillez ajouter au moins "+(Partie.NOMBRE_DE_JOUEURS_MINIMUM - this.joueurs.size())+" joueur(s) pour commencer.");
+                                    fenetre.ajouterJoueurs(Partie.NOMBRE_DE_JOUEURS_MINIMUM - this.joueurs.size());
     				}
     				break;
     				
@@ -133,8 +114,7 @@ public class Partie {
     			    	nouveauJoueur = new Ia("Joueur"+(this.joueurs.size()+numeroJoueur));
     			    	numeroJoueur++;
     			    } while(!this.joueurs.add(nouveauJoueur));
-    			    
-    			    System.out.println("Vous êtes désormais "+this.joueurs.size()+" joueurs.");
+    			    fenetre.joueurEnPlus(this.joueurs.size());
     				break;
     				
     			case 2:
@@ -154,8 +134,7 @@ public class Partie {
     
 
     public void demarrerJeu() {
-    	System.out.println("*****************************************");
-    	System.out.println("La partie commence...");
+    	fenetre.debutPartie();
     	this.distribuerCartes();
     	
     	do {
@@ -169,9 +148,7 @@ public class Partie {
 			}
     	} while(!this.regle.aGagne(this.joueurQuiJoue.getMain()));
 
-    	System.out.println("****************************************");
-    	System.out.println(this.joueurQuiJoue.getNom() + " a gagné !");
-    	System.out.println("****************************************");
+    	fenetre.victoire(this.joueurQuiJoue.getNom());
     }
 
     
@@ -186,21 +163,18 @@ public class Partie {
 
 
     public void jouerCoup() {
-    	System.out.println("--- À "+this.joueurQuiJoue+" de jouer ---");
+    	fenetre.annonceJoueurQuiJoue(this.joueurQuiJoue.getNom());
         Carte carteJouee;
     	
     	if(this.joueurQuiJoue instanceof Ia) {
     		carteJouee = this.joueurQuiJoue.jouer(this.carteDefausse);
         	
     	} else {
-    		System.out.println("Quel coup souhaitez-vous jouer ?");
+    		fenetre.queVeuxJouerLeJoueur();
     		
         	boolean isCarteJouee = false;
     		do {
-    			//proposer piocher
-	    		System.out.println("[0] Piocher");
-	    		//proposer les cartes
-	    		System.out.println(this.joueurQuiJoue.getMain());
+                    fenetre.afficherOptionsJouables(this.joueurQuiJoue.getMain());
 	    		
 	    		carteJouee = this.joueurQuiJoue.jouer(this.carteDefausse);
 	    		
@@ -208,7 +182,7 @@ public class Partie {
 	    			
 	    			isCarteJouee = true;
 	    		} else {
-	    			System.out.println("Coup non jouable. Quel coup souhaitez-vous jouer ?");
+	    			fenetre.coupIllegal();
 	    		}
 	    		
 	    	} while(!isCarteJouee);
@@ -218,10 +192,9 @@ public class Partie {
     	
     	if(carteJouee == null){ //piocher
     		this.joueurQuiJoue.piocher(this.pioche.retirerCarte());
-        	System.out.println("<"+this.joueurQuiJoue.getNom()+" a pioché, il a "+this.joueurQuiJoue.getMain().getNombreDeCartes()+" cartes>");
+                fenetre.afficherPiochÃ©(this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
     	} else {
-        	System.out.println("<"+this.joueurQuiJoue.getNom()+" a joué "+carteJouee+", il a "+this.joueurQuiJoue.getMain().getNombreDeCartes()+" cartes>");
-        	
+        	fenetre.afficherJouÃ©(carteJouee, this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
         	if(this.carteDefausse!=null) {
         		this.pioche.ajouterCarte(this.carteDefausse);
         	}
@@ -229,7 +202,7 @@ public class Partie {
         	this.carteDefausse = carteJouee;
     	}
     	
-    	System.out.println("-> Défausse : "+this.carteDefausse+" \n");
+    	//System.out.println("-> DÃ©fausse : "+this.carteDefausse+" \n");
     }
 
     public void finJeu() {
@@ -245,14 +218,14 @@ public class Partie {
     
     private void changerSens() {
     	//this.sens = !this.sens;
-    	ArrayList<Joueur> list = new ArrayList<Joueur>(this.joueurs); //creer une liste à partir d'un set
-    	Collections.reverse(list); //inverser l'ordre des éléments dans la liste
+    	ArrayList<Joueur> list = new ArrayList<Joueur>(this.joueurs); //creer une liste ï¿½ partir d'un set
+    	Collections.reverse(list); //inverser l'ordre des ï¿½lï¿½ments dans la liste
     	 
-        this.joueurs = new LinkedHashSet<Joueur>(list); //transformer la liste inversée en set
+        this.joueurs = new LinkedHashSet<Joueur>(list); //transformer la liste inversï¿½e en set
     	
     	Iterator<Joueur> iterator = this.joueurs.iterator();
     	
-    	//Il faut mettre à jour l'itérateur des joueurs pour que le prochain joueur a jouer respecte le nouvel ordre du set
+    	//Il faut mettre ï¿½ jour l'itï¿½rateur des joueurs pour que le prochain joueur a jouer respecte le nouvel ordre du set
     	Joueur joueur;
     	do {
     		joueur = iterator.next();
