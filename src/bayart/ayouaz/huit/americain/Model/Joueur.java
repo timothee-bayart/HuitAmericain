@@ -57,6 +57,7 @@ public class Joueur {
     	return this.main;
     }
     
+    @Override
     public boolean equals(Object object) {
     	if(object instanceof Joueur) {
     		return ((Joueur) object).getNom().equals(this.nom);
@@ -74,6 +75,7 @@ public class Joueur {
 	    return nom.trim().length()>0 && nom.matches("[A-z�-�]+");
 	}
 	
+    @Override
 	public String toString() {
 		return this.getNom();
 	}

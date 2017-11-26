@@ -26,13 +26,20 @@ public class Partie {
     //private boolean sens = true;
     private GroupeDeCarte pioche;
     private Carte carteDefausse;
-	private LinkedHashSet <Joueur> joueurs = new LinkedHashSet<Joueur>();
+    private LinkedHashSet <Joueur> joueurs = new LinkedHashSet<Joueur>();
     private Joueur joueurQuiJoue;
     private Iterator<Joueur> joueursIt;
     
     private Joueur gagnant;
     private TreeSet<Joueur> perdants = new TreeSet<Joueur> ();
        
+    public Carte retirerCartePioche(){
+        return pioche.retirerCarte();
+    }
+    
+    public Joueur getJoueurQuiJoue(){
+        return joueurQuiJoue;
+    }
     
     public Partie() {
         fenetre = new Affichage();
@@ -133,12 +140,17 @@ public class Partie {
     }
     
 
+    public void infligerMalus(){
+        regle.leProchainJoueurDevra(this);
+    }
+    
     public void demarrerJeu() {
     	fenetre.debutPartie();
     	this.distribuerCartes();
     	
     	do {
     		this.changerTour();
+                this.infligerMalus();
         	this.jouerCoup();
         	
         	try {
@@ -209,14 +221,14 @@ public class Partie {
     }
     
 
-    private void changerTour(){
-		if(!this.joueursIt.hasNext()) {
-			this.joueursIt = this.joueurs.iterator();
+    public void changerTour(){
+        if(!this.joueursIt.hasNext()) {
+                this.joueursIt = this.joueurs.iterator();
     	}
     	this.joueurQuiJoue = joueursIt.next();
     }
     
-    private void changerSens() {
+    public void changerSens() {
     	//this.sens = !this.sens;
     	ArrayList<Joueur> list = new ArrayList<Joueur>(this.joueurs); //creer une liste � partir d'un set
     	Collections.reverse(list); //inverser l'ordre des �l�ments dans la liste
