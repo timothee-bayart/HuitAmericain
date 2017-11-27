@@ -1,7 +1,7 @@
 
 package bayart.ayouaz.huit.americain.Model;
 
-import sun.awt.X11.XConstants;
+//import sun.awt.X11.XConstants;
 
 
 public class Affichage {
@@ -11,11 +11,16 @@ public class Affichage {
         	"Quitter"
     };
     private String ligne;
+    
+    
     public Affichage(){
         ligne="";
         for(int i=0; i<15;++i)
             ligne+="*";
     }
+    
+    
+    
     
     public static void erreurInput(){
         System.out.println("Mauvaise entrée !");
@@ -42,7 +47,7 @@ public class Affichage {
         System.out.println(hand);
     }
     
-    public void afficherJoué(Carte c, String nomJoueur, int nbCartesRestantes){
+    public void afficherJouer(Carte c, String nomJoueur, int nbCartesRestantes){
         System.out.println("<"+nomJoueur+" a joué : "+c+">");
         if(nbCartesRestantes>1)
             System.out.println(" Il lui reste "+nbCartesRestantes+" cartes");
@@ -50,7 +55,11 @@ public class Affichage {
             System.out.println(" Il lui reste "+nbCartesRestantes+" carte");
     }
     
-    public void afficherPioché(String nomJoueur, int nbCartesRestantes){
+    public void afficherDefausse(Carte defausse){
+    	System.out.println("-> Défausse : "+defausse+" \n");
+    }
+    
+    public void afficherPiocher(String nomJoueur, int nbCartesRestantes){
         System.out.println("<"+nomJoueur+" a pioché>");
         System.out.println(" Il lui reste "+nbCartesRestantes+" cartes");
     }

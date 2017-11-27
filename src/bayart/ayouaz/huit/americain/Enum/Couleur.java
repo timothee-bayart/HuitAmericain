@@ -4,7 +4,7 @@ public enum Couleur {
 	COEUR("Coeur"),
 	CARREAU("Carreau"),
 	PIC("Pic"),
-	TREFLE("Trèfle");
+	TREFLE("TrÃ¨fle");
 	
 	private final String label;
 

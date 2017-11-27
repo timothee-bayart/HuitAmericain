@@ -5,10 +5,12 @@ import bayart.ayouaz.huit.americain.Interface.Strategie;
 public class Ia extends Joueur{
 
 	private Strategie strategie;
+	private Regle regle;
 	
 	
-	public Ia(String nom) {
+	public Ia(String nom, Regle regle) {
 		super(nom);
+		this.regle = regle;
 		this.strategie = new Strategie1();
 	}
 	
@@ -18,7 +20,7 @@ public class Ia extends Joueur{
 	
 	
     public Carte jouer(Carte carteDefausse) {
-        return strategie.jouer(carteDefausse, this.main);
+        return strategie.jouer(carteDefausse, this.main, this.regle);
     }
 }
 

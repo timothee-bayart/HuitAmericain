@@ -19,7 +19,7 @@ public class Partie {
     private final static int NOMBRE_DE_CARTE_A_DISTRIBUER = 7;
     private final static int NOMBRE_DE_JOUEURS_MINIMUM = 2;
 	
-    public static Regle regle;
+    public Regle regle;
     private Affichage fenetre;
     private int nbManche;
     private int nbMancheTotal;
@@ -96,7 +96,10 @@ public class Partie {
         	}
     		
     	}
+
     	
+    	//choisir variante !!
+    	this.regle = new Variante1();
     	
     	boolean partieParametree = false;
     	
@@ -118,7 +121,7 @@ public class Partie {
     			    Joueur nouveauJoueur;
     			    
     			    do {
-    			    	nouveauJoueur = new Ia("Joueur"+(this.joueurs.size()+numeroJoueur));
+    			    	nouveauJoueur = new Ia("Joueur"+(this.joueurs.size()+numeroJoueur), this.regle);
     			    	numeroJoueur++;
     			    } while(!this.joueurs.add(nouveauJoueur));
     			    fenetre.joueurEnPlus(this.joueurs.size());
@@ -129,9 +132,6 @@ public class Partie {
     				break;
     		}
     	}
-    	
-    	//choisir variante !!
-    	this.regle = new Variante1();
     	
     	this.pioche = new GroupeDeCarte(1); //attention nombre de paquets
     	this.pioche.melanger();
@@ -198,15 +198,13 @@ public class Partie {
 	    		}
 	    		
 	    	} while(!isCarteJouee);
-    		
-    		//this.changerSens(); //test
     	}
     	
     	if(carteJouee == null){ //piocher
     		this.joueurQuiJoue.piocher(this.pioche.retirerCarte());
-                fenetre.afficherPioché(this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
+                fenetre.afficherPiocher(this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
     	} else {
-        	fenetre.afficherJoué(carteJouee, this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
+        	fenetre.afficherJouer(carteJouee, this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
         	if(this.carteDefausse!=null) {
         		this.pioche.ajouterCarte(this.carteDefausse);
         	}
@@ -214,7 +212,7 @@ public class Partie {
         	this.carteDefausse = carteJouee;
     	}
     	
-    	//System.out.println("-> Défausse : "+this.carteDefausse+" \n");
+    	fenetre.afficherDefausse(this.carteDefausse);
     }
 
     public void finJeu() {
@@ -230,14 +228,14 @@ public class Partie {
     
     public void changerSens() {
     	//this.sens = !this.sens;
-    	ArrayList<Joueur> list = new ArrayList<Joueur>(this.joueurs); //creer une liste � partir d'un set
-    	Collections.reverse(list); //inverser l'ordre des �l�ments dans la liste
+    	ArrayList<Joueur> list = new ArrayList<Joueur>(this.joueurs); //creer une liste à partir d'un set
+    	Collections.reverse(list); //inverser l'ordre des éléments dans la liste
     	 
-        this.joueurs = new LinkedHashSet<Joueur>(list); //transformer la liste invers�e en set
+        this.joueurs = new LinkedHashSet<Joueur>(list); //transformer la liste inversée en set
     	
     	Iterator<Joueur> iterator = this.joueurs.iterator();
     	
-    	//Il faut mettre � jour l'it�rateur des joueurs pour que le prochain joueur a jouer respecte le nouvel ordre du set
+    	//Il faut mettre à jour l'itérateur des joueurs pour que le prochain joueur a jouer respecte le nouvel ordre du set
     	Joueur joueur;
     	do {
     		joueur = iterator.next();

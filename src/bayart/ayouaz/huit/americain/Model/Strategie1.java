@@ -7,7 +7,7 @@ import bayart.ayouaz.huit.americain.Interface.Strategie;
 public class Strategie1 implements Strategie {
 
 	@Override
-	public Carte jouer(Carte carteDefausse, GroupeDeCarte main) {
+	public Carte jouer(Carte carteDefausse, GroupeDeCarte main, Regle regle) {
 		
 		int index = 0;
 		Carte carte;
@@ -16,7 +16,7 @@ public class Strategie1 implements Strategie {
         	carte = main.getCarte(index);
         	index++;
             
-        } while(index<main.getNombreDeCartes() && !Partie.regle.isCoupJouable(carte, carteDefausse));
+        } while(index<main.getNombreDeCartes() && !regle.isCoupJouable(carte, carteDefausse));
         
         return carte;
 	}
