@@ -47,27 +47,11 @@ public class Partie {
 
 
     private int afficherMenu() {
-    	boolean exit = false;
-    	
-    	while(!exit) {
 
-        	fenetre.afficherMenu();
-        	
-        	try {
-            	int index = CLAVIER.nextInt();
-            	
-            	if(index>=0 && index<3){
-            		exit = true;
-            		return index;
-            	}
-            	
-        	} catch(InputMismatchException e) {
-            	Partie.CLAVIER.next();
-        	}
-        	
+    	while(true) {
+            fenetre.afficherMenu();
+            return Input.demanderEntier(0, 3);
     	}
-    	
-		return 0;
     }
     
     
