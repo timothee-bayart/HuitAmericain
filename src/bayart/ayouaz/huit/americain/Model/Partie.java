@@ -64,20 +64,20 @@ public class Partie {
     	//demander nom joueur
     	boolean joueurAjoute = false;
     	while(!joueurAjoute) {
-        	fenetre.demanderNomJoueur();
-    		
-    		try {
-        		String nomJoueur = Partie.CLAVIER.nextLine();
-            	
-            	if(Joueur.isNomValide(nomJoueur)){
-            		this.joueurs.add(new Joueur(nomJoueur));
-            		joueurAjoute = true;
-            	}
-            	
-        	} catch(InputMismatchException e) {
-        		//on laisse l'user donner une autre valeure
-            	Partie.CLAVIER.next();
-        	}
+            fenetre.demanderNomJoueur();
+
+            //try {
+            String nomJoueur = Input.demanderString();
+
+            if(Joueur.isNomValide(nomJoueur)){
+                this.joueurs.add(new Joueur(nomJoueur));
+                joueurAjoute = true;
+            }
+
+            /*} catch(InputMismatchException e) {
+                    //on laisse l'user donner une autre valeure
+            Partie.CLAVIER.next();
+            }*/
     		
     	}
 

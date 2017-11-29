@@ -21,7 +21,7 @@ public class Input {
         while(true){
             try {
                 index = CLAVIER.nextInt();
-            if(index>=0 && index<3){
+            if(index>=min && index<max){
                 return index;
             }
 
@@ -29,5 +29,9 @@ public class Input {
                 Partie.CLAVIER.next();
             }
         }
+    }
+    
+    public static String demanderString(){
+        return Partie.CLAVIER.nextLine();
     }
 }
