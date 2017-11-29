@@ -13,9 +13,9 @@ public class Variante1 extends Regle {
         }
         
 	@Override
-	public void initPartie() {
-		// TODO Auto-generated method stub
-		
+	public GroupeDeCarte initPartie() {
+		GroupeDeCarte cartes = new GroupeDeCarte(1,52,true);
+                return cartes;
 	}
 
 	@Override

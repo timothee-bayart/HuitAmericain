@@ -5,7 +5,7 @@ public abstract class Regle {
 
     protected Carte derniereCarteJoue;
 
-    public abstract void initPartie();
+    public abstract GroupeDeCarte initPartie();
 
     public abstract boolean isCoupJouable(Carte coupJoue, Carte carteDefausse);
 

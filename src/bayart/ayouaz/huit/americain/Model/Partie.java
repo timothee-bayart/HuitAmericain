@@ -18,7 +18,7 @@ public class Partie {
 
     private final static int NOMBRE_DE_CARTE_A_DISTRIBUER = 7;
     private final static int NOMBRE_DE_JOUEURS_MINIMUM = 2;
-	
+    
     public Regle regle;
     private Affichage fenetre;
     private int nbManche;
@@ -117,7 +117,8 @@ public class Partie {
     		}
     	}
     	
-    	this.pioche = new GroupeDeCarte(1); //attention nombre de paquets
+        pioche = regle.initPartie();
+    	//this.pioche = new GroupeDeCarte(1); //attention nombre de paquets
     	this.pioche.melanger();
     	
     	this.joueursIt = this.joueurs.iterator();
