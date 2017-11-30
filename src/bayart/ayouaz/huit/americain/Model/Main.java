@@ -12,9 +12,6 @@ package bayart.ayouaz.huit.americain.Model;
 public class Main {
     
     public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		//Affichage a=new Affichage();
-                //a.afficherMenu();
 		Partie partie = new Partie();
 		partie.initParamsDuJeu();
 		partie.demarrerJeu();

@@ -4,7 +4,10 @@ package bayart.ayouaz.huit.americain.Model;
 //import sun.awt.X11.XConstants;
 
 
+import bayart.ayouaz.huit.americain.Enum.Couleur;
+
 public class Affichage {
+
     private final String[] MENU_PRINCIPAL = new String[] {
         	"Démarrer la partie",
         	"Ajouter un joueur",
@@ -18,15 +21,14 @@ public class Affichage {
         for(int i=0; i<15;++i)
             ligne+="*";
     }
-    
-    
-    
+
+
     
     public static void erreurInput(){
         System.out.println("Mauvaise entrée !");
     }
     
-    public void afficherMenu(){
+    public void afficherMenuPrincipal(){
         System.out.println(ligne);
         for(int i=0; i<MENU_PRINCIPAL.length;++i){
             System.out.println("["+i+"] : "+MENU_PRINCIPAL[i]);
@@ -56,7 +58,7 @@ public class Affichage {
     }
     
     public void afficherDefausse(Carte defausse){
-    	System.out.println("-> Défausse : "+defausse+" \n");
+    	System.out.println("-> Défausse : "+defausse);
     }
     
     public void afficherPiocher(String nomJoueur, int nbCartesRestantes){
@@ -65,7 +67,7 @@ public class Affichage {
     }
     
     public void annonceJoueurQuiJoue(String nomJoueur){
-        System.out.println("--- À "+nomJoueur+" de jouer ---");
+        System.out.println("\n--- À "+nomJoueur+" de jouer ---");
     }
     
     public void debutPartie(){
@@ -111,20 +113,12 @@ public class Affichage {
     }
     public void changerProchaineCouleur(){
         System.out.println("Quel couleur voulez vous jouer ensuite?");
-        System.out.println("[0] : Trefle");
-        System.out.println("[1] : Pic");
-        System.out.println("[2] : Coeur");
-        System.out.println("[3] : Carreau");
+        System.out.println("[0] : " + Couleur.TREFLE);
+        System.out.println("[1] : " + Couleur.PIC);
+        System.out.println("[2] : " + Couleur.COEUR);
+        System.out.println("[3] : " + Couleur.CARREAU);
     }
-    public void ilFautJouer(int id){
-        if(id==0)
-            System.out.println("Il faut jouer un Trefle");
-        if(id==1)
-            System.out.println("Il faut jouer un Pic");
-        if(id==2)
-            System.out.println("Il faut jouer un Coeur");
-        if(id==3)
-            System.out.println("Il faut jouer un Carreau");
-        
+    public void ilFautJouer(Couleur couleur){
+       System.out.println("Il faut jouer un " + couleur);
     }
 }

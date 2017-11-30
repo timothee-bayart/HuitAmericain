@@ -2,111 +2,119 @@ package bayart.ayouaz.huit.americain.Model;
 
 import bayart.ayouaz.huit.americain.Enum.Couleur;
 import bayart.ayouaz.huit.americain.Enum.Motif;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+
+import static bayart.ayouaz.huit.americain.Enum.Motif.*;
+import static bayart.ayouaz.huit.americain.Enum.Motif.HUIT;
 
 public class Variante1 extends Regle {
+
     public String nomVariante;
     
-        Variante1(){
-            derniereCarteJoue=null;
-        }
+    Variante1(){
+        nouvelleCouleur = null;
+    }
         
 	@Override
-	public GroupeDeCarte initPartie() {
-		GroupeDeCarte cartes = new GroupeDeCarte(1,52,true);
-                return cartes;
+	public GroupeDeCarte genererPioche() {
+        return new GroupeDeCarte(1,52,true);
 	}
 
 	@Override
 	public boolean isCoupJouable(Carte coupJoue, Carte carteDefausse) {
-		if (derniereCarteJoue==null ||
-                        coupJoue == null ||
-                        coupJoue.getMotif()==Motif.JOKER ||
-                        coupJoue.getMotif()==Motif.HUIT ||
-                        coupJoue.getMotif()==derniereCarteJoue.getMotif() ||
-                        coupJoue.getCouleur() == derniereCarteJoue.getCouleur()){
-                        derniereCarteJoue=coupJoue;
-                        return true;
-                }
-                else{
-                    return false;
-                }
+		if (
+            coupJoue == null ||
+            coupJoue.getMotif() == JOKER ||
+            coupJoue.getMotif() == HUIT){
+
+            return true;
+
+        } else if(
+                coupJoue.getMotif() == carteDefausse.getMotif() || coupJoue.getCouleur() == carteDefausse.getCouleur() ||
+                (super.nouvelleCouleur != null && coupJoue.getCouleur() == super.nouvelleCouleur)){
+
+            if(super.nouvelleCouleur != null){
+                return (coupJoue.getCouleur() == super.nouvelleCouleur);
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
 	}
 
 	@Override
-	public boolean aGagne(GroupeDeCarte paquetDuJoueurEnCours) {
-		return paquetDuJoueurEnCours.getNombreDeCartes()==0;
+	public boolean isJoueurAGagne(GroupeDeCarte paquetDuJoueurEnCours) {
+		return paquetDuJoueurEnCours.estVide();
 	}
 
     @Override
-    public void leProchainJoueurDevra(Partie p) {
-        Affichage fenetre = new Affichage();
-        if(derniereCarteJoue==null)
-            return;
-        switch(derniereCarteJoue.getMotif()){
-            case DEUX:
-                fenetre.piocherObligatoire(2, p.getJoueurQuiJoue());
-                for(int i = 0; i < 2 ; ++i){
-                    p.getJoueurQuiJoue().piocher(p.retirerCartePioche());
-                }
-                return;
-            case SEPT:
-                fenetre.sauterTour(p.getJoueurQuiJoue());
-                p.changerTour();
-                return;
-            case HUIT:
-                int sortie=-1;
-                Scanner scan = new Scanner(System.in);
-                do{
-                    try{
-                    fenetre.changerProchaineCouleur();
-                    sortie = scan.nextInt();
-                    if(sortie>=0 && sortie<4){
-                        if(sortie==0){
-                            derniereCarteJoue = new Carte(Couleur.TREFLE, Motif.TROIS);
-                            fenetre.ilFautJouer(0);
-                            return;
-                        }
-                        if(sortie==1){
-                            derniereCarteJoue = new Carte(Couleur.PIC, Motif.TROIS);
-                            fenetre.ilFautJouer(1);
-                            return;
-                        }
-                        if(sortie==2){
-                            derniereCarteJoue = new Carte(Couleur.COEUR, Motif.TROIS);
-                            fenetre.ilFautJouer(2);
-                            return;
-                        }
-                        if(sortie==3){
-                            derniereCarteJoue = new Carte(Couleur.CARREAU, Motif.TROIS);
-                            fenetre.ilFautJouer(3);
-                            return;
-                        }
+    public void appliquerEffetCarteSpeciale(Partie partie) {
+
+        if(partie.getDernierCoupJoue() != null){ //c'est la partie qui garde le dernier coup joué, car on pourrait appeler isCoupJouable sans joue le coup après
+
+            super.nouvelleCouleur = null;
+
+            switch(partie.getDernierCoupJoue().getMotif()){
+                case SEPT: // Saute le tour du joueur suivant
+                    partie.getFenetre().sauterTour(partie.getProchainJoueurQuiVaJouer());
+                    partie.changerTour();
+                    break;
+
+                case HUIT: // Les 8 permettent de changer de couleur à n’importe quel moment
+                    partie.getFenetre().changerProchaineCouleur();
+
+                    int choix;
+                    if(partie.getJoueurQuiJoue() instanceof Ia){
+                        choix = (int) (Math.random() * 4);
+                    } else {
+                        choix = Input.demanderEntier(0, 3);
                     }
-                    }catch(InputMismatchException e) {
-                            scan.next();
+
+                    switch (choix){
+                        case 0 :
+                            super.nouvelleCouleur = Couleur.TREFLE;
+                            partie.getFenetre().ilFautJouer(Couleur.TREFLE);
+                            break;
+
+                        case 1:
+                            super.nouvelleCouleur = Couleur.PIC;
+                            partie.getFenetre().ilFautJouer(Couleur.PIC);
+                            break;
+
+                        case 2:
+                            super.nouvelleCouleur = Couleur.COEUR;
+                            partie.getFenetre().ilFautJouer(Couleur.COEUR);
+                            break;
+
+                        case 3:
+                            super.nouvelleCouleur = Couleur.CARREAU;
+                            partie.getFenetre().ilFautJouer(Couleur.CARREAU);
+                            break;
                     }
-                }while(true);
-            case DIX:
-                fenetre.rejouer();
-                p.changerSens();
-                p.changerTour();
-                p.changerSens();
-                return;
-            case VALET:
-                fenetre.changerSens();
-                p.changerSens();
-                p.changerTour();
-                p.changerTour();
-                return;
-            case AS:
-                fenetre.piocherObligatoire(4, p.getJoueurQuiJoue());
-                for(int i = 0; i < 4 ; ++i){
-                    p.getJoueurQuiJoue().piocher(p.retirerCartePioche());
-                }
-            case JOKER:
-                //decider prochain joueur ou echanger son jeu
+                    break;
+
+                case DIX: // Oblige le joueur qui la pose à rejouer
+                    partie.changerSens();
+                    partie.changerTour();
+                    partie.changerSens();
+                    partie.getFenetre().rejouer();
+                    break;
+
+                case VALET: // Changer le sens de jeu
+                    partie.changerSens();
+                    partie.getFenetre().changerSens();
+                    break;
+
+                case AS: // Fait piocher 4 cartes au suivant
+                    partie.getFenetre().piocherObligatoire(4, partie.getProchainJoueurQuiVaJouer());
+                    for(int i = 0; i < 4 ; ++i){
+                        partie.getProchainJoueurQuiVaJouer().piocher(partie.retirerCartePioche());
+                    }
+                    break;
+
+                case JOKER: // Permet de jouer sur n'importe quelle carte et permet de stopper une attaque
+                    break;
+            }
         }
     }
 

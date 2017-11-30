@@ -1,16 +1,17 @@
 package bayart.ayouaz.huit.americain.Model;
 
+import bayart.ayouaz.huit.americain.Enum.Couleur;
+
 public abstract class Regle {
-    protected int nbPaquets;
 
-    protected Carte derniereCarteJoue;
+    protected Couleur nouvelleCouleur;
 
-    public abstract GroupeDeCarte initPartie();
+    public abstract GroupeDeCarte genererPioche();
 
     public abstract boolean isCoupJouable(Carte coupJoue, Carte carteDefausse);
 
-    public abstract boolean aGagne(GroupeDeCarte paquetDuJoueurEnCours);
+    public abstract boolean isJoueurAGagne(GroupeDeCarte paquetDuJoueurEnCours);
     
-    public abstract void leProchainJoueurDevra(Partie p);
+    public abstract void appliquerEffetCarteSpeciale(Partie p);
 
 }

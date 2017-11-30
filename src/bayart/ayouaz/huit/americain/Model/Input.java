@@ -5,7 +5,6 @@
  */
 package bayart.ayouaz.huit.americain.Model;
 
-import static bayart.ayouaz.huit.americain.Model.Partie.CLAVIER;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -17,21 +16,26 @@ public class Input {
     public static Scanner CLAVIER = new Scanner(System.in);
     
     public static int demanderEntier(int min, int max){
-        int index;
-        while(true){
+        int nombre = 0;
+        boolean choixEffectue = false;
+
+        do{
             try {
-                index = CLAVIER.nextInt();
-            if(index>=min && index<max){
-                return index;
-            }
+                nombre = CLAVIER.nextInt();
+
+                if(nombre>=min && nombre<=max){
+                    choixEffectue = true;
+                }
 
             } catch(InputMismatchException e) {
-                Partie.CLAVIER.next();
+                CLAVIER.nextInt();
             }
-        }
+        } while(!choixEffectue);
+
+        return nombre;
     }
     
     public static String demanderString(){
-        return Partie.CLAVIER.nextLine();
+        return CLAVIER.nextLine();
     }
 }

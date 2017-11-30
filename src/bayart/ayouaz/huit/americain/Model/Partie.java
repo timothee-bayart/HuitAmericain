@@ -2,69 +2,43 @@ package bayart.ayouaz.huit.americain.Model;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeSet;
 
 
 public class Partie {
-	
-    public static final Scanner CLAVIER = new Scanner(System.in);
 
     private final static int NOMBRE_DE_CARTE_A_DISTRIBUER = 7;
     private final static int NOMBRE_DE_JOUEURS_MINIMUM = 2;
     
-    public Regle regle;
+    private Regle regle;
     private Affichage fenetre;
-    private int nbManche;
-    private int nbMancheTotal;
-    //private boolean sens = true;
+//    private int nbManche;
+//    private int nbMancheTotal;
     private GroupeDeCarte pioche;
     private Carte carteDefausse;
+    private Carte dernierCoupJoue;
     private LinkedHashSet <Joueur> joueurs = new LinkedHashSet<Joueur>();
     private Joueur joueurQuiJoue;
+    private Joueur prochainJoueurQuiVaJouer;
     private Iterator<Joueur> joueursIt;
     
-    private Joueur gagnant;
-    private TreeSet<Joueur> perdants = new TreeSet<Joueur> ();
-       
-    public Carte retirerCartePioche(){
-        return pioche.retirerCarte();
-    }
-    
-    public Joueur getJoueurQuiJoue(){
-        return joueurQuiJoue;
-    }
+//    private Joueur gagnant;
+//    private TreeSet<Joueur> perdants = new TreeSet<Joueur> ();
+
     
     public Partie() {
-        fenetre = new Affichage();
-    }
-
-
-    private int afficherMenu() {
-
-    	while(true) {
-            fenetre.afficherMenu();
-            return Input.demanderEntier(0, 3);
-    	}
-    }
-    
-    
-    
+		this.fenetre = new Affichage();
+	}
     
     public void initParamsDuJeu() {
 
-    	fenetre.intro();
+		this.fenetre.intro();
     	
     	//demander nom joueur
     	boolean joueurAjoute = false;
     	while(!joueurAjoute) {
-            fenetre.demanderNomJoueur();
+			this.fenetre.demanderNomJoueur();
 
             //try {
             String nomJoueur = Input.demanderString();
@@ -73,14 +47,7 @@ public class Partie {
                 this.joueurs.add(new Joueur(nomJoueur));
                 joueurAjoute = true;
             }
-
-            /*} catch(InputMismatchException e) {
-                    //on laisse l'user donner une autre valeure
-            Partie.CLAVIER.next();
-            }*/
-    		
     	}
-
     	
     	//choisir variante !!
     	this.regle = new Variante1();
@@ -89,14 +56,14 @@ public class Partie {
     	
     	while(!partieParametree) {
         	//ajouter les joueurs, choisir la variante
-    		int choix = afficherMenu();
+    		int choix = this.demanderActionMenuPrincipal();
     		
     		switch(choix) {
     			case 0:
     				if(this.joueurs.size() >= Partie.NOMBRE_DE_JOUEURS_MINIMUM) {
     					partieParametree = true;
     				} else {
-                                    fenetre.ajouterJoueurs(Partie.NOMBRE_DE_JOUEURS_MINIMUM - this.joueurs.size());
+						this.fenetre.ajouterJoueurs(Partie.NOMBRE_DE_JOUEURS_MINIMUM - this.joueurs.size());
     				}
     				break;
     				
@@ -108,7 +75,7 @@ public class Partie {
     			    	nouveauJoueur = new Ia("Joueur"+(this.joueurs.size()+numeroJoueur), this.regle);
     			    	numeroJoueur++;
     			    } while(!this.joueurs.add(nouveauJoueur));
-    			    fenetre.joueurEnPlus(this.joueurs.size());
+					this.fenetre.joueurEnPlus(this.joueurs.size());
     				break;
     				
     			case 2:
@@ -116,26 +83,24 @@ public class Partie {
     				break;
     		}
     	}
-    	
-        pioche = regle.initPartie(); //probleme de nombre de paquets reglé
-    	//this.pioche = new GroupeDeCarte(1); //attention nombre de paquets
+
+		this.pioche = this.regle.genererPioche();
     	this.pioche.melanger();
-    	
     	this.joueursIt = this.joueurs.iterator();
     }
-    
 
-    public void infligerMalus(){
-        regle.leProchainJoueurDevra(this);
-    }
-    
+	private int demanderActionMenuPrincipal() {
+		this.fenetre.afficherMenuPrincipal();
+		return Input.demanderEntier(0, 2);
+	}
+
     public void demarrerJeu() {
-    	fenetre.debutPartie();
+    	this.fenetre.debutPartie();
     	this.distribuerCartes();
     	
     	do {
+			this.regle.appliquerEffetCarteSpeciale(this);
     		this.changerTour();
-                this.infligerMalus();
         	this.jouerCoup();
         	
         	try {
@@ -143,12 +108,11 @@ public class Partie {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-    	} while(!this.regle.aGagne(this.joueurQuiJoue.getMain()));
+    	} while(!this.regle.isJoueurAGagne(this.joueurQuiJoue.getMain()));
 
     	fenetre.victoire(this.joueurQuiJoue.getNom());
     }
 
-    
     public void distribuerCartes() {
 		for(int i=0; i<NOMBRE_DE_CARTE_A_DISTRIBUER; i++) {
 	    	this.joueursIt = this.joueurs.iterator();
@@ -156,77 +120,107 @@ public class Partie {
 		    	joueursIt.next().getMain().ajouterCarte(this.pioche.retirerCarte());
 		    }
 		}
+		this.carteDefausse = this.pioche.retirerCarte();
     }
 
+	public void changerTour(){
+    	if(this.prochainJoueurQuiVaJouer != null){
+			this.joueurQuiJoue = this.prochainJoueurQuiVaJouer;
+		} else {
+			this.joueurQuiJoue = this.getProchainJoueur();
+		}
+		this.prochainJoueurQuiVaJouer = this.getProchainJoueur();
+	}
+
+	private Joueur getProchainJoueur(){
+		if(!this.joueursIt.hasNext()) {
+			this.joueursIt = this.joueurs.iterator();
+		}
+		return joueursIt.next();
+	}
+
+	public void changerSens() {
+		ArrayList<Joueur> list = new ArrayList<Joueur>(this.joueurs); //creer une liste à partir d'un set
+		Collections.reverse(list); //inverser l'ordre des éléments dans la liste
+
+		this.joueurs = new LinkedHashSet<Joueur>(list); //transformer la liste inversée en set
+
+		Iterator<Joueur> iterator = this.joueurs.iterator();
+
+		//Il faut mettre à jour l'itérateur des joueurs pour que le prochain joueur a jouer respecte le nouvel ordre du set
+		Joueur joueur;
+		do {
+			joueur = iterator.next();
+			if(joueur == this.joueurQuiJoue) {
+				this.joueursIt = iterator;
+				this.prochainJoueurQuiVaJouer = null; // le prochain joueur n'est plus bon !
+			}
+		} while(iterator.hasNext() && joueur != this.joueurQuiJoue);
+	}
 
     public void jouerCoup() {
-    	fenetre.annonceJoueurQuiJoue(this.joueurQuiJoue.getNom());
+		this.fenetre.annonceJoueurQuiJoue(this.joueurQuiJoue.getNom());
+		this.fenetre.afficherDefausse(this.carteDefausse);
         Carte carteJouee;
     	
     	if(this.joueurQuiJoue instanceof Ia) {
     		carteJouee = this.joueurQuiJoue.jouer(this.carteDefausse);
         	
     	} else {
-    		fenetre.queVeuxJouerLeJoueur();
+			this.fenetre.queVeuxJouerLeJoueur();
     		
         	boolean isCarteJouee = false;
     		do {
-                    fenetre.afficherOptionsJouables(this.joueurQuiJoue.getMain());
+				this.fenetre.afficherOptionsJouables(this.joueurQuiJoue.getMain());
 	    		
 	    		carteJouee = this.joueurQuiJoue.jouer(this.carteDefausse);
 	    		
 	    		if(this.regle.isCoupJouable(carteJouee, this.carteDefausse)) {
-	    			
 	    			isCarteJouee = true;
 	    		} else {
-	    			fenetre.coupIllegal();
+					this.fenetre.coupIllegal();
 	    		}
 	    		
 	    	} while(!isCarteJouee);
     	}
+
+    	this.dernierCoupJoue = carteJouee;
     	
     	if(carteJouee == null){ //piocher
     		this.joueurQuiJoue.piocher(this.pioche.retirerCarte());
-                fenetre.afficherPiocher(this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
+			this.fenetre.afficherPiocher(this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
     	} else {
-        	fenetre.afficherJouer(carteJouee, this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
+			this.fenetre.afficherJouer(carteJouee, this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
         	if(this.carteDefausse!=null) {
         		this.pioche.ajouterCarte(this.carteDefausse);
         	}
         	this.joueurQuiJoue.getMain().retirerCarte(carteJouee);
         	this.carteDefausse = carteJouee;
     	}
-    	
-    	fenetre.afficherDefausse(this.carteDefausse);
     }
 
     public void finJeu() {
     }
-    
 
-    public void changerTour(){
-        if(!this.joueursIt.hasNext()) {
-                this.joueursIt = this.joueurs.iterator();
-    	}
-    	this.joueurQuiJoue = joueursIt.next();
-    }
-    
-    public void changerSens() {
-    	//this.sens = !this.sens;
-    	ArrayList<Joueur> list = new ArrayList<Joueur>(this.joueurs); //creer une liste à partir d'un set
-    	Collections.reverse(list); //inverser l'ordre des éléments dans la liste
-    	 
-        this.joueurs = new LinkedHashSet<Joueur>(list); //transformer la liste inversée en set
-    	
-    	Iterator<Joueur> iterator = this.joueurs.iterator();
-    	
-    	//Il faut mettre à jour l'itérateur des joueurs pour que le prochain joueur a jouer respecte le nouvel ordre du set
-    	Joueur joueur;
-    	do {
-    		joueur = iterator.next();
-    		if(joueur == this.joueurQuiJoue) {
-    			this.joueursIt = iterator;
-    		}
-    	} while(iterator.hasNext() && joueur != this.joueurQuiJoue);
-    }
+
+    public Affichage getFenetre(){
+    	return this.fenetre;
+	}
+
+	public Carte getDernierCoupJoue(){
+    	return this.dernierCoupJoue;
+	}
+
+
+	public Carte retirerCartePioche(){
+		return this.pioche.retirerCarte();
+	}
+
+	public Joueur getJoueurQuiJoue(){
+		return this.joueurQuiJoue;
+	}
+
+	public Joueur getProchainJoueurQuiVaJouer(){
+		return this.prochainJoueurQuiVaJouer;
+	}
 }

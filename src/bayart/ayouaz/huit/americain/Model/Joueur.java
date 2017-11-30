@@ -27,28 +27,12 @@ public class Joueur {
 
     public Carte jouer(Carte carteDefausse) {
         Carte carte = null;
-        boolean isCoupJoue = false;
-        
-        do {
-        	try {
-        		int index = Partie.CLAVIER.nextInt();
-	            
-	            if(index>=0 && index<=this.main.getNombreDeCartes()) {
-	            	isCoupJoue = true;
-	            	if(index == 0) {
-		            	carte = null;
-		            } else {
-			        	carte = this.main.getCarte(index - 1);
-		            }
-	            } else {
-                                Affichage.erreurInput();
-	            }
-        	} catch(InputMismatchException e) {
-                        Affichage.erreurInput();
-        		Partie.CLAVIER.next();
-        	}
-            
-        } while(!isCoupJoue);
+
+		int choix = Input.demanderEntier(0, this.main.getNombreDeCartes());
+
+		if(choix != 0) {
+			carte = this.main.getCarte(choix - 1);
+		}
         
         return carte;
     }
@@ -72,7 +56,7 @@ public class Joueur {
 	
 	
 	public static boolean isNomValide(String nom) {
-	    return nom.trim().length()>0 && nom.matches("[A-z�-�]+");
+	    return nom.trim().length()>0 && nom.matches("[A-zÀ-ÿ]+");
 	}
 	
     @Override

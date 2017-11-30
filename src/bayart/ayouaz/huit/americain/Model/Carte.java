@@ -15,7 +15,8 @@ public class Carte {
     	this.couleur = couleur;
     	this.motif = motif;
     }
-    public Carte(int motif, int couleur){
+
+    public Carte(int motif, int couleur){ //TODO : On peut garder les enum !! il faut ajouter un nombre dans le constructeur des enums DONC a changer
         if(motif == 1){
             this.motif=Motif.AS;
         }
@@ -55,6 +56,8 @@ public class Carte {
         if(motif == 13){
             this.motif=Motif.ROI;
         }
+
+
         if(couleur == 0){
             this.couleur = Couleur.CARREAU;
         }
@@ -85,17 +88,6 @@ public class Carte {
 		return motif;
 	}
 
-	/**
-	 * SETTERS
-	 */
-	public void setCouleur(Couleur couleur) {
-		this.couleur = couleur;
-	}
-	
-	public void setMotif(Motif motif) {
-		this.motif = motif;
-	}
-	
 	
     @Override
     public String toString() {
