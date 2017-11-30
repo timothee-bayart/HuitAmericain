@@ -15,6 +15,63 @@ public class Carte {
     	this.couleur = couleur;
     	this.motif = motif;
     }
+    public Carte(int motif, int couleur){
+        if(motif == 1){
+            this.motif=Motif.AS;
+        }
+        if(motif == 2){
+            this.motif=Motif.DEUX;
+        }
+        if(motif == 3){
+            this.motif=Motif.TROIS;
+        }
+        if(motif == 4){
+            this.motif=Motif.QUATRE;
+        }
+        if(motif == 5){
+            this.motif=Motif.CINQ;
+        }
+        if(motif == 6){
+            this.motif=Motif.SIX;
+        }
+        if(motif == 7){
+            this.motif=Motif.SEPT;
+        }
+        if(motif == 8){
+            this.motif=Motif.HUIT;
+        }
+        if(motif == 9){
+            this.motif=Motif.NEUF;
+        }
+        if(motif == 10){
+            this.motif=Motif.DIX;
+        }
+        if(motif == 11){
+            this.motif=Motif.VALET;
+        }
+        if(motif == 12){
+            this.motif=Motif.DAME;
+        }
+        if(motif == 13){
+            this.motif=Motif.ROI;
+        }
+        if(couleur == 0){
+            this.couleur = Couleur.CARREAU;
+        }
+        if(couleur == 1){
+            this.couleur = Couleur.COEUR;
+        }
+        if(couleur == 2){
+            this.couleur = Couleur.PIC;
+        }
+        if(couleur == 3){
+            this.couleur = Couleur.TREFLE;
+        }
+        if(couleur==666 || motif==666){
+            this.motif = Motif.JOKER;
+            this.couleur = null;
+        }
+    }
 
     
     /**
@@ -40,12 +97,15 @@ public class Carte {
 	}
 	
 	
-	public String toString() {
-		StringBuffer sb = new StringBuffer();
-		sb.append(this.motif);
-		sb.append(" de ");
-		sb.append(this.couleur);
-		return sb.toString();
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append(this.motif);
+        if(this.couleur != null){
+            sb.append(" de ");
+            sb.append(this.couleur);
+        }
+        return sb.toString();
     } 
 
 }

@@ -117,7 +117,7 @@ public class Partie {
     		}
     	}
     	
-        pioche = regle.initPartie();
+        pioche = regle.initPartie(); //probleme de nombre de paquets reglé
     	//this.pioche = new GroupeDeCarte(1); //attention nombre de paquets
     	this.pioche.melanger();
     	
