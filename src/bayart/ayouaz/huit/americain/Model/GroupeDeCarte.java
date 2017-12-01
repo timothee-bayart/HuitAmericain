@@ -1,5 +1,8 @@
 package bayart.ayouaz.huit.americain.Model;
 
+import bayart.ayouaz.huit.americain.Enum.Couleur;
+import bayart.ayouaz.huit.americain.Enum.Motif;
+
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,6 +26,8 @@ public class GroupeDeCarte {
 //        new Carte(Couleur.CARREAU, Motif.ROI), new Carte(Couleur.COEUR, Motif.ROI), new Carte(Couleur.PIC, Motif.ROI), new Carte(Couleur.TREFLE, Motif.ROI),
 //        new Carte(Couleur.CARREAU, Motif.JOKER), new Carte(Couleur.COEUR, Motif.JOKER)
 //    };
+    public static final int PAQUET_32_CARTES = 32;
+    public static final int PAQUET_52_CARTES = 52;
 
     //list car on veut pouvoir prendre une carte a une certaine posistion, et queue car on veut aussi piocher
     private LinkedList<Carte> cartes = new LinkedList<Carte>();
@@ -33,24 +38,25 @@ public class GroupeDeCarte {
 
 
     public GroupeDeCarte(int nbPaquet, int nbCarteParPaquet, boolean joker){
-        if(nbPaquet>0 && (nbCarteParPaquet==32 || nbCarteParPaquet==52)){
-            for(int i=0; i<nbPaquet;++i){
-                if(nbCarteParPaquet == 32){
-                    for(int j=7;j<14;++j){
-                        for(int k=0;k<4;++k){
-                            cartes.add(new Carte(j,k));
-                        }
-                    }
-                } else {
-                    for(int j=1;j<14;++j){
-                        for(int k=0;k<4;++k){
-                            cartes.add(new Carte(j,k));
+
+        if(nbPaquet>0 && (nbCarteParPaquet==PAQUET_32_CARTES || nbCarteParPaquet==PAQUET_52_CARTES)){
+
+            for(int i=0; i<nbPaquet; ++i){
+
+                for(Couleur couleur : Couleur.values()) {
+                    for(Motif motif : Motif.values()) {
+                        if(motif != Motif.JOKER &&
+                            ((nbCarteParPaquet == PAQUET_32_CARTES && motif.getNumero() >= 7) ||
+                            nbCarteParPaquet == PAQUET_52_CARTES)){
+
+                            cartes.add(new Carte(couleur, motif));
                         }
                     }
                 }
+
                 if(joker){
-                    cartes.add(new Carte(666,666));
-                    cartes.add(new Carte(666,666));
+                    cartes.add(new Carte(null, Motif.JOKER));
+                    cartes.add(new Carte(null, Motif.JOKER));
                 }
             }
         }

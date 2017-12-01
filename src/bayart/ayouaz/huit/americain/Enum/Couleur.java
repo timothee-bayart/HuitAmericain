@@ -1,18 +1,24 @@
 package bayart.ayouaz.huit.americain.Enum;
 
 public enum Couleur {
-	COEUR("Coeur"),
-	CARREAU("Carreau"),
-	PIC("Pic"),
-	TREFLE("Trèfle");
+	COEUR("Coeur", 0),
+	CARREAU("Carreau", 1),
+	PIC("Pic", 2),
+	TREFLE("Trèfle", 3);
 	
 	private final String label;
+	public final int numero;
 
-	Couleur(String s) {
-        label = s;
-    }
+	Couleur(String label, int numero) {
+		this.label = label;
+		this.numero = numero;
+	}
 	
 	public String toString() {
 		return this.label;
-    } 
+    }
+
+	public int getNumero() {
+		return this.numero;
+	}
 }

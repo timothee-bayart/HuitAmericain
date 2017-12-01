@@ -17,8 +17,12 @@ public class Strategie1 implements Strategie {
         	index++;
             
         } while(index<main.getNombreDeCartes() && !regle.isCoupJouable(carte, carteDefausse));
-        
-        return carte;
+
+        if(!regle.isCoupJouable(carte, carteDefausse)){
+			return null;
+		} else {
+			return carte;
+		}
 	}
 
 }

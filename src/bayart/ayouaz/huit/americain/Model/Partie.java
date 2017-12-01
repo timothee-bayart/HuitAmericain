@@ -37,6 +37,7 @@ public class Partie {
     	
     	//demander nom joueur
     	boolean joueurAjoute = false;
+//    	boolean joueurAjoute = true;
     	while(!joueurAjoute) {
 			this.fenetre.demanderNomJoueur();
 
@@ -50,7 +51,7 @@ public class Partie {
     	}
     	
     	//choisir variante !!
-    	this.regle = new Variante1();
+    	this.regle = new Variante1(1);
     	
     	boolean partieParametree = false;
     	
@@ -60,10 +61,10 @@ public class Partie {
     		
     		switch(choix) {
     			case 0:
-    				if(this.joueurs.size() >= Partie.NOMBRE_DE_JOUEURS_MINIMUM) {
+    				if(this.getNbJoueurs() >= Partie.NOMBRE_DE_JOUEURS_MINIMUM) {
     					partieParametree = true;
     				} else {
-						this.fenetre.ajouterJoueurs(Partie.NOMBRE_DE_JOUEURS_MINIMUM - this.joueurs.size());
+						this.fenetre.ajouterJoueurs(Partie.NOMBRE_DE_JOUEURS_MINIMUM - this.getNbJoueurs());
     				}
     				break;
     				
@@ -72,10 +73,10 @@ public class Partie {
     			    Joueur nouveauJoueur;
     			    
     			    do {
-    			    	nouveauJoueur = new Ia("Joueur"+(this.joueurs.size()+numeroJoueur), this.regle);
+    			    	nouveauJoueur = new Ia("Joueur"+(this.getNbJoueurs()+numeroJoueur), this.regle);
     			    	numeroJoueur++;
     			    } while(!this.joueurs.add(nouveauJoueur));
-					this.fenetre.joueurEnPlus(this.joueurs.size());
+					this.fenetre.joueurEnPlus(this.getNbJoueurs());
     				break;
     				
     			case 2:
@@ -104,7 +105,8 @@ public class Partie {
         	this.jouerCoup();
         	
         	try {
-				Thread.sleep(500);
+				Thread.sleep(1500);
+//				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -160,8 +162,9 @@ public class Partie {
 
     public void jouerCoup() {
 		this.fenetre.annonceJoueurQuiJoue(this.joueurQuiJoue.getNom());
-		this.fenetre.afficherDefausse(this.carteDefausse);
+		this.afficherConsigneCoupAJouer();
         Carte carteJouee;
+        // System.out.println(this.joueurQuiJoue.getMain());
     	
     	if(this.joueurQuiJoue instanceof Ia) {
     		carteJouee = this.joueurQuiJoue.jouer(this.carteDefausse);
@@ -190,16 +193,26 @@ public class Partie {
     		this.joueurQuiJoue.piocher(this.pioche.retirerCarte());
 			this.fenetre.afficherPiocher(this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
     	} else {
-			this.fenetre.afficherJouer(carteJouee, this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
         	if(this.carteDefausse!=null) {
         		this.pioche.ajouterCarte(this.carteDefausse);
         	}
         	this.joueurQuiJoue.getMain().retirerCarte(carteJouee);
         	this.carteDefausse = carteJouee;
+			this.fenetre.afficherJouer(carteJouee, this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
     	}
     }
 
-    public void finJeu() {
+	private void afficherConsigneCoupAJouer() {
+		if(this.regle.getNouvelleCouleur() != null){
+			this.fenetre.ilFautJouer(this.regle.getNouvelleCouleur());
+		} else if(this.regle.getCarteCreeeParJoker() != null){
+			this.fenetre.ilFautJouer(this.regle.getCarteCreeeParJoker());
+		} else {
+			this.fenetre.afficherDefausse(this.carteDefausse);
+		}
+	}
+
+	public void finJeu() {
     }
 
 
@@ -222,5 +235,13 @@ public class Partie {
 
 	public Joueur getProchainJoueurQuiVaJouer(){
 		return this.prochainJoueurQuiVaJouer;
+	}
+
+	public LinkedHashSet<Joueur> getJoueurs() {
+		return this.joueurs;
+	}
+
+	public int getNbJoueurs(){
+		return this.joueurs.size();
 	}
 }

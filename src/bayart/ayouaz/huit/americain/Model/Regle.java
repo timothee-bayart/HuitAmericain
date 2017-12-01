@@ -4,9 +4,17 @@ import bayart.ayouaz.huit.americain.Enum.Couleur;
 
 public abstract class Regle {
 
-    protected Couleur nouvelleCouleur;
+    protected int nbPaquet;
+    protected int nbCarteParPaquet;
+    protected boolean avecJoker;
 
-    public abstract GroupeDeCarte genererPioche();
+    protected String nomVariante;
+    protected Couleur nouvelleCouleur;
+    protected Carte carteCreeeParJoker;
+
+    public GroupeDeCarte genererPioche() {
+        return new GroupeDeCarte(this.nbPaquet, this.nbCarteParPaquet, this.avecJoker);
+    }
 
     public abstract boolean isCoupJouable(Carte coupJoue, Carte carteDefausse);
 
@@ -14,4 +22,11 @@ public abstract class Regle {
     
     public abstract void appliquerEffetCarteSpeciale(Partie p);
 
+    public Couleur getNouvelleCouleur(){
+        return this.nouvelleCouleur;
+    }
+
+    public Carte getCarteCreeeParJoker() {
+        return carteCreeeParJoker;
+    }
 }

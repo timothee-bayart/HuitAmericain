@@ -5,6 +5,9 @@ package bayart.ayouaz.huit.americain.Model;
 
 
 import bayart.ayouaz.huit.americain.Enum.Couleur;
+import bayart.ayouaz.huit.americain.Enum.Motif;
+
+import java.util.LinkedHashSet;
 
 public class Affichage {
 
@@ -52,9 +55,9 @@ public class Affichage {
     public void afficherJouer(Carte c, String nomJoueur, int nbCartesRestantes){
         System.out.println("<"+nomJoueur+" a joué : "+c+">");
         if(nbCartesRestantes>1)
-            System.out.println(" Il lui reste "+nbCartesRestantes+" cartes");
+            System.out.println("Il lui reste "+nbCartesRestantes+" cartes");
         else
-            System.out.println(" Il lui reste "+nbCartesRestantes+" carte");
+            System.out.println("Il lui reste "+nbCartesRestantes+" carte");
     }
     
     public void afficherDefausse(Carte defausse){
@@ -108,17 +111,42 @@ public class Affichage {
     public void changerSens(){
         System.out.println("On change de sens");
     }
-    public void rejouer(){
-        System.out.println("Rejouer");
+
+    public void rejouer(Joueur joueur){
+        System.out.println(joueur + " va rejouer");
     }
-    public void changerProchaineCouleur(){
-        System.out.println("Quel couleur voulez vous jouer ensuite?");
-        System.out.println("[0] : " + Couleur.TREFLE);
-        System.out.println("[1] : " + Couleur.PIC);
-        System.out.println("[2] : " + Couleur.COEUR);
-        System.out.println("[3] : " + Couleur.CARREAU);
+
+    public void changerProchaineCouleur(Couleur[] couleurs){
+        System.out.println("Quel couleur voulez vous jouer ensuite ?");
+        for(int i=0; i<couleurs.length; i++){
+            System.out.println("["+i+"] : " + couleurs[i]);
+        }
     }
+
+    public void changerProchainMotif(Motif[] motifs){
+        System.out.println("Quel motif voulez vous jouer ensuite ?");
+        for(int i=0; i<motifs.length; i++){
+            System.out.println("["+i+"] : " + motifs[i]);
+        }
+    }
+
+    public void jokerPrendApparence(Carte carte){
+        System.out.println("Le joker prend l'apparance d'un "+carte);
+    }
+
+
+    public void fairePiocherJoueur(Joueur[] joueurs){
+        System.out.println("Quel joueur souhaitez-vous faire piocher ?");
+        for(int i=0; i<joueurs.length; i++){
+            System.out.println("["+i+"] : " + joueurs[i]);
+        }
+    }
+
+    public void ilFautJouer(Carte carte){
+        System.out.println("-> Il faut jouer un(e) " + carte.getMotif() + " ou un " + carte.getCouleur());
+    }
+
     public void ilFautJouer(Couleur couleur){
-       System.out.println("Il faut jouer un " + couleur);
+        System.out.println("-> Il faut jouer un " + couleur);
     }
 }
