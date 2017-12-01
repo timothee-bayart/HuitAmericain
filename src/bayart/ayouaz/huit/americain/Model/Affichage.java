@@ -6,14 +6,16 @@ package bayart.ayouaz.huit.americain.Model;
 
 import bayart.ayouaz.huit.americain.Enum.Couleur;
 import bayart.ayouaz.huit.americain.Enum.Motif;
+import com.sun.xml.internal.ws.util.StringUtils;
 
 import java.util.LinkedHashSet;
 
 public class Affichage {
 
-    private final String[] MENU_PRINCIPAL = new String[] {
+    public static final String[] MENU_PRINCIPAL = new String[] {
         	"Démarrer la partie",
         	"Ajouter un joueur",
+        	"Choisir la variante",
         	"Quitter"
     };
     private String ligne;
@@ -26,17 +28,35 @@ public class Affichage {
     }
 
 
-    
-    public static void erreurInput(){
-        System.out.println("Mauvaise entrée !");
-    }
-    
     public void afficherMenuPrincipal(){
         System.out.println(ligne);
         for(int i=0; i<MENU_PRINCIPAL.length;++i){
             System.out.println("["+i+"] : "+MENU_PRINCIPAL[i]);
         }
     }
+
+    public void choisirVariante(Regle[] variantes, Regle varianteSelectionnee){
+        System.out.println(ligne);
+        System.out.println("Veuillez choisir la variante :");
+        for(int i=0; i<variantes.length;++i){
+            StringBuffer sb = new StringBuffer();
+            sb.append("[");
+            sb.append(i);
+            sb.append("] : ");
+            sb.append(StringUtils.capitalize(variantes[i].toString()));
+
+            if(variantes[i].equals(varianteSelectionnee)){
+                sb.append(" ✘");
+            }
+
+            System.out.println(sb.toString());
+        }
+    }
+
+    public void afficherVarianteSelectionee(Regle variante){
+        System.out.println("Vous allez jouer avec la " + variante);
+    }
+
     public void queVeuxJouerLeJoueur(){
         System.out.println("Que souhaitez vous jouer?");    
     }

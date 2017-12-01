@@ -11,43 +11,21 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/HuitAmericain$Main.coverage" NAME="Main Coverage Results" MODIFIED="1512120950308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/HuitAmericain$Main.coverage" NAME="Main Coverage Results" MODIFIED="1512144570215" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>bayart.ayouaz.huit.americain.Model.*</FILTER>
     </SUITE>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Variante1.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Variante1.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Variante1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-334">
-              <caret line="48" column="42" lean-forward="false" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
+            <state relative-caret-position="306">
+              <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1519#1520#0" expanded="true" />
-                <element signature="e#1564#1565#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GroupeDeCarte.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/GroupeDeCarte.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
-              <folding>
-                <element signature="e#3785#3786#0" expanded="true" />
-                <element signature="e#3830#3831#0" expanded="true" />
-                <element signature="e#3883#3884#0" expanded="true" />
-                <element signature="e#3926#3927#0" expanded="true" />
-                <element signature="e#4074#4075#0" expanded="true" />
-                <element signature="e#4116#4117#0" expanded="true" />
-                <element signature="e#4202#4203#0" expanded="true" />
-                <element signature="e#4579#4580#0" expanded="true" />
-                <element signature="e#4611#4612#0" expanded="true" />
-                <element signature="e#4639#4640#0" expanded="true" />
-                <element signature="e#4683#4684#0" expanded="true" />
+                <element signature="e#1357#1358#0" expanded="true" />
+                <element signature="e#1402#1403#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -56,47 +34,62 @@
       <file leaf-file-name="Affichage.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Affichage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
+            <state relative-caret-position="275">
+              <caret line="47" column="58" lean-forward="true" selection-start-line="47" selection-start-column="58" selection-end-line="47" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1680#1681#0" expanded="true" />
-                <element signature="e#1738#1739#0" expanded="true" />
-                <element signature="e#2014#2015#0" expanded="true" />
-                <element signature="e#2086#2087#0" expanded="true" />
-                <element signature="e#3476#3477#0" expanded="true" />
-                <element signature="e#3534#3535#0" expanded="true" />
-                <element signature="e#4084#4085#0" expanded="true" />
-                <element signature="e#4160#4161#0" expanded="true" />
-                <element signature="e#4613#4614#0" expanded="true" />
-                <element signature="e#4681#4682#0" expanded="true" />
+                <element signature="e#2403#2404#0" expanded="true" />
+                <element signature="e#2461#2462#0" expanded="true" />
+                <element signature="e#2737#2738#0" expanded="true" />
+                <element signature="e#2809#2810#0" expanded="true" />
+                <element signature="e#4199#4200#0" expanded="true" />
+                <element signature="e#4257#4258#0" expanded="true" />
+                <element signature="e#4807#4808#0" expanded="true" />
+                <element signature="e#4883#4884#0" expanded="true" />
+                <element signature="e#5336#5337#0" expanded="true" />
+                <element signature="e#5404#5405#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Partie.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Regle.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Regle.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="40" lean-forward="false" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+              <folding>
+                <element signature="e#748#749#0" expanded="true" />
+                <element signature="e#791#792#0" expanded="true" />
+                <element signature="e#835#836#0" expanded="true" />
+                <element signature="e#876#877#0" expanded="true" />
+                <element signature="e#907#908#0" expanded="true" />
+                <element signature="e#946#947#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Partie.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Partie.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="127" column="30" lean-forward="true" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
+            <state relative-caret-position="221">
+              <caret line="85" column="71" lean-forward="false" selection-start-line="85" selection-start-column="71" selection-end-line="85" selection-end-column="71" />
               <folding>
-                <element signature="e#853#854#0" expanded="true" />
-                <element signature="e#890#891#0" expanded="true" />
-                <element signature="e#6407#6408#0" expanded="true" />
-                <element signature="e#6436#6437#0" expanded="true" />
-                <element signature="e#6473#6474#0" expanded="true" />
-                <element signature="e#6510#6511#0" expanded="true" />
-                <element signature="e#6548#6549#0" expanded="true" />
-                <element signature="e#6588#6589#0" expanded="true" />
-                <element signature="e#6624#6625#0" expanded="true" />
-                <element signature="e#6656#6657#0" expanded="true" />
-                <element signature="e#6703#6704#0" expanded="true" />
-                <element signature="e#6746#6747#0" expanded="true" />
-                <element signature="e#6792#6793#0" expanded="true" />
-                <element signature="e#6818#6819#0" expanded="true" />
-                <element signature="e#6847#6848#0" expanded="true" />
-                <element signature="e#6880#6881#0" expanded="true" />
+                <element signature="e#6992#6993#0" expanded="true" />
+                <element signature="e#7021#7022#0" expanded="true" />
+                <element signature="e#7058#7059#0" expanded="true" />
+                <element signature="e#7095#7096#0" expanded="true" />
+                <element signature="e#7133#7134#0" expanded="true" />
+                <element signature="e#7173#7174#0" expanded="true" />
+                <element signature="e#7209#7210#0" expanded="true" />
+                <element signature="e#7241#7242#0" expanded="true" />
+                <element signature="e#7288#7289#0" expanded="true" />
+                <element signature="e#7331#7332#0" expanded="true" />
+                <element signature="e#7377#7378#0" expanded="true" />
+                <element signature="e#7403#7404#0" expanded="true" />
+                <element signature="e#7432#7433#0" expanded="true" />
+                <element signature="e#7465#7466#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -123,6 +116,7 @@
       <find>Il lui</find>
       <find>a joué</find>
       <find>100</find>
+      <find>new Vari</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -143,12 +137,12 @@
         <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Enum/Motif.java" />
         <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/GroupeDeCarte.java" />
         <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Enum/Couleur.java" />
-        <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Regle.java" />
         <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Carte.java" />
-        <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Variante1.java" />
         <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Strategie1.java" />
-        <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Affichage.java" />
+        <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Regle.java" />
         <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Partie.java" />
+        <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Affichage.java" />
+        <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Variante1.java" />
       </list>
     </option>
   </component>
@@ -174,6 +168,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -222,10 +220,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -392,26 +386,26 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42640692" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14552239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14712153" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3982684" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -426,12 +420,87 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Variante1.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="48" column="42" lean-forward="false" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1357#1358#0" expanded="true" />
+            <element signature="e#1402#1403#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/GroupeDeCarte.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1394">
+          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding>
+            <element signature="e#3785#3786#0" expanded="true" />
+            <element signature="e#3830#3831#0" expanded="true" />
+            <element signature="e#3883#3884#0" expanded="true" />
+            <element signature="e#3926#3927#0" expanded="true" />
+            <element signature="e#4074#4075#0" expanded="true" />
+            <element signature="e#4116#4117#0" expanded="true" />
+            <element signature="e#4202#4203#0" expanded="true" />
+            <element signature="e#4579#4580#0" expanded="true" />
+            <element signature="e#4611#4612#0" expanded="true" />
+            <element signature="e#4639#4640#0" expanded="true" />
+            <element signature="e#4683#4684#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Affichage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2403#2404#0" expanded="true" />
+            <element signature="e#2461#2462#0" expanded="true" />
+            <element signature="e#2737#2738#0" expanded="true" />
+            <element signature="e#2809#2810#0" expanded="true" />
+            <element signature="e#4199#4200#0" expanded="true" />
+            <element signature="e#4257#4258#0" expanded="true" />
+            <element signature="e#4807#4808#0" expanded="true" />
+            <element signature="e#4883#4884#0" expanded="true" />
+            <element signature="e#5336#5337#0" expanded="true" />
+            <element signature="e#5404#5405#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Partie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2159">
+          <caret line="127" column="30" lean-forward="true" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
+          <folding>
+            <element signature="e#6992#6993#0" expanded="true" />
+            <element signature="e#7021#7022#0" expanded="true" />
+            <element signature="e#7058#7059#0" expanded="true" />
+            <element signature="e#7095#7096#0" expanded="true" />
+            <element signature="e#7133#7134#0" expanded="true" />
+            <element signature="e#7173#7174#0" expanded="true" />
+            <element signature="e#7209#7210#0" expanded="true" />
+            <element signature="e#7241#7242#0" expanded="true" />
+            <element signature="e#7288#7289#0" expanded="true" />
+            <element signature="e#7331#7332#0" expanded="true" />
+            <element signature="e#7377#7378#0" expanded="true" />
+            <element signature="e#7403#7404#0" expanded="true" />
+            <element signature="e#7432#7433#0" expanded="true" />
+            <element signature="e#7465#7466#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Variante1.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="34" column="26" lean-forward="false" selection-start-line="34" selection-start-column="26" selection-end-line="34" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1519#1520#0" expanded="true" />
-            <element signature="e#1564#1565#0" expanded="true" />
+            <element signature="e#1357#1358#0" expanded="true" />
+            <element signature="e#1402#1403#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -440,7 +509,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1207">
           <caret line="71" column="17" lean-forward="false" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
-          <folding />
+          <folding>
+            <element signature="e#3785#3786#0" expanded="true" />
+            <element signature="e#3830#3831#0" expanded="true" />
+            <element signature="e#3883#3884#0" expanded="true" />
+            <element signature="e#3926#3927#0" expanded="true" />
+            <element signature="e#4074#4075#0" expanded="true" />
+            <element signature="e#4116#4117#0" expanded="true" />
+            <element signature="e#4202#4203#0" expanded="true" />
+            <element signature="e#4579#4580#0" expanded="true" />
+            <element signature="e#4611#4612#0" expanded="true" />
+            <element signature="e#4639#4640#0" expanded="true" />
+            <element signature="e#4683#4684#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -469,18 +550,20 @@
         <state relative-caret-position="1632">
           <caret line="101" column="57" lean-forward="false" selection-start-line="101" selection-start-column="57" selection-end-line="101" selection-end-column="57" />
           <folding>
-            <element signature="e#853#854#0" expanded="true" />
-            <element signature="e#890#891#0" expanded="true" />
-            <element signature="e#6407#6408#0" expanded="true" />
-            <element signature="e#6436#6437#0" expanded="true" />
-            <element signature="e#6473#6474#0" expanded="true" />
-            <element signature="e#6510#6511#0" expanded="true" />
-            <element signature="e#6548#6549#0" expanded="true" />
-            <element signature="e#6588#6589#0" expanded="true" />
-            <element signature="e#6624#6625#0" expanded="true" />
-            <element signature="e#6656#6657#0" expanded="true" />
-            <element signature="e#6703#6704#0" expanded="true" />
-            <element signature="e#6746#6747#0" expanded="true" />
+            <element signature="e#6992#6993#0" expanded="true" />
+            <element signature="e#7021#7022#0" expanded="true" />
+            <element signature="e#7058#7059#0" expanded="true" />
+            <element signature="e#7095#7096#0" expanded="true" />
+            <element signature="e#7133#7134#0" expanded="true" />
+            <element signature="e#7173#7174#0" expanded="true" />
+            <element signature="e#7209#7210#0" expanded="true" />
+            <element signature="e#7241#7242#0" expanded="true" />
+            <element signature="e#7288#7289#0" expanded="true" />
+            <element signature="e#7331#7332#0" expanded="true" />
+            <element signature="e#7377#7378#0" expanded="true" />
+            <element signature="e#7403#7404#0" expanded="true" />
+            <element signature="e#7432#7433#0" expanded="true" />
+            <element signature="e#7465#7466#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -490,8 +573,17 @@
         <state relative-caret-position="1173">
           <caret line="69" column="13" lean-forward="false" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
           <folding>
-            <element signature="e#2014#2015#0" expanded="true" />
-            <element signature="e#2086#2087#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2403#2404#0" expanded="true" />
+            <element signature="e#2461#2462#0" expanded="true" />
+            <element signature="e#2737#2738#0" expanded="true" />
+            <element signature="e#2809#2810#0" expanded="true" />
+            <element signature="e#4199#4200#0" expanded="true" />
+            <element signature="e#4257#4258#0" expanded="true" />
+            <element signature="e#4807#4808#0" expanded="true" />
+            <element signature="e#4883#4884#0" expanded="true" />
+            <element signature="e#5336#5337#0" expanded="true" />
+            <element signature="e#5404#5405#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -500,7 +592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1156">
           <caret line="68" column="9" lean-forward="true" selection-start-line="68" selection-start-column="9" selection-end-line="68" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -508,7 +599,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="671" column="13" lean-forward="false" selection-start-line="671" selection-start-column="13" selection-end-line="671" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -557,12 +647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-          <folding>
-            <element signature="e#320#321#0" expanded="true" />
-            <element signature="e#347#348#0" expanded="true" />
-            <element signature="e#374#375#0" expanded="true" />
-            <element signature="e#399#400#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -570,12 +654,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="635">
           <caret line="105" column="34" lean-forward="false" selection-start-line="105" selection-start-column="34" selection-end-line="105" selection-end-column="34" />
-          <folding>
-            <element signature="e#2062#2063#0" expanded="true" />
-            <element signature="e#2100#2101#0" expanded="true" />
-            <element signature="e#2141#2142#0" expanded="true" />
-            <element signature="e#2175#2176#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -591,23 +669,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
           <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-          <folding>
-            <element signature="e#419#420#0" expanded="true" />
-            <element signature="e#495#496#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Regle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="20" column="34" lean-forward="true" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-          <folding>
-            <element signature="e#748#749#0" expanded="true" />
-            <element signature="e#791#792#0" expanded="true" />
-            <element signature="e#835#836#0" expanded="true" />
-            <element signature="e#876#877#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -616,34 +677,6 @@
         <state relative-caret-position="119">
           <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="26" lean-forward="false" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Affichage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="54" column="24" lean-forward="true" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1680#1681#0" expanded="true" />
-            <element signature="e#1738#1739#0" expanded="true" />
-            <element signature="e#2014#2015#0" expanded="true" />
-            <element signature="e#2086#2087#0" expanded="true" />
-            <element signature="e#3476#3477#0" expanded="true" />
-            <element signature="e#3534#3535#0" expanded="true" />
-            <element signature="e#4084#4085#0" expanded="true" />
-            <element signature="e#4160#4161#0" expanded="true" />
-            <element signature="e#4613#4614#0" expanded="true" />
-            <element signature="e#4681#4682#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -667,39 +700,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Variante1.java">
+    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-334">
-          <caret line="48" column="42" lean-forward="false" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1519#1520#0" expanded="true" />
-            <element signature="e#1564#1565#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="170">
+          <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Partie.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="127" column="30" lean-forward="true" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
+        <state relative-caret-position="221">
+          <caret line="85" column="71" lean-forward="false" selection-start-line="85" selection-start-column="71" selection-end-line="85" selection-end-column="71" />
           <folding>
-            <element signature="e#853#854#0" expanded="true" />
-            <element signature="e#890#891#0" expanded="true" />
-            <element signature="e#6407#6408#0" expanded="true" />
-            <element signature="e#6436#6437#0" expanded="true" />
-            <element signature="e#6473#6474#0" expanded="true" />
-            <element signature="e#6510#6511#0" expanded="true" />
-            <element signature="e#6548#6549#0" expanded="true" />
-            <element signature="e#6588#6589#0" expanded="true" />
-            <element signature="e#6624#6625#0" expanded="true" />
-            <element signature="e#6656#6657#0" expanded="true" />
-            <element signature="e#6703#6704#0" expanded="true" />
-            <element signature="e#6746#6747#0" expanded="true" />
-            <element signature="e#6792#6793#0" expanded="true" />
-            <element signature="e#6818#6819#0" expanded="true" />
-            <element signature="e#6847#6848#0" expanded="true" />
-            <element signature="e#6880#6881#0" expanded="true" />
+            <element signature="e#6992#6993#0" expanded="true" />
+            <element signature="e#7021#7022#0" expanded="true" />
+            <element signature="e#7058#7059#0" expanded="true" />
+            <element signature="e#7095#7096#0" expanded="true" />
+            <element signature="e#7133#7134#0" expanded="true" />
+            <element signature="e#7173#7174#0" expanded="true" />
+            <element signature="e#7209#7210#0" expanded="true" />
+            <element signature="e#7241#7242#0" expanded="true" />
+            <element signature="e#7288#7289#0" expanded="true" />
+            <element signature="e#7331#7332#0" expanded="true" />
+            <element signature="e#7377#7378#0" expanded="true" />
+            <element signature="e#7403#7404#0" expanded="true" />
+            <element signature="e#7432#7433#0" expanded="true" />
+            <element signature="e#7465#7466#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Affichage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="47" column="58" lean-forward="true" selection-start-line="47" selection-start-column="58" selection-end-line="47" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2403#2404#0" expanded="true" />
+            <element signature="e#2461#2462#0" expanded="true" />
+            <element signature="e#2737#2738#0" expanded="true" />
+            <element signature="e#2809#2810#0" expanded="true" />
+            <element signature="e#4199#4200#0" expanded="true" />
+            <element signature="e#4257#4258#0" expanded="true" />
+            <element signature="e#4807#4808#0" expanded="true" />
+            <element signature="e#4883#4884#0" expanded="true" />
+            <element signature="e#5336#5337#0" expanded="true" />
+            <element signature="e#5404#5405#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Regle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="40" lean-forward="false" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+          <folding>
+            <element signature="e#748#749#0" expanded="true" />
+            <element signature="e#791#792#0" expanded="true" />
+            <element signature="e#835#836#0" expanded="true" />
+            <element signature="e#876#877#0" expanded="true" />
+            <element signature="e#907#908#0" expanded="true" />
+            <element signature="e#946#947#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/Model/Variante1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1357#1358#0" expanded="true" />
+            <element signature="e#1402#1403#0" expanded="true" />
           </folding>
         </state>
       </provider>

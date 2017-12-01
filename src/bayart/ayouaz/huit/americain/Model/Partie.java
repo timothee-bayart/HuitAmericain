@@ -22,6 +22,7 @@ public class Partie {
     private Joueur joueurQuiJoue;
     private Joueur prochainJoueurQuiVaJouer;
     private Iterator<Joueur> joueursIt;
+    private Regle[] variantes;
     
 //    private Joueur gagnant;
 //    private TreeSet<Joueur> perdants = new TreeSet<Joueur> ();
@@ -29,6 +30,7 @@ public class Partie {
     
     public Partie() {
 		this.fenetre = new Affichage();
+		this.variantes = new Regle[]{new Variante1(1)};
 	}
     
     public void initParamsDuJeu() {
@@ -49,9 +51,8 @@ public class Partie {
                 joueurAjoute = true;
             }
     	}
-    	
-    	//choisir variante !!
-    	this.regle = new Variante1(1);
+    	// variante par default
+    	this.regle = this.variantes[0];
     	
     	boolean partieParametree = false;
     	
@@ -60,7 +61,7 @@ public class Partie {
     		int choix = this.demanderActionMenuPrincipal();
     		
     		switch(choix) {
-    			case 0:
+    			case 0: //démmarer
     				if(this.getNbJoueurs() >= Partie.NOMBRE_DE_JOUEURS_MINIMUM) {
     					partieParametree = true;
     				} else {
@@ -68,7 +69,7 @@ public class Partie {
     				}
     				break;
     				
-    			case 1:
+    			case 1: //ajouter joueur
     				int numeroJoueur = 1;
     			    Joueur nouveauJoueur;
     			    
@@ -79,7 +80,13 @@ public class Partie {
 					this.fenetre.joueurEnPlus(this.getNbJoueurs());
     				break;
     				
-    			case 2:
+    			case 2: // choisir variante
+					this.fenetre.choisirVariante(this.variantes, this.regle);
+					this.regle = this.variantes[Input.demanderEntier(0, this.variantes.length - 1)];
+					this.fenetre.afficherVarianteSelectionee(this.regle);
+    				break;
+
+    			case 3:
     				System.exit(0);
     				break;
     		}
@@ -92,7 +99,7 @@ public class Partie {
 
 	private int demanderActionMenuPrincipal() {
 		this.fenetre.afficherMenuPrincipal();
-		return Input.demanderEntier(0, 2);
+		return Input.demanderEntier(0, Affichage.MENU_PRINCIPAL.length);
 	}
 
     public void demarrerJeu() {
@@ -100,6 +107,10 @@ public class Partie {
     	this.distribuerCartes();
     	
     	do {
+    		/*
+    		 on applique avant le tour suivant car si on le fait a la fin du tour, on risque de changer de joueur qui joue
+    		 et donc de continuer le jeu meme si on a gagné
+    		 */
 			this.regle.appliquerEffetCarteSpeciale(this);
     		this.changerTour();
         	this.jouerCoup();

@@ -10,16 +10,11 @@ public class Variante1 extends Regle {
 
     public Variante1(int nbPaquet){
         super.nouvelleCouleur = null;
-        super.nomVariante = "Version minimale";
+        super.nomVariante = "version minimale";
         super.nbCarteParPaquet = GroupeDeCarte.PAQUET_52_CARTES;
         super.avecJoker = true;
         super.nbPaquet = nbPaquet;
     }
-        
-//	@Override
-//	public GroupeDeCarte genererPioche() {
-//        return new GroupeDeCarte(super.nbPaquet, super.nbCarteParPaquet, super.avecJoker);
-//	}
 
 	@Override
 	public boolean isCoupJouable(Carte coupJoue, Carte carteDefausse) {

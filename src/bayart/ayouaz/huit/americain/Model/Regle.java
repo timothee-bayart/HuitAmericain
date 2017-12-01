@@ -29,4 +29,8 @@ public abstract class Regle {
     public Carte getCarteCreeeParJoker() {
         return carteCreeeParJoker;
     }
+
+    public String toString(){
+        return this.nomVariante;
+    }
 }
