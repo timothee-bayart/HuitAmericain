@@ -10,7 +10,7 @@ public class Variante1 extends Regle {
 
     public Variante1(int nbPaquet){
         super.nouvelleCouleur = null;
-        super.nomVariante = "version minimale";
+        super.nomVariante = "version standard";
         super.nbCarteParPaquet = GroupeDeCarte.PAQUET_52_CARTES;
         super.avecJoker = true;
         super.nbPaquet = nbPaquet;
@@ -158,6 +158,10 @@ public class Variante1 extends Regle {
                     break;
             }
         }
+    }
+    @Override
+    public GroupeDeCarte genererPioche(int nbJoueurs) {
+        return new GroupeDeCarte((nbJoueurs/5 + 1) * this.nbPaquet, this.nbCarteParPaquet, this.avecJoker);
     }
 
 }

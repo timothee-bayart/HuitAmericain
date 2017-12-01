@@ -65,9 +65,14 @@ public class Affichage {
         System.out.println("Coup non jouable. Quel coup souhaitez-vous jouer ?");
     }
     
-    public void afficherOptionsJouables(GroupeDeCarte hand){
-        //proposer piocher
-        System.out.println("[0] : Piocher");
+    public void afficherOptionsJouables(GroupeDeCarte hand, GroupeDeCarte pioche){
+        //proposer sauter son tour
+        if(pioche.estVide()){
+            System.out.println("[0] : Sauter son tour");
+        }
+        else{//proposer piocher
+            System.out.println("[0] : Piocher");
+        }
         //proposer les cartes
         System.out.println(hand);
     }
@@ -86,6 +91,11 @@ public class Affichage {
     
     public void afficherPiocher(String nomJoueur, int nbCartesRestantes){
         System.out.println("<"+nomJoueur+" a pioché>");
+        System.out.println(" Il lui reste "+nbCartesRestantes+" cartes");
+    }
+    
+    public void afficherSauter(String nomJoueur, int nbCartesRestantes){
+        System.out.println("<"+nomJoueur+" a sauté son tour>");
         System.out.println(" Il lui reste "+nbCartesRestantes+" cartes");
     }
     

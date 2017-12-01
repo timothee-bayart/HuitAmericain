@@ -12,7 +12,7 @@ public abstract class Regle {
     protected Couleur nouvelleCouleur;
     protected Carte carteCreeeParJoker;
 
-    public GroupeDeCarte genererPioche() {
+    public GroupeDeCarte genererPioche(int nbJoueurs) {
         return new GroupeDeCarte(this.nbPaquet, this.nbCarteParPaquet, this.avecJoker);
     }
 
@@ -30,6 +30,7 @@ public abstract class Regle {
         return carteCreeeParJoker;
     }
 
+    @Override
     public String toString(){
         return this.nomVariante;
     }
