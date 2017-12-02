@@ -30,7 +30,9 @@ public class Partie {
     
     public Partie() {
 		this.fenetre = new Affichage();
-		this.variantes = new Regle[]{new Variante1(1)};
+		this.variantes = new Regle[]{
+				new Variante1(1), new Variante2(1)
+		};
 	}
     
     public void initParamsDuJeu() {
@@ -92,7 +94,7 @@ public class Partie {
     		}
     	}
 
-		this.pioche = this.regle.genererPioche();
+		this.pioche = this.regle.genererPioche(this.joueurs.size());
     	this.pioche.melanger();
     	this.joueursIt = this.joueurs.iterator();
     }
@@ -185,7 +187,7 @@ public class Partie {
     		
         	boolean isCarteJouee = false;
     		do {
-				this.fenetre.afficherOptionsJouables(this.joueurQuiJoue.getMain());
+				this.fenetre.afficherOptionsJouables(this.joueurQuiJoue.getMain(), this.pioche.estVide());
 	    		
 	    		carteJouee = this.joueurQuiJoue.jouer(this.carteDefausse);
 	    		
@@ -201,8 +203,12 @@ public class Partie {
     	this.dernierCoupJoue = carteJouee;
     	
     	if(carteJouee == null){ //piocher
-    		this.joueurQuiJoue.piocher(this.pioche.retirerCarte());
-			this.fenetre.afficherPiocher(this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
+			if(this.pioche.estVide()){ // on saute le tour
+				this.fenetre.afficherSauter(this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
+			} else {
+				this.joueurQuiJoue.piocher(this.pioche.retirerCarte());
+				this.fenetre.afficherPiocher(this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
+			}
     	} else {
         	if(this.carteDefausse!=null) {
         		this.pioche.ajouterCarte(this.carteDefausse);

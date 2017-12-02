@@ -28,7 +28,7 @@ public class Input {
                 }
 
             } catch(InputMismatchException e) {
-                CLAVIER.nextInt();
+                CLAVIER.next();
             }
         } while(!choixEffectue);
 

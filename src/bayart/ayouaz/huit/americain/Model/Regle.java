@@ -13,7 +13,13 @@ public abstract class Regle {
     protected Carte carteCreeeParJoker;
 
     public GroupeDeCarte genererPioche(int nbJoueurs) {
-        return new GroupeDeCarte(this.nbPaquet, this.nbCarteParPaquet, this.avecJoker);
+        int maxJoueursParPioche;
+        if(this.nbCarteParPaquet == GroupeDeCarte.PAQUET_52_CARTES){
+            maxJoueursParPioche = 5;
+        } else {
+            maxJoueursParPioche = 2;
+        }
+        return new GroupeDeCarte((nbJoueurs / maxJoueursParPioche + 1) * this.nbPaquet, this.nbCarteParPaquet, this.avecJoker);
     }
 
     public abstract boolean isCoupJouable(Carte coupJoue, Carte carteDefausse);

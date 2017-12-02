@@ -12,7 +12,7 @@ public class Variante2 extends Regle {
         super.nouvelleCouleur = null;
         super.nomVariante = "version minimale";
         super.nbCarteParPaquet = GroupeDeCarte.PAQUET_52_CARTES;
-        super.avecJoker = true;
+        super.avecJoker = false;
         super.nbPaquet = nbPaquet;
     }
 
@@ -75,10 +75,4 @@ public class Variante2 extends Regle {
             }
         }
     }
-
-    @Override
-    public GroupeDeCarte genererPioche(int nbJoueurs) {
-        return new GroupeDeCarte((nbJoueurs / 5 + 1) * this.nbPaquet, this.nbCarteParPaquet, this.avecJoker);
-    }
-
 }

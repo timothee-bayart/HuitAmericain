@@ -159,9 +159,4 @@ public class Variante1 extends Regle {
             }
         }
     }
-    @Override
-    public GroupeDeCarte genererPioche(int nbJoueurs) {
-        return new GroupeDeCarte((nbJoueurs/5 + 1) * this.nbPaquet, this.nbCarteParPaquet, this.avecJoker);
-    }
-
 }
