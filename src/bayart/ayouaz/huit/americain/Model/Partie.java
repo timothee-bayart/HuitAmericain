@@ -5,7 +5,11 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 
-
+/**
+ * 
+ * Cette classe fait office de tronc centrale dans le jeu. C'est elle qui appelle toute les bonnes fonctions des bonnes classes, dans le bon ordre.
+ * Dans le design pattern MVC, c'est le controlleur
+ */
 public class Partie {
 
     private final static int NOMBRE_DE_CARTE_A_DISTRIBUER = 7;
@@ -34,7 +38,9 @@ public class Partie {
 				new Variante1(1), new Variante2(1)
 		};
 	}
-    
+    /**
+     * Cette methode va initialiser le jeur. Demander le nom des joueurs, la variante, et va générer la pioche.
+     */
     public void initParamsDuJeu() {
 
 		this.fenetre.intro();
@@ -98,12 +104,17 @@ public class Partie {
     	this.pioche.melanger();
     	this.joueursIt = this.joueurs.iterator();
     }
-
-	private int demanderActionMenuPrincipal() {
-		this.fenetre.afficherMenuPrincipal();
-		return Input.demanderEntier(0, Affichage.MENU_PRINCIPAL.length);
-	}
-
+    /**
+     * Affiche le menu et demande à l'utilisateur de choisir
+     * @return le choix du joueur.
+     */
+    private int demanderActionMenuPrincipal() {
+            this.fenetre.afficherMenuPrincipal();
+            return Input.demanderEntier(0, Affichage.MENU_PRINCIPAL.length);
+    }
+    /**
+     * Cette methode va demarrer le jeu.
+     */
     public void demarrerJeu() {
     	this.fenetre.debutPartie();
     	this.distribuerCartes();
@@ -127,7 +138,7 @@ public class Partie {
 
     	fenetre.victoire(this.joueurQuiJoue.getNom());
     }
-
+    
     public void distribuerCartes() {
 		for(int i=0; i<NOMBRE_DE_CARTE_A_DISTRIBUER; i++) {
 	    	this.joueursIt = this.joueurs.iterator();
@@ -137,7 +148,9 @@ public class Partie {
 		}
 		this.carteDefausse = this.pioche.retirerCarte();
     }
-
+        /**
+         * permet de passer au joueur suivant
+         */
 	public void changerTour(){
     	if(this.prochainJoueurQuiVaJouer != null){
 			this.joueurQuiJoue = this.prochainJoueurQuiVaJouer;
@@ -146,14 +159,19 @@ public class Partie {
 		}
 		this.prochainJoueurQuiVaJouer = this.getProchainJoueur();
 	}
-
+        /**
+         * 
+         * @return le prochain joueur
+         */
 	private Joueur getProchainJoueur(){
 		if(!this.joueursIt.hasNext()) {
 			this.joueursIt = this.joueurs.iterator();
 		}
 		return joueursIt.next();
 	}
-
+        /**
+         * permet de changer le sens du jeu
+         */
 	public void changerSens() {
 		ArrayList<Joueur> list = new ArrayList<Joueur>(this.joueurs); //creer une liste à partir d'un set
 		Collections.reverse(list); //inverser l'ordre des éléments dans la liste
@@ -172,7 +190,9 @@ public class Partie {
 			}
 		} while(iterator.hasNext() && joueur != this.joueurQuiJoue);
 	}
-
+        /**
+         * demande au joueur de jouer un coup
+         */
     public void jouerCoup() {
 		this.fenetre.annonceJoueurQuiJoue(this.joueurQuiJoue.getNom());
 		this.afficherConsigneCoupAJouer();
@@ -218,7 +238,9 @@ public class Partie {
 			this.fenetre.afficherJouer(carteJouee, this.joueurQuiJoue.getNom(), this.joueurQuiJoue.getMain().getNombreDeCartes());
     	}
     }
-
+/**
+ * Dit au joueur ce qui va se passer à cause des cartes speciales
+ */
 	private void afficherConsigneCoupAJouer() {
 		if(this.regle.getNouvelleCouleur() != null){
 			this.fenetre.ilFautJouer(this.regle.getNouvelleCouleur());

@@ -9,7 +9,10 @@ import bayart.ayouaz.huit.americain.Enum.Motif;
 import com.sun.xml.internal.ws.util.StringUtils;
 
 import java.util.LinkedHashSet;
-
+/**
+ * Cette classe permet de faire toute les interactions avec le terminal de type affichage.
+ * Dans le modele MVC, c'est la Vue.
+ */
 public class Affichage {
 
     public static final String[] MENU_PRINCIPAL = new String[] {

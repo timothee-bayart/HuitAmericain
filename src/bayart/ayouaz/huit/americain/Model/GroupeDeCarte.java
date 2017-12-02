@@ -6,7 +6,10 @@ import bayart.ayouaz.huit.americain.Enum.Motif;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
-
+/**
+ * 
+ * Cette classe est une collection de Cartes personnalisée.
+ */
 public class GroupeDeCarte {
 	
     

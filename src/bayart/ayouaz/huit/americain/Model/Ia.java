@@ -1,7 +1,10 @@
 package bayart.ayouaz.huit.americain.Model;
 
 import bayart.ayouaz.huit.americain.Interface.Strategie;
-
+/**
+ * 
+ * Ici on gere les joueur non humain.
+ */
 public class Ia extends Joueur{
 
 	private Strategie strategie;

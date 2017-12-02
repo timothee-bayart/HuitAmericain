@@ -5,7 +5,10 @@ import bayart.ayouaz.huit.americain.Enum.Motif;
 
 import static bayart.ayouaz.huit.americain.Enum.Motif.*;
 import static bayart.ayouaz.huit.americain.Enum.Motif.HUIT;
-
+/**
+ * 
+ * Cette classe permet de propser la variante minimale du jeu. Avec les specificités de chaque cartes.
+ */
 public class Variante2 extends Regle {
 
     public Variante2(int nbPaquet) {

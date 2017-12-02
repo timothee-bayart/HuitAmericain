@@ -5,7 +5,11 @@ import java.util.Map;
 
 import bayart.ayouaz.huit.americain.Enum.Couleur;
 import bayart.ayouaz.huit.americain.Enum.Motif;
-
+/**
+ * 
+ * Cette classe permet de modéliser une seule carte.
+ * On spécifie la couleur et le motif (son nombre)
+ */
 public class Carte {
 	
     private Couleur couleur;

@@ -2,7 +2,10 @@ package bayart.ayouaz.huit.americain.Model;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
+/**
+ * 
+ * Les joueurs sont ceux qui vont pouvoir interagir avec le jeu.
+ */
 public class Joueur {
 
     protected int score;

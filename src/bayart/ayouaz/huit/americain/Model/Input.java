@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author ed
+ * Cette classe permet une utilisation plus simple et plus haut niveau des scanners.
  */
 public class Input {
     public static Scanner CLAVIER = new Scanner(System.in);

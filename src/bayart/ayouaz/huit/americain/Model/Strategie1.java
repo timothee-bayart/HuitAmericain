@@ -3,7 +3,10 @@ package bayart.ayouaz.huit.americain.Model;
 import java.util.ArrayList;
 
 import bayart.ayouaz.huit.americain.Interface.Strategie;
-
+/**
+ * 
+ * Cette classe permet aux IA d'avoir une stategie coherente à jouer.
+ */
 public class Strategie1 implements Strategie {
 
 	@Override
