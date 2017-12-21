@@ -146,6 +146,7 @@ public class Affichage {
     }
 
     public void rejouer(Joueur joueur){
+        //bug le joueur va rejouer mauvais
         System.out.println(joueur + " va rejouer");
     }
 

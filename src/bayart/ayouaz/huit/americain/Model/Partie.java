@@ -1,5 +1,7 @@
 package bayart.ayouaz.huit.americain.Model;
 
+import bayart.ayouaz.huit.americain.Enum.Motif;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -146,7 +148,14 @@ public class Partie {
 		    	joueursIt.next().getMain().ajouterCarte(this.pioche.retirerCarte());
 		    }
 		}
-		this.carteDefausse = this.pioche.retirerCarte();
+
+		do{
+			this.carteDefausse = this.pioche.retirerCarte();
+			if(this.carteDefausse.getMotif() == Motif.JOKER){
+				this.pioche.ajouterCarte(this.carteDefausse);
+				this.carteDefausse = null;
+			}
+		} while(this.carteDefausse.getMotif() == null);
     }
         /**
          * permet de passer au joueur suivant
@@ -189,6 +198,10 @@ public class Partie {
 				this.prochainJoueurQuiVaJouer = null; // le prochain joueur n'est plus bon !
 			}
 		} while(iterator.hasNext() && joueur != this.joueurQuiJoue);
+
+		System.out.println(this.joueurs);
+		System.out.println(this.joueurQuiJoue);
+		System.out.println(this.getProchainJoueurQuiVaJouer());
 	}
         /**
          * demande au joueur de jouer un coup

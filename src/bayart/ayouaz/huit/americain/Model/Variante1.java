@@ -29,11 +29,14 @@ public class Variante1 extends Regle {
             return true;
 
         } else if(
-                coupJoue.getMotif() == carteDefausse.getMotif() || coupJoue.getCouleur() == carteDefausse.getCouleur() ||
-                (super.nouvelleCouleur != null && coupJoue.getCouleur() == super.nouvelleCouleur)){
+                (coupJoue.getMotif() == carteDefausse.getMotif() || coupJoue.getCouleur() == carteDefausse.getCouleur()) ||
+                (super.nouvelleCouleur != null && coupJoue.getCouleur() == super.nouvelleCouleur) ||
+                (super.carteCreeeParJoker != null && (coupJoue.getMotif() == super.carteCreeeParJoker.getMotif() || coupJoue.getCouleur() == super.carteCreeeParJoker.getCouleur()))){
 
             if(super.nouvelleCouleur != null){
                 return (coupJoue.getCouleur() == super.nouvelleCouleur);
+            } else if(super.carteCreeeParJoker != null){
+                return (coupJoue.getMotif() == super.carteCreeeParJoker.getMotif() || coupJoue.getCouleur() == super.carteCreeeParJoker.getCouleur());
             } else {
                 return true;
             }
@@ -133,7 +136,10 @@ public class Variante1 extends Regle {
 
 
                     // on demande le motif que le joueur veut
+                    int nbCartesNormales = super.nbCarteParPaquet;
+                    if(super.avecJoker) nbCartesNormales = nbCartesNormales - 2;
                     int nbMotifs = (super.nbCarteParPaquet/4);
+
                     Motif[] motifsPossibles = new Motif[nbMotifs];
 
                     int indexMotifJoker = 0;
