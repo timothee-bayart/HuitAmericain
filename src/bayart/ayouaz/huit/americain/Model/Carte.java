@@ -1,10 +1,7 @@
-package bayart.ayouaz.huit.americain.Model;
+package bayart.ayouaz.huit.americain.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import bayart.ayouaz.huit.americain.Enum.Couleur;
-import bayart.ayouaz.huit.americain.Enum.Motif;
+import bayart.ayouaz.huit.americain.model.enums.Couleur;
+import bayart.ayouaz.huit.americain.model.enums.Motif;
 /**
  * 
  * Cette classe permet de modéliser une seule carte.

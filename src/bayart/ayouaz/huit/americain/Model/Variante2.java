@@ -1,10 +1,10 @@
-package bayart.ayouaz.huit.americain.Model;
+package bayart.ayouaz.huit.americain.model;
 
-import bayart.ayouaz.huit.americain.Enum.Couleur;
-import bayart.ayouaz.huit.americain.Enum.Motif;
+import bayart.ayouaz.huit.americain.controller.Partie;
+import bayart.ayouaz.huit.americain.model.enums.Couleur;
 
-import static bayart.ayouaz.huit.americain.Enum.Motif.*;
-import static bayart.ayouaz.huit.americain.Enum.Motif.HUIT;
+import static bayart.ayouaz.huit.americain.model.enums.Motif.*;
+import static bayart.ayouaz.huit.americain.model.enums.Motif.HUIT;
 /**
  * 
  * Cette classe permet de propser la variante minimale du jeu. Avec les specificités de chaque cartes.

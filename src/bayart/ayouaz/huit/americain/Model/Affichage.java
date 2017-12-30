@@ -1,14 +1,10 @@
 
-package bayart.ayouaz.huit.americain.Model;
+package bayart.ayouaz.huit.americain.model;
 
-//import sun.awt.X11.XConstants;
-
-
-import bayart.ayouaz.huit.americain.Enum.Couleur;
-import bayart.ayouaz.huit.americain.Enum.Motif;
+import bayart.ayouaz.huit.americain.model.enums.Couleur;
+import bayart.ayouaz.huit.americain.model.enums.Motif;
 import com.sun.xml.internal.ws.util.StringUtils;
 
-import java.util.LinkedHashSet;
 /**
  * Cette classe permet de faire toute les interactions avec le terminal de type affichage.
  * Dans le modele MVC, c'est la Vue.

@@ -1,8 +1,6 @@
-package bayart.ayouaz.huit.americain.Model;
+package bayart.ayouaz.huit.americain.model;
 
-import java.util.ArrayList;
-
-import bayart.ayouaz.huit.americain.Interface.Strategie;
+import bayart.ayouaz.huit.americain.model.interfaces.Strategie;
 /**
  * 
  * Cette classe permet aux IA d'avoir une stategie coherente à jouer.

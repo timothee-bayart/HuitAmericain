@@ -1,6 +1,7 @@
-package bayart.ayouaz.huit.americain.Model;
+package bayart.ayouaz.huit.americain.model;
 
-import bayart.ayouaz.huit.americain.Enum.Couleur;
+import bayart.ayouaz.huit.americain.controller.Partie;
+import bayart.ayouaz.huit.americain.model.enums.Couleur;
 /**
  * 
  * Cette classe permet de definir à l'avance comment il faudra jouer.

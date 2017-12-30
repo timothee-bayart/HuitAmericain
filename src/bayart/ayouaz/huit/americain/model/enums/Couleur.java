@@ -1,4 +1,4 @@
-package bayart.ayouaz.huit.americain.Enum;
+package bayart.ayouaz.huit.americain.model.enums;
 
 public enum Couleur {
 	COEUR("Coeur", 0),

@@ -1,7 +1,5 @@
-package bayart.ayouaz.huit.americain.Model;
+package bayart.ayouaz.huit.americain.model;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
 /**
  * 
  * Les joueurs sont ceux qui vont pouvoir interagir avec le jeu.

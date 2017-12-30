@@ -1,6 +1,6 @@
-package bayart.ayouaz.huit.americain.Model;
+package bayart.ayouaz.huit.americain.model;
 
-import bayart.ayouaz.huit.americain.Interface.Strategie;
+import bayart.ayouaz.huit.americain.model.interfaces.Strategie;
 /**
  * 
  * Ici on gere les joueur non humain.

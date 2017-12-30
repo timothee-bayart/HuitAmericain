@@ -1,7 +1,7 @@
-package bayart.ayouaz.huit.americain.Model;
+package bayart.ayouaz.huit.americain.model;
 
-import bayart.ayouaz.huit.americain.Enum.Couleur;
-import bayart.ayouaz.huit.americain.Enum.Motif;
+import bayart.ayouaz.huit.americain.model.enums.Couleur;
+import bayart.ayouaz.huit.americain.model.enums.Motif;
 
 import java.util.Collections;
 import java.util.Iterator;
