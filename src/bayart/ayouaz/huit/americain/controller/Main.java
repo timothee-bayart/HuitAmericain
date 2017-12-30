@@ -5,6 +5,8 @@
  */
 package bayart.ayouaz.huit.americain.controller;
 
+import bayart.ayouaz.huit.americain.view.ViewGraphic;
+
 /**
  *
  * @author ed
@@ -12,6 +14,8 @@ package bayart.ayouaz.huit.americain.controller;
 public class Main {
     
     public static void main(String[] args) {
+        
+                ViewGraphic vg = new ViewGraphic();
 		Partie partie = new Partie();
 		partie.initParamsDuJeu();
 		partie.demarrerJeu();
