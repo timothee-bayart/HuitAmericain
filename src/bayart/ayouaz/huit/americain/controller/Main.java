@@ -12,13 +12,10 @@ import bayart.ayouaz.huit.americain.view.ViewGraphic;
  * @author ed
  */
 public class Main {
-    
+
     public static void main(String[] args) {
-        
-                ViewGraphic vg = new ViewGraphic();
-		Partie partie = new Partie();
-		partie.initParamsDuJeu();
-		partie.demarrerJeu();
-	}
-    
+        PartieGraphique p = new PartieGraphique();
+        ViewGraphic vg = new ViewGraphic(p);
+    }
+
 }
