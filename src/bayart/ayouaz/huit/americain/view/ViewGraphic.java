@@ -24,7 +24,7 @@ public class ViewGraphic extends JFrame implements Observer {
     private PartieGraphique controleur;
     @Override 
     public void update(Observable o, Object arg) {
-
+        
     }
     
     public ViewGraphic(PartieGraphique p){

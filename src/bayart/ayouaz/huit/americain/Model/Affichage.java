@@ -1,5 +1,4 @@
-
-package bayart.ayouaz.huit.americain.model;
+package bayart.ayouaz.huit.americain.Model;
 
 import bayart.ayouaz.huit.americain.model.enums.Couleur;
 import bayart.ayouaz.huit.americain.model.enums.Motif;

@@ -1,7 +1,7 @@
 package bayart.ayouaz.huit.americain.controller;
 
-import bayart.ayouaz.huit.americain.model.*;
-import bayart.ayouaz.huit.americain.model.enums.Motif;
+import bayart.ayouaz.huit.americain.model.enums.*;
+import bayart.ayouaz.huit.americain.Model.*;
 
 import java.util.ArrayList;
 import java.util.Collections;

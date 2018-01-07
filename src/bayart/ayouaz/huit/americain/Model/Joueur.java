@@ -1,4 +1,4 @@
-package bayart.ayouaz.huit.americain.model;
+package bayart.ayouaz.huit.americain.Model;
 
 /**
  * 

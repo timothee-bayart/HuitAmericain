@@ -1,8 +1,8 @@
 package bayart.ayouaz.huit.americain.model.interfaces;
 
-import bayart.ayouaz.huit.americain.model.Carte;
-import bayart.ayouaz.huit.americain.model.GroupeDeCarte;
-import bayart.ayouaz.huit.americain.model.Regle;
+import bayart.ayouaz.huit.americain.Model.Carte;
+import bayart.ayouaz.huit.americain.Model.GroupeDeCarte;
+import bayart.ayouaz.huit.americain.Model.Regle;
 
 public interface Strategie {
 
