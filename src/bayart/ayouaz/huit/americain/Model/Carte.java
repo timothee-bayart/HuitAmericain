@@ -3,12 +3,13 @@ package bayart.ayouaz.huit.americain.Model;
 
 import bayart.ayouaz.huit.americain.model.enums.Couleur;
 import bayart.ayouaz.huit.americain.model.enums.Motif;
+import bayart.ayouaz.huit.americain.model.interfaces.Observable;
 /**
  * 
  * Cette classe permet de modéliser une seule carte.
  * On spécifie la couleur et le motif (son nombre)
  */
-public class Carte {
+public class Carte extends Observable{
 	
     private Couleur couleur;
     private Motif motif;
@@ -27,7 +28,13 @@ public class Carte {
     public void setMotif(Motif motif) {
         this.motif = motif;
     }
-
+    
+    public void setDefausse(Carte c){
+        this.couleur = c.couleur;
+        this.motif = c.motif;
+        notifyObserver("setDefausse");
+    }
+    
     /**
      * GETTERS
      */

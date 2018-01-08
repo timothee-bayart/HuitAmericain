@@ -2,6 +2,7 @@ package bayart.ayouaz.huit.americain.Model;
 
 import bayart.ayouaz.huit.americain.model.enums.Couleur;
 import bayart.ayouaz.huit.americain.model.enums.Motif;
+import bayart.ayouaz.huit.americain.model.interfaces.Observable;
 
 import java.util.Collections;
 import java.util.Iterator;
@@ -10,7 +11,7 @@ import java.util.LinkedList;
  * 
  * Cette classe est une collection de Cartes personnalisée.
  */
-public class GroupeDeCarte {
+public class GroupeDeCarte extends Observable{
 	
     
 //    public static final Carte[] paquet54Cartes = new Carte[] {
@@ -71,6 +72,7 @@ public class GroupeDeCarte {
 
     public void ajouterCarte(Carte carteAAjouter) {
     	this.cartes.add(carteAAjouter);
+        
     }
 
     public Carte retirerCarte(Carte aRetirer) {

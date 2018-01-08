@@ -1,6 +1,6 @@
 package bayart.ayouaz.huit.americain.controller;
 
-import bayart.ayouaz.huit.americain.model.*;
+import bayart.ayouaz.huit.americain.model.enums.*;
 import bayart.ayouaz.huit.americain.Model.*;
 import bayart.ayouaz.huit.americain.view.ViewGraphic;
 
@@ -40,6 +40,11 @@ public class PartieGraphique {
     }
 
     public PartieGraphique() {
+        regle = null;
+        this.variantes = new Regle[]{
+            new Variante1(1), 
+            new Variante2(1)
+        };
     }
 
     /**
@@ -48,15 +53,54 @@ public class PartieGraphique {
      */
     public void ajouterJoueur(String nom) {
         if (Joueur.isNomValide(nom)) {
-            this.joueurs.add(new Joueur(nom));
-            fen.afficherMenuDepart();
+            Joueur j=new Joueur(nom);
+            this.joueurs.add(j);
+            j.addObserver(fen);          //ajouter l'observateur sur joueur
+            j.notifyObserver();
         }
     }
+    
+    public void choisirRegle(){
+        fen.variante(variantes);
+    }
+    
     public void changerFenetre(int i){
         switch(i){
             case 0:
                 fen.afficherAjoutJoueur();
                 break;
+        }
+    }
+    
+    public void choisirVariante(Regle r){
+        this.regle = r;
+        fen.afficherMenuDepart();
+    }
+    
+    public void distribuerCartes() {
+        for (int i = 0; i < NOMBRE_DE_CARTE_A_DISTRIBUER; i++) {
+            this.joueursIt = this.joueurs.iterator();
+            while (joueursIt.hasNext()) {
+                joueursIt.next().getMain().ajouterCarte(this.pioche.retirerCarte());
+            }
+        }
+        this.carteDefausse = new Carte();
+        this.carteDefausse.addObserver(fen);
+        do {
+            this.carteDefausse.setDefausse(this.pioche.retirerCarte());
+            if (this.carteDefausse.getMotif() == Motif.JOKER) {
+                this.pioche.ajouterCarte(this.carteDefausse);
+                this.carteDefausse = null;
+            }
+        } while (this.carteDefausse.getMotif() == null);
+    }
+    
+    public void demarrer(){
+        if(regle!=null && joueurs.size()>=PartieGraphique.NOMBRE_DE_JOUEURS_MINIMUM){
+            this.pioche = this.regle.genererPioche(this.joueurs.size());
+            this.pioche.melanger();
+            this.joueursIt = this.joueurs.iterator();
+            this.distribuerCartes();
         }
     }
 //
