@@ -80,6 +80,10 @@ public class GroupeDeCarte extends Observable{
     	return aRetirer;
     }
     
+    public Carte retirerCarte(int index){
+        return this.cartes.remove(index);
+    }
+    
     public Carte retirerCarte() {
          return this.cartes.poll();
     }

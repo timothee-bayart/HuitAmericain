@@ -1,6 +1,6 @@
 package bayart.ayouaz.huit.americain.Model;
 
-import bayart.ayouaz.huit.americain.controller.Partie;
+import bayart.ayouaz.huit.americain.controller.PartieGraphique;
 import bayart.ayouaz.huit.americain.model.enums.Couleur;
 import bayart.ayouaz.huit.americain.model.enums.Motif;
 
@@ -52,7 +52,7 @@ public class Variante1 extends Regle {
 	}
 
     @Override
-    public void appliquerEffetCarteSpeciale(Partie partie) {
+    public void appliquerEffetCarteSpeciale(PartieGraphique partie) {
 
         if(partie.getDernierCoupJoue() != null){ //c'est la partie qui garde le dernier coup joué, car on pourrait appeler isCoupJouable sans joue le coup après
 

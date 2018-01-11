@@ -2,7 +2,10 @@ package bayart.ayouaz.huit.americain.controller;
 
 import bayart.ayouaz.huit.americain.model.enums.*;
 import bayart.ayouaz.huit.americain.Model.*;
+import bayart.ayouaz.huit.americain.model.interfaces.Observer;
+import bayart.ayouaz.huit.americain.view.IHM;
 import bayart.ayouaz.huit.americain.view.ViewGraphic;
+import bayart.ayouaz.huit.americain.view.ViewTerminal;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,9 +32,10 @@ public class PartieGraphique {
     private LinkedHashSet<Joueur> joueurs = new LinkedHashSet<Joueur>();
     private Joueur joueurQuiJoue;
     private Joueur prochainJoueurQuiVaJouer;
+    private Joueur joueurReel;
     private Iterator<Joueur> joueursIt;
     private Regle[] variantes;
-    private ViewGraphic fen;
+    private IHM fen;
 //    private Joueur gagnant;
 //    private TreeSet<Joueur> perdants = new TreeSet<Joueur> ();
 
@@ -40,9 +44,9 @@ public class PartieGraphique {
     }
 
     public PartieGraphique() {
-        regle = null;
+        regle = new Variante2(1);
         this.variantes = new Regle[]{
-            new Variante1(1), 
+            new Variante1(1),
             new Variante2(1)
         };
     }
@@ -53,30 +57,60 @@ public class PartieGraphique {
      */
     public void ajouterJoueur(String nom) {
         if (Joueur.isNomValide(nom)) {
-            Joueur j=new Joueur(nom);
+            Joueur j = new Joueur(nom);
+            if (this.joueurs.isEmpty()) {
+                joueurReel = j;
+            }
             this.joueurs.add(j);
-            j.addObserver(fen);          //ajouter l'observateur sur joueur
+            if(fen instanceof Observer)
+                j.addObserver((Observer)fen);          //ajouter l'observateur sur joueur
             j.notifyObserver();
         }
     }
     
-    public void choisirRegle(){
-        fen.variante(variantes);
+    public void ajouterIA(String nom){
+        Ia nouveauJoueur = new Ia("Joueur" + (this.getNbJoueurs() + joueurs.size()), this.regle);
+        this.joueurs.add(nouveauJoueur);
+        if(fen instanceof Observer)
+            nouveauJoueur.addObserver((Observer)fen);          //ajouter l'observateur sur joueur
+            nouveauJoueur.notifyObserver();
     }
-    
-    public void changerFenetre(int i){
-        switch(i){
-            case 0:
-                fen.afficherAjoutJoueur();
-                break;
+
+    public void jouerCarte(int i) {
+        System.out.println(i);
+        System.out.println(joueurQuiJoue);
+        if (joueurQuiJoue != joueurReel) {
+            return;
+        }
+        if(i==-1){
+            joueurReel.piocher(pioche.retirerCarte());
+            changerTour();
+            return;
+        }
+        if (regle.isCoupJouable(joueurReel.getMain().getCarte(i), carteDefausse)) {
+            if (regle.isJoueurAGagne(joueurQuiJoue.getMain())) {
+                System.out.println("Victoire");
+                //todo implementer la fermeture de la partie
+            } else {
+                carteDefausse.setDefausse(joueurReel.getMain().retirerCarte(i));
+                changerTour();
+            }
         }
     }
-    
-    public void choisirVariante(Regle r){
+
+    public void choisirRegle() {
+        fen.variante(variantes);
+    }
+
+    public void changerFenetre() {
+        fen.afficherAjoutJoueur();
+    }
+
+    public void choisirVariante(Regle r) {
         this.regle = r;
         fen.afficherMenuDepart();
     }
-    
+
     public void distribuerCartes() {
         for (int i = 0; i < NOMBRE_DE_CARTE_A_DISTRIBUER; i++) {
             this.joueursIt = this.joueurs.iterator();
@@ -85,7 +119,8 @@ public class PartieGraphique {
             }
         }
         this.carteDefausse = new Carte();
-        this.carteDefausse.addObserver(fen);
+        if(fen instanceof Observer)
+            this.carteDefausse.addObserver((Observer)fen);
         do {
             this.carteDefausse.setDefausse(this.pioche.retirerCarte());
             if (this.carteDefausse.getMotif() == Motif.JOKER) {
@@ -94,14 +129,81 @@ public class PartieGraphique {
             }
         } while (this.carteDefausse.getMotif() == null);
     }
-    
-    public void demarrer(){
-        if(regle!=null && joueurs.size()>=PartieGraphique.NOMBRE_DE_JOUEURS_MINIMUM){
+
+    public void demarrer() {
+        if (regle != null && joueurs.size() >= PartieGraphique.NOMBRE_DE_JOUEURS_MINIMUM) {
             this.pioche = this.regle.genererPioche(this.joueurs.size());
             this.pioche.melanger();
             this.joueursIt = this.joueurs.iterator();
             this.distribuerCartes();
+            ThreadIA tia = new ThreadIA(this);
+            tia.start();
+            changerTour();
         }
+    }
+
+    private Joueur getProchainJoueur() {
+        if (!this.joueursIt.hasNext()) {
+            this.joueursIt = this.joueurs.iterator();
+        }
+        return joueursIt.next();
+    }
+
+    public void changerTour() {
+        if (this.prochainJoueurQuiVaJouer != null) {
+            this.joueurQuiJoue = this.prochainJoueurQuiVaJouer;
+        } else {
+            this.joueurQuiJoue = this.getProchainJoueur();
+        }
+        this.prochainJoueurQuiVaJouer = this.getProchainJoueur();
+    }
+
+    public Carte getDernierCoupJoue() {
+        return this.dernierCoupJoue;
+    }
+    
+    public IHM getFenetre(){
+        return fen;
+    }
+    
+    public Joueur getJoueurQuiJoue() {
+        return this.joueurQuiJoue;
+    }
+    
+
+    public LinkedHashSet<Joueur> getJoueurs() {
+        return this.joueurs;
+    }
+
+    public int getNbJoueurs() {
+        return this.joueurs.size();
+    }
+
+    public Carte retirerCartePioche() {
+        return this.pioche.retirerCarte();
+    }
+    
+    public Joueur getProchainJoueurQuiVaJouer() {
+        return this.prochainJoueurQuiVaJouer;
+    }
+    
+    public void changerSens() {
+        ArrayList<Joueur> list = new ArrayList<Joueur>(this.joueurs); //creer une liste à partir d'un set
+        Collections.reverse(list); //inverser l'ordre des éléments dans la liste
+
+        this.joueurs = new LinkedHashSet<Joueur>(list); //transformer la liste inversée en set
+
+        Iterator<Joueur> iterator = this.joueurs.iterator();
+
+        //Il faut mettre à jour l'itérateur des joueurs pour que le prochain joueur a jouer respecte le nouvel ordre du set
+        Joueur joueur;
+        do {
+            joueur = iterator.next();
+            if (joueur == this.joueurQuiJoue) {
+                this.joueursIt = iterator;
+                this.prochainJoueurQuiVaJouer = null; // le prochain joueur n'est plus bon !
+            }
+        } while (iterator.hasNext() && joueur != this.joueurQuiJoue);
     }
 //
 //    public void initParamsDuJeu() {
@@ -329,26 +431,12 @@ public class PartieGraphique {
 //    public void finJeu() {
 //    }
 //
-//    public Affichage getFenetre() {
-//        return this.fenetre;
-//    }
 //
-//    public Carte getDernierCoupJoue() {
-//        return this.dernierCoupJoue;
-//    }
+
 //
-//    public Carte retirerCartePioche() {
-//        return this.pioche.retirerCarte();
-//    }
-//
-//    public Joueur getJoueurQuiJoue() {
-//        return this.joueurQuiJoue;
-//    }
-//
-//    public Joueur getProchainJoueurQuiVaJouer() {
-//        return this.prochainJoueurQuiVaJouer;
-//    }
-//
+
+
+
 //    public LinkedHashSet<Joueur> getJoueurs() {
 //        return this.joueurs;
 //    }

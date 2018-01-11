@@ -1,6 +1,6 @@
 package bayart.ayouaz.huit.americain.Model;
 
-import bayart.ayouaz.huit.americain.controller.Partie;
+import bayart.ayouaz.huit.americain.controller.PartieGraphique;
 import bayart.ayouaz.huit.americain.model.enums.Couleur;
 /**
  * 
@@ -49,7 +49,7 @@ public abstract class Regle {
      * Cette methode va modifier les propriétés de la partie (sens ...)
      * En fonction des dernieres cartes posés.
      */
-    public abstract void appliquerEffetCarteSpeciale(Partie p);
+    public abstract void appliquerEffetCarteSpeciale(PartieGraphique p);
     /**
      * Demande quelle sera la prochaine couleur si on joue un 8 (dans la majorité des variantes)
      * @return la couleur
