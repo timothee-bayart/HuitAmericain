@@ -1,4 +1,4 @@
-package bayart.ayouaz.huit.americain.Model;
+package bayart.ayouaz.huit.americain.model;
 
 import bayart.ayouaz.huit.americain.model.interfaces.Strategie;
 /**

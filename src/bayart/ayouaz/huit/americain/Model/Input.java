@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bayart.ayouaz.huit.americain.Model;
+package bayart.ayouaz.huit.americain.model;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

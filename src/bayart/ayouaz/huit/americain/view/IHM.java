@@ -5,22 +5,24 @@
  */
 package bayart.ayouaz.huit.americain.view;
 
-import bayart.ayouaz.huit.americain.Model.Carte;
-import bayart.ayouaz.huit.americain.Model.Joueur;
-import bayart.ayouaz.huit.americain.Model.Regle;
+import bayart.ayouaz.huit.americain.model.Carte;
+import bayart.ayouaz.huit.americain.model.Joueur;
+import bayart.ayouaz.huit.americain.model.Regle;
 import bayart.ayouaz.huit.americain.model.enums.Couleur;
 import bayart.ayouaz.huit.americain.model.enums.Motif;
+
+import java.util.LinkedHashSet;
 
 /**
  *
  * @author ed
  */
 public interface IHM {
-    public void afficherPlateau();
-    public void variante(Regle[] var);
+    public void afficherPlateau(LinkedHashSet<Joueur> joueurs, Carte defausse);
+    public void afficherVariantesDepart(Regle[] variantes, Regle varianteSelected);
+    public void afficherMessage(String message);
     public void afficherPseudoDepart();
     public void afficherMenuDepart();
-    public void afficherAjoutJoueur();
     public void piocherObligatoire(int nbCartes, Joueur QuiPioche);
     public void sauterTour(Joueur quiVaEtreSauter);
     public void changerProchaineCouleur(Couleur[] couleurs);

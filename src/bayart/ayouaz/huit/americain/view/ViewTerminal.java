@@ -1,10 +1,12 @@
 package bayart.ayouaz.huit.americain.view;
 
-import bayart.ayouaz.huit.americain.Model.Carte;
-import bayart.ayouaz.huit.americain.Model.Joueur;
-import bayart.ayouaz.huit.americain.Model.Regle;
+import bayart.ayouaz.huit.americain.model.Carte;
+import bayart.ayouaz.huit.americain.model.Joueur;
+import bayart.ayouaz.huit.americain.model.Regle;
 import bayart.ayouaz.huit.americain.model.enums.Couleur;
 import bayart.ayouaz.huit.americain.model.enums.Motif;
+
+import java.util.LinkedHashSet;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -15,12 +17,17 @@ public class ViewTerminal implements Observer , IHM{
     }
 
     @Override
-    public void afficherPlateau() {
+    public void afficherPlateau(LinkedHashSet<Joueur> joueurs, Carte defausse) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void variante(Regle[] var) {
+    public void afficherVariantesDepart(Regle[] variante, Regle varianteSelected) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void afficherMessage(String message) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -31,11 +38,6 @@ public class ViewTerminal implements Observer , IHM{
 
     @Override
     public void afficherMenuDepart() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void afficherAjoutJoueur() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

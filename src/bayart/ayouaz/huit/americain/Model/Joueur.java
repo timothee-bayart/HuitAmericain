@@ -1,12 +1,12 @@
-package bayart.ayouaz.huit.americain.Model;
+package bayart.ayouaz.huit.americain.model;
 
-import bayart.ayouaz.huit.americain.model.interfaces.Observable;
+import java.util.Observable;
 
 /**
  * 
  * Les joueurs sont ceux qui vont pouvoir interagir avec le jeu.
  */
-public class Joueur extends Observable{
+public class Joueur extends Observable {
 
     protected int score;
     protected String nom;
@@ -15,6 +15,7 @@ public class Joueur extends Observable{
     
     public Joueur(String nom) {
     	this.nom = nom;
+        setChanged();
     }
     
     public void direCarte(){
@@ -25,7 +26,8 @@ public class Joueur extends Observable{
 
     public void piocher(Carte pioche) {
     	this.main.ajouterCarte(pioche);
-        notifyObserver("piocher");
+        setChanged();
+        this.notifyObservers("piocher");
     }
 
     public Carte jouer(Carte carteDefausse) {

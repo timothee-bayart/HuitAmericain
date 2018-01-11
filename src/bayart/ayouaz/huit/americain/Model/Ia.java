@@ -1,4 +1,4 @@
-package bayart.ayouaz.huit.americain.Model;
+package bayart.ayouaz.huit.americain.model;
 
 import bayart.ayouaz.huit.americain.model.interfaces.Strategie;
 /**
@@ -15,6 +15,7 @@ public class Ia extends Joueur{
 		super(nom);
 		this.regle = regle;
 		this.strategie = new Strategie1();
+		setChanged();
 	}
 	
 	public Ia(String nom, Strategie strategie) {

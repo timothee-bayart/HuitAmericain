@@ -1,16 +1,11 @@
 package bayart.ayouaz.huit.americain.controller;
 
 import bayart.ayouaz.huit.americain.model.enums.*;
-import bayart.ayouaz.huit.americain.Model.*;
-import bayart.ayouaz.huit.americain.model.interfaces.Observer;
+import bayart.ayouaz.huit.americain.model.*;
 import bayart.ayouaz.huit.americain.view.IHM;
 import bayart.ayouaz.huit.americain.view.ViewGraphic;
-import bayart.ayouaz.huit.americain.view.ViewTerminal;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
+import java.util.*;
 
 /**
  *
@@ -41,14 +36,16 @@ public class PartieGraphique {
 
     public void setFenetre(ViewGraphic v) {
         fen = v;
+        this.fen.afficherPseudoDepart();
     }
 
     public PartieGraphique() {
-        regle = new Variante2(1);
         this.variantes = new Regle[]{
             new Variante1(1),
             new Variante2(1)
         };
+
+        regle = this.variantes[1];
     }
 
     /**
@@ -64,50 +61,44 @@ public class PartieGraphique {
             this.joueurs.add(j);
             if(fen instanceof Observer)
                 j.addObserver((Observer)fen);          //ajouter l'observateur sur joueur
-            j.notifyObserver();
+
+            j.notifyObservers("ajouteJoueur");
+            this.fen.afficherMessage(
+                    "<html><center>************* Huit Américain (Timothée BAYART & Idris AYOUAZ *************<br />"+
+                            this.joueurs.size()+ " joueur(s) prêts<br />"+
+                            "Jeu en "+this.regle+"<center></html>"
+            );
+        } else {
+            this.fen.afficherMessage("Veuillez saisir votre nom (alphabétique) de joueur");
         }
     }
     
-    public void ajouterIA(String nom){
-        Ia nouveauJoueur = new Ia("Joueur" + (this.getNbJoueurs() + joueurs.size()), this.regle);
+    public void ajouterIA(){
+        int numeroJoueur = 1;
+        Joueur nouveauJoueur;
+        do {
+            nouveauJoueur = new Ia("Joueur"+(this.getNbJoueurs()+numeroJoueur), this.regle);
+            numeroJoueur++;
+        } while(!this.joueurs.add(nouveauJoueur));
+
         this.joueurs.add(nouveauJoueur);
         if(fen instanceof Observer)
             nouveauJoueur.addObserver((Observer)fen);          //ajouter l'observateur sur joueur
-            nouveauJoueur.notifyObserver();
-    }
+            nouveauJoueur.notifyObservers();
 
-    public void jouerCarte(int i) {
-        System.out.println(i);
-        System.out.println(joueurQuiJoue);
-        if (joueurQuiJoue != joueurReel) {
-            return;
-        }
-        if(i==-1){
-            joueurReel.piocher(pioche.retirerCarte());
-            changerTour();
-            return;
-        }
-        if (regle.isCoupJouable(joueurReel.getMain().getCarte(i), carteDefausse)) {
-            if (regle.isJoueurAGagne(joueurQuiJoue.getMain())) {
-                System.out.println("Victoire");
-                //todo implementer la fermeture de la partie
-            } else {
-                carteDefausse.setDefausse(joueurReel.getMain().retirerCarte(i));
-                changerTour();
-            }
-        }
+            this.fen.afficherMessage(
+                "<html><center>************* Huit Américain (Timothée BAYART & Idris AYOUAZ *************<br />"+
+                this.joueurs.size()+ " joueur(s) prêts<br />"+
+                "Jeu en "+this.regle+"<center></html>"
+            );
     }
 
     public void choisirRegle() {
-        fen.variante(variantes);
+        fen.afficherVariantesDepart(this.variantes, this.regle);
     }
 
-    public void changerFenetre() {
-        fen.afficherAjoutJoueur();
-    }
-
-    public void choisirVariante(Regle r) {
-        this.regle = r;
+    public void choisirVariante(Regle regle) {
+        this.regle = regle;
         fen.afficherMenuDepart();
     }
 
@@ -139,7 +130,30 @@ public class PartieGraphique {
             ThreadIA tia = new ThreadIA(this);
             tia.start();
             changerTour();
+        } else {
+            this.fen.afficherMessage("Veuillez ajouter au moins "+ (NOMBRE_DE_JOUEURS_MINIMUM - this.getNbJoueurs()) +" joueur(s) pour commencer");
         }
+    }
+
+    public void carteSelectionnee(Carte carte){
+        if(!(joueurQuiJoue instanceof Ia)){
+            this.jouerCarte(carte);
+        }
+    }
+
+    public void jouerCarte(Carte carte) {
+            if(carte == null){ //piocher
+                joueurQuiJoue.piocher(pioche.retirerCarte());
+                changerTour();
+            } else if (regle.isCoupJouable(carte, carteDefausse)) { //on a posé une carte
+                if (regle.isJoueurAGagne(joueurQuiJoue.getMain())) {
+                    System.out.println("Victoire");
+                    //todo implementer la fermeture de la partie
+                } else {
+                    carteDefausse.setDefausse(joueurQuiJoue.getMain().retirerCarte(carte));
+                    changerTour();
+                }
+            }
     }
 
     private Joueur getProchainJoueur() {
@@ -155,6 +169,7 @@ public class PartieGraphique {
         } else {
             this.joueurQuiJoue = this.getProchainJoueur();
         }
+        this.fen.afficherMessage("A "+this.joueurQuiJoue+" de jouer !");
         this.prochainJoueurQuiVaJouer = this.getProchainJoueur();
     }
 
@@ -173,6 +188,10 @@ public class PartieGraphique {
 
     public LinkedHashSet<Joueur> getJoueurs() {
         return this.joueurs;
+    }
+
+    public Carte getCarteDefausse(){
+        return this.carteDefausse;
     }
 
     public int getNbJoueurs() {
