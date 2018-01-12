@@ -23,6 +23,8 @@ public class ChoixJoueurQuiPioche extends JDialog implements ActionListener{
     private int retour;
     public ChoixJoueurQuiPioche(ViewGraphic owner, Joueur[]j){
         super(owner, true);
+        joueurs = new ArrayList<>();
+
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         quiPioche = new JLabel("Qui doit piocher?");
         for(int i=0; i<j.length;++i){

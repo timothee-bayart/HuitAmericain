@@ -102,6 +102,14 @@ public class PartieGraphique implements Serializable {
 
     public void choisirVariante(Regle regle) {
         this.regle = regle;
+
+        //si déjà des Ia de créées, mettre a jour la regle !
+        for(Joueur joueur : this.joueurs){
+            if(joueur instanceof Ia){
+                ((Ia) joueur).setRegle(this.regle);
+            }
+        }
+
         fen.afficherMenuDepart();
         this.fen.afficherMessage(
                 "<html><center>************* Huit Américain (Timothée BAYART & Idris AYOUAZ *************<br />"+

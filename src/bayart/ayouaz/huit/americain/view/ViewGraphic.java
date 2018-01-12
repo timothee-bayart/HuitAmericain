@@ -38,7 +38,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
 
         this.setTitle("Huit Americain");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setPreferredSize(new Dimension(900, 600));
+        this.setPreferredSize(new Dimension(1800, 600));
         this.setVisible(true);
 
         controleur.setFenetre(this);
@@ -440,6 +440,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
         consigne += getDernierMessage()+"<br />-> Il faut jouer un(e) " + carte.getMotif() + " ou un " + carte.getCouleur();
         consigne += "</center></html>";
         this.afficherMessage(consigne);
+        System.out.println("Il faut jouer un(e) " + carte.getMotif() + " ou un " + carte.getCouleur());
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

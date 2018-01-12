@@ -153,13 +153,13 @@ public class Variante1 extends Regle {
                         }
                     }
 
-                    partie.getFenetre().changerProchainMotif(motifsPossibles);
 
                     int choixMotifJoker;
                     if(partie.getJoueurQuiJoue() instanceof Ia){
                         choixMotifJoker = (int) (Math.random() * (nbMotifs+1));
                     } else {
-                        choixMotifJoker = Input.demanderEntier(0, nbMotifs);
+//                        choixMotifJoker = Input.demanderEntier(0, nbMotifs);
+                        choixMotifJoker = partie.getFenetre().changerProchainMotif(motifsPossibles);
                     }
 
                     super.carteCreeeParJoker.setMotif(motifsPossibles[choixMotifJoker]);

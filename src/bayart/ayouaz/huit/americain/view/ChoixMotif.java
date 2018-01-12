@@ -56,7 +56,7 @@ public class ChoixMotif extends JDialog{
         valider.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent arg0){
-                retour = Motif.fromString((String) comboMotifs.getSelectedItem()).getNumero();
+                retour = Motif.fromString((String) comboMotifs.getSelectedItem()).getNumero()-1;
                 ChoixMotif.this.setVisible(false);
             }
         });

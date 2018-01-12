@@ -26,5 +26,9 @@ public class Ia extends Joueur{
     public Carte jouer(Carte carteDefausse) {
         return strategie.jouer(carteDefausse, this.main, this.regle);
     }
+
+    public void setRegle(Regle regle){
+		this.regle = regle;
+	}
 }
 
