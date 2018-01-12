@@ -48,6 +48,8 @@ public class Variante2 extends Regle {
     @Override
     public void appliquerEffetCarteSpeciale(PartieGraphique partie) {
 
+        partie.getProchainJoueurQuiVaJouer().setPeutJouer(false);
+
         if (partie.getDernierCoupJoue() != null) { //c'est la partie qui garde le dernier coup joué, car on pourrait appeler isCoupJouable sans joue le coup après
 
             super.nouvelleCouleur = null;

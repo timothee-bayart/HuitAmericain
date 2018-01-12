@@ -27,6 +27,7 @@ public interface IHM {
     public void sauterTour(Joueur quiVaEtreSauter);
     public void changerProchaineCouleur(Couleur[] couleurs);
     public void ilFautJouer(Couleur couleur);
+    public void ilFautJouer(Carte carte);
     public void rejouer(Joueur quiRejoue);
     public void fairePiocherJoueur(Joueur [] quiVaPiocher);
     public void changerSens();

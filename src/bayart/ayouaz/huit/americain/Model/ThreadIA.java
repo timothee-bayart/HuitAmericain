@@ -23,7 +23,7 @@ public class ThreadIA extends Thread{
     @Override
     public void run() {
         while(true){ //attention pas de while true, rajouter condition de sortie
-            if(partie.getJoueurQuiJoue() instanceof Ia){
+            if(partie.getJoueurQuiJoue() instanceof Ia && partie.getJoueurQuiJoue().getPeutJouer()){
                 System.out.println(partie.getJoueurQuiJoue());
                 partie.jouerCarte(((Ia)partie.getJoueurQuiJoue()).jouer(partie.getCarteDefausse()));
             }

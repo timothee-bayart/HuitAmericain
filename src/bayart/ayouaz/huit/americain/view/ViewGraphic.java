@@ -24,14 +24,12 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
     private JLabel label;
     private JTextArea pseudo;
     private JPanel panel;
-    private JButton valider;
     private GridBagConstraints constraint;
     private PartieGraphique controleur;
     
     public ViewGraphic(PartieGraphique p){
         controleur=p;
         label = new JLabel();
-        valider = new JButton("Valider");
         pseudo = new JTextArea();
         pseudo.getDocument().putProperty("filterNewlines", Boolean.TRUE);
 //        pseudo.setS(new Dimension(175, 15));
@@ -70,6 +68,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
         constraint.fill = GridBagConstraints.NONE;
         constraint.insets = new Insets(0,0,0,0);
         constraint.gridy=2;
+        JButton valider = new JButton("Valider");
         panel.add(valider, constraint);
 
         this.setContentPane(panel);
@@ -156,6 +155,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
 
         constraint.gridy=2;
         constraint.insets = new Insets(0,0,0,0);
+        JButton valider = new JButton("Valider");
         panel.add(valider, constraint);
 
         this.setContentPane(panel);
@@ -356,17 +356,33 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
 
     @Override
     public void changerProchaineCouleur(Couleur[] couleurs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.afficherMessage("IL FAUT TRAVAILLER LE CHANGEMENT DE COULEUR");
     }
 
     @Override
     public void ilFautJouer(Couleur couleur) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consigne = "<html><center>";
+        consigne += "-> Il faut jouer un " + couleur;
+        consigne += "</center></html>";
+        this.afficherMessage(consigne);
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void ilFautJouer(Carte carte) {
+        String consigne = "<html><center>";
+        consigne += "-> Il faut jouer un(e) " + carte.getMotif() + " ou un " + carte.getCouleur();
+        consigne += "</center></html>";
+        this.afficherMessage(consigne);
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void rejouer(Joueur quiRejoue) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consigne = "<html><center>";
+        consigne += quiRejoue + " va rejouer";
+        consigne += "</center></html>";
+        this.afficherMessage(consigne);
     }
 
     @Override

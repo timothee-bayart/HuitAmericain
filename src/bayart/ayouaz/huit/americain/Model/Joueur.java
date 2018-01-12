@@ -12,9 +12,11 @@ public class Joueur extends Observable {
     protected String nom;
     protected boolean enJeu;
     protected GroupeDeCarte main = new GroupeDeCarte();
-    
+    private boolean peutJouer;
+
     public Joueur(String nom) {
     	this.nom = nom;
+    	this.peutJouer = false;
         setChanged();
     }
     
@@ -68,6 +70,13 @@ public class Joueur extends Observable {
 	public String toString() {
 		return this.getNom();
 	}
-        
-        
+
+
+    public boolean getPeutJouer() {
+        return this.peutJouer;
+    }
+
+    public void setPeutJouer(boolean peutJouer) {
+        this.peutJouer = peutJouer;
+    }
 }

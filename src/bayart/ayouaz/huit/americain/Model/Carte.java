@@ -68,7 +68,7 @@ public class Carte extends Observable {
 
     public String getImageFileName(){
         if(this.motif == Motif.JOKER){
-            return "jocker.png";
+            return "joker.png";
         } else {
             return this.motif.getNumero()+"_"+this.couleur.getNumero()+".png";
         }

@@ -81,7 +81,7 @@ public class PartieGraphique {
             numeroJoueur++;
         } while(!this.joueurs.add(nouveauJoueur));
 
-        this.joueurs.add(nouveauJoueur);
+//        this.joueurs.add(nouveauJoueur);
         if(fen instanceof Observer)
             nouveauJoueur.addObserver((Observer)fen);          //ajouter l'observateur sur joueur
             nouveauJoueur.notifyObservers();
@@ -100,6 +100,11 @@ public class PartieGraphique {
     public void choisirVariante(Regle regle) {
         this.regle = regle;
         fen.afficherMenuDepart();
+        this.fen.afficherMessage(
+                "<html><center>************* Huit Américain (Timothée BAYART & Idris AYOUAZ *************<br />"+
+                        this.joueurs.size()+ " joueur(s) prêts<br />"+
+                        "Jeu en "+this.regle+"<center></html>"
+        );
     }
 
     public void distribuerCartes() {
@@ -118,7 +123,7 @@ public class PartieGraphique {
                 this.pioche.ajouterCarte(this.carteDefausse);
                 this.carteDefausse = null;
             }
-        } while (this.carteDefausse.getMotif() == null);
+        } while (this.carteDefausse == null);
     }
 
     public void demarrer() {
@@ -143,15 +148,25 @@ public class PartieGraphique {
 
     public void jouerCarte(Carte carte) {
             if(carte == null){ //piocher
+                this.dernierCoupJoue = null;
                 joueurQuiJoue.piocher(pioche.retirerCarte());
+
+                this.regle.appliquerEffetCarteSpeciale(this);
                 changerTour();
+                this.joueurQuiJoue.setPeutJouer(true);
+
             } else if (regle.isCoupJouable(carte, carteDefausse)) { //on a posé une carte
+                this.dernierCoupJoue = carte;
+
                 if (regle.isJoueurAGagne(joueurQuiJoue.getMain())) {
                     System.out.println("Victoire");
                     //todo implementer la fermeture de la partie
                 } else {
                     carteDefausse.setDefausse(joueurQuiJoue.getMain().retirerCarte(carte));
+
+                    this.regle.appliquerEffetCarteSpeciale(this);
                     changerTour();
+                    this.joueurQuiJoue.setPeutJouer(true);
                 }
             }
     }
@@ -163,13 +178,22 @@ public class PartieGraphique {
         return joueursIt.next();
     }
 
-    public void changerTour() {
+    public synchronized void changerTour() {
+
         if (this.prochainJoueurQuiVaJouer != null) {
             this.joueurQuiJoue = this.prochainJoueurQuiVaJouer;
         } else {
             this.joueurQuiJoue = this.getProchainJoueur();
         }
+
         this.fen.afficherMessage("A "+this.joueurQuiJoue+" de jouer !");
+
+        if (this.regle.getNouvelleCouleur() != null) {
+            this.fen.ilFautJouer(this.regle.getNouvelleCouleur());
+        } else if (this.regle.getCarteCreeeParJoker() != null) {
+            this.fen.ilFautJouer(this.regle.getCarteCreeeParJoker());
+        }
+
         this.prochainJoueurQuiVaJouer = this.getProchainJoueur();
     }
 
@@ -224,6 +248,7 @@ public class PartieGraphique {
             }
         } while (iterator.hasNext() && joueur != this.joueurQuiJoue);
     }
+
 //
 //    public void initParamsDuJeu() {
 //        //demander nom joueur
