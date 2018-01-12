@@ -52,7 +52,7 @@ public class ViewTerminal implements Observer , IHM{
     }
 
     @Override
-    public void changerProchaineCouleur(Couleur[] couleurs) {
+    public int changerProchaineCouleur(Couleur[] couleurs) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -72,7 +72,7 @@ public class ViewTerminal implements Observer , IHM{
     }
 
     @Override
-    public void fairePiocherJoueur(Joueur[] quiVaPiocher) {
+    public int fairePiocherJoueur(Joueur[] quiVaPiocher) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -82,7 +82,7 @@ public class ViewTerminal implements Observer , IHM{
     }
 
     @Override
-    public void changerProchainMotif(Motif[] motifs) {
+    public int changerProchainMotif(Motif[] motifs) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -58,13 +58,13 @@ public class Variante2 extends Regle {
             switch (partie.getDernierCoupJoue().getMotif()) {
 
                 case HUIT: // Les 8 permettent de changer de couleur à n’importe quel moment
-                    partie.getFenetre().changerProchaineCouleur(Couleur.values());
+                    //partie.getFenetre().changerProchaineCouleur(Couleur.values());
 
                     int choixCouleur;
                     if (partie.getJoueurQuiJoue() instanceof Ia) {
                         choixCouleur = (int) (Math.random() * 4);
                     } else {
-                        choixCouleur = Input.demanderEntier(0, 3);
+                        choixCouleur = partie.getFenetre().changerProchaineCouleur(Couleur.values());
                     }
 
                     super.nouvelleCouleur = Couleur.values()[choixCouleur];

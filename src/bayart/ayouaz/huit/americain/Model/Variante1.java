@@ -69,13 +69,13 @@ public class Variante1 extends Regle {
                             indexJoueurPioche++;
                         }
                     }
-                    partie.getFenetre().fairePiocherJoueur(joueursPossibles);
+                    //partie.getFenetre().fairePiocherJoueur(joueursPossibles);
 
                     int choixJoueur;
                     if(partie.getJoueurQuiJoue() instanceof Ia){
                         choixJoueur = (int) (Math.random() *  (partie.getJoueurs().size()-1));
                     } else {
-                        choixJoueur = Input.demanderEntier(0, partie.getJoueurs().size() - 2);
+                        choixJoueur = partie.getFenetre().fairePiocherJoueur(joueursPossibles);
                     }
 
                     Joueur joueurQuiVaPiocher = joueursPossibles[choixJoueur];
@@ -89,13 +89,13 @@ public class Variante1 extends Regle {
                     break;
 
                 case HUIT: // Les 8 permettent de changer de couleur à n’importe quel moment
-                    partie.getFenetre().changerProchaineCouleur(Couleur.values());
+                    //partie.getFenetre().changerProchaineCouleur(Couleur.values());
 
                     int choixCouleur;
                     if(partie.getJoueurQuiJoue() instanceof Ia){
                         choixCouleur = (int) (Math.random() * 4);
                     } else {
-                        choixCouleur = Input.demanderEntier(0, 3);
+                        choixCouleur = partie.getFenetre().changerProchaineCouleur(Couleur.values());
                     }
 
                     super.nouvelleCouleur = Couleur.values()[choixCouleur];
@@ -125,13 +125,13 @@ public class Variante1 extends Regle {
                     super.carteCreeeParJoker = new Carte();
 
                     // on demande la couleur que le joueur veut
-                    partie.getFenetre().changerProchaineCouleur(Couleur.values());
+                    //partie.getFenetre().changerProchaineCouleur(Couleur.values());
 
                     int choixCouleurJoker;
                     if(partie.getJoueurQuiJoue() instanceof Ia){
                         choixCouleurJoker = (int) (Math.random() * 4);
                     } else {
-                        choixCouleurJoker = Input.demanderEntier(0, 3);
+                        choixCouleurJoker = partie.getFenetre().changerProchaineCouleur(Couleur.values());
                     }
                     super.carteCreeeParJoker.setCouleur(Couleur.values()[choixCouleurJoker]);
 
