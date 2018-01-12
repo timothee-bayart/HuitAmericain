@@ -23,6 +23,8 @@ public interface IHM {
     public void afficherMessage(String message);
     public void afficherPseudoDepart();
     public void afficherMenuDepart();
+    public void afficherPartieTerminee(Joueur[] joueurs);
+
     public void piocherObligatoire(int nbCartes, Joueur QuiPioche);//fait
     public void sauterTour(Joueur quiVaEtreSauter);//fait
     public int changerProchaineCouleur(Couleur[] couleurs);//fait

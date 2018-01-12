@@ -5,13 +5,13 @@
  */
 package bayart.ayouaz.huit.americain.view;
 
+import bayart.ayouaz.huit.americain.model.enums.Couleur;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
@@ -22,10 +22,12 @@ public class ChoixCouleur extends JDialog implements ActionListener{
     private int retour;
     public ChoixCouleur(ViewGraphic owner){
         super(owner,true);
-        carre = new JButton("Carreau");
-        coeur = new JButton("Coeur");
-        pic = new JButton("Pique");
-        trefle = new JButton("Trefle");
+        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        carre = new JButton(Couleur.CARREAU.toString());
+        coeur = new JButton(Couleur.COEUR.toString());
+        pic = new JButton(Couleur.PIC.toString());
+        trefle = new JButton(Couleur.TREFLE.toString());
+
         carre.addActionListener(this);
         coeur.addActionListener(this);
         pic.addActionListener(this);
@@ -34,7 +36,7 @@ public class ChoixCouleur extends JDialog implements ActionListener{
     }
     
     private void init(){
-        JPanel panel =new JPanel();
+        JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         GridBagConstraints cont = new GridBagConstraints();
         cont.fill = GridBagConstraints.BOTH;
@@ -54,19 +56,19 @@ public class ChoixCouleur extends JDialog implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == carre){
-            retour = 1;
+            retour = Couleur.CARREAU.getNumero();
             this.setVisible(false);
         }
         if(e.getSource() == trefle){
-            retour = 3;
+            retour = Couleur.TREFLE.getNumero();
             this.setVisible(false);
         }
         if(e.getSource() == coeur){
-            retour = 0;
+            retour = Couleur.COEUR.getNumero();
             this.setVisible(false);
         }
         if(e.getSource() == pic){
-            retour = 2;
+            retour = Couleur.PIC.getNumero();
             this.setVisible(false);
         }
     }

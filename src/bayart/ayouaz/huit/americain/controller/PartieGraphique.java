@@ -33,6 +33,7 @@ public class PartieGraphique implements Serializable {
     private transient Iterator<Joueur> joueursIt;
     private Regle[] variantes;
     private IHM fen;
+    private boolean partieEnCours = false;
 //    private Joueur gagnant;
 //    private TreeSet<Joueur> perdants = new TreeSet<Joueur> ();
 
@@ -130,6 +131,7 @@ public class PartieGraphique implements Serializable {
 
     public void demarrer() {
         if (regle != null && joueurs.size() >= PartieGraphique.NOMBRE_DE_JOUEURS_MINIMUM) {
+            this.partieEnCours = true;
             this.pioche = this.regle.genererPioche(this.joueurs.size());
             this.pioche.melanger();
             this.joueursIt = this.joueurs.iterator();
@@ -149,28 +151,29 @@ public class PartieGraphique implements Serializable {
     }
 
     public void jouerCarte(Carte carte) {
-            if(carte == null){ //piocher
-                this.dernierCoupJoue = null;
-                joueurQuiJoue.piocher(pioche.retirerCarte());
+        if(carte == null){ //piocher
+            this.dernierCoupJoue = null;
+            joueurQuiJoue.piocher(pioche.retirerCarte());
 
+            this.regle.appliquerEffetCarteSpeciale(this);
+            changerTour();
+            this.joueurQuiJoue.setPeutJouer(true);
+
+        } else if(regle.isCoupJouable(carte, carteDefausse)){ //on a posé une carte
+            this.dernierCoupJoue = carte;
+            this.pioche.ajouterCarte(this.carteDefausse);
+            this.carteDefausse.setDefausse(joueurQuiJoue.getMain().retirerCarte(carte));
+            System.out.println(this.pioche.getNombreDeCartes());
+
+            if (regle.isJoueurAGagne(joueurQuiJoue.getMain())) {
+                this.partieEnCours = false;
+                this.fen.afficherPartieTerminee(this.getClassement());
+            } else {
                 this.regle.appliquerEffetCarteSpeciale(this);
                 changerTour();
                 this.joueurQuiJoue.setPeutJouer(true);
-
-            } else if (regle.isCoupJouable(carte, carteDefausse)) { //on a posé une carte
-                this.dernierCoupJoue = carte;
-
-                if (regle.isJoueurAGagne(joueurQuiJoue.getMain())) {
-                    System.out.println("Victoire");
-                    //todo implementer la fermeture de la partie
-                } else {
-                    carteDefausse.setDefausse(joueurQuiJoue.getMain().retirerCarte(carte));
-
-                    this.regle.appliquerEffetCarteSpeciale(this);
-                    changerTour();
-                    this.joueurQuiJoue.setPeutJouer(true);
-                }
             }
+        }
     }
 
     private Joueur getProchainJoueur() {
@@ -282,8 +285,14 @@ public class PartieGraphique implements Serializable {
                     joueur = this.joueursIt.next();
                 } while (joueur != this.joueurQuiJoue);
 
-                this.getFenetre().afficherPlateau(this.joueurs, this.carteDefausse);
-                this.getFenetre().afficherMessage(partieGraphique.getFenetre().getDernierMessage());
+                for(Joueur j : this.joueurs){
+                    j.addObserver((Observer)this.fen);
+                }
+                this.carteDefausse.addObserver((Observer)this.fen);
+
+
+                this.fen.afficherPlateau(this.joueurs, this.carteDefausse);
+                this.fen.afficherMessage(partieGraphique.getFenetre().getDernierMessage());
                 ThreadIA tia = new ThreadIA(this);
                 tia.start();
 
@@ -340,7 +349,30 @@ public class PartieGraphique implements Serializable {
         System.exit(0);
     }
 
-//
+    public Joueur[] getClassement(){
+        Joueur[] classement = this.joueurs.toArray(new Joueur[this.joueurs.size()]);
+        //on fait un tri par insertion pour trier les jours en fonction du nombre de carte en main
+        int n = classement.length-1;
+
+        for (int i=2; i<=n; i++){
+            Joueur joueur = classement[i];
+            int indexValeur = i;
+
+            while(classement[indexValeur-1].getMain().getNombreDeCartes() > joueur.getMain().getNombreDeCartes()){
+                classement[indexValeur] = classement[indexValeur-1];
+                indexValeur--;
+            }
+            classement[indexValeur] = joueur ;
+        }
+
+        return classement;
+    }
+
+    public boolean isPartieEnCours() {
+        return partieEnCours;
+    }
+
+    //
 //    public void initParamsDuJeu() {
 //        //demander nom joueur
 //        boolean joueurAjoute = false;

@@ -11,10 +11,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
@@ -26,6 +23,7 @@ public class ChoixJoueurQuiPioche extends JDialog implements ActionListener{
     private int retour;
     public ChoixJoueurQuiPioche(ViewGraphic owner, Joueur[]j){
         super(owner, true);
+        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         quiPioche = new JLabel("Qui doit piocher?");
         for(int i=0; i<j.length;++i){
             joueurs.add(new JButton(j[i].toString()));

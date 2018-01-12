@@ -42,6 +42,11 @@ public class ViewTerminal implements Observer , IHM{
     }
 
     @Override
+    public void afficherPartieTerminee(Joueur[] joueurs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public void piocherObligatoire(int nbCartes, Joueur QuiPioche) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

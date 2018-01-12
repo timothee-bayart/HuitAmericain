@@ -31,4 +31,13 @@ public enum Motif {
 	public int getNumero() {
 		return this.numero;
 	}
+
+	public static Motif fromString(String text) {
+		for (Motif motif : Motif.values()) {
+			if (motif.toString().equals(text)) {
+				return motif;
+			}
+		}
+		throw new IllegalArgumentException("No Motif with text " + text + " found");
+	}
 }

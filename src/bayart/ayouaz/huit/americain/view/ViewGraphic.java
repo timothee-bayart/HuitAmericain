@@ -32,7 +32,6 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
         label = new JLabel();
         pseudo = new JTextArea();
         pseudo.getDocument().putProperty("filterNewlines", Boolean.TRUE);
-//        pseudo.setS(new Dimension(175, 15));
 
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setVerticalAlignment(SwingConstants.CENTER);
@@ -50,6 +49,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
         label.setText(message);
     }
 
+    @Override
     public void afficherPseudoDepart(){
         pseudo.setText("");
         label.setText("Veuillez saisir votre nom (alphabétique) de joueur");
@@ -82,6 +82,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
         });
     }
 
+    @Override
     public void afficherMenuDepart(){
         menu = new JButton[]{
             new JButton("Démarrer la partie"),
@@ -143,6 +144,30 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
             });
 
         }
+    }
+
+    @Override
+    public void afficherPartieTerminee(Joueur[] joueurs) {
+        this.setJMenuBar(null);
+        panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+        constraint = new GridBagConstraints();
+        constraint.gridx = 0;
+        constraint.gridy = 0;
+        constraint.insets = new Insets(0,0,0,0);
+
+        String message = "<html><center>";
+        message += joueurs[0]+" REMPORTE LA PARTIE !<br />";
+        message += "-------------------------------------------------------------<br />";
+
+        for(int i=1; i<joueurs.length; i++){
+            message += joueurs[i]+" est "+(i+1)+"ème<br />";
+        }
+        message += "</center></html>";
+        afficherMessage(message);
+        panel.add(label, constraint);
+        this.setContentPane(panel);
+        this.pack();
     }
 
     public void afficherVariantesDepart(Regle[] variantes, Regle varianteSelected){
@@ -403,7 +428,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
     @Override
     public void ilFautJouer(Couleur couleur) {
         String consigne = "<html><center>";
-        consigne += "-> Il faut jouer un " + couleur;
+        consigne += getDernierMessage()+"<br />-> Il faut jouer un " + couleur;
         consigne += "</center></html>";
         this.afficherMessage(consigne);
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -412,7 +437,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
     @Override
     public void ilFautJouer(Carte carte) {
         String consigne = "<html><center>";
-        consigne += "-> Il faut jouer un(e) " + carte.getMotif() + " ou un " + carte.getCouleur();
+        consigne += getDernierMessage()+"<br />-> Il faut jouer un(e) " + carte.getMotif() + " ou un " + carte.getCouleur();
         consigne += "</center></html>";
         this.afficherMessage(consigne);
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

@@ -5,64 +5,68 @@
  */
 package bayart.ayouaz.huit.americain.view;
 
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import bayart.ayouaz.huit.americain.model.enums.Motif;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
  * @author ed
  */
-public class ChoixMotif extends JDialog implements ActionListener{
-    private ArrayList<JButton> motifs;
+public class ChoixMotif extends JDialog{
+//    private ArrayList<JButton> motifs;
+    private JComboBox comboMotifs;
     private int retour;
     private JLabel quelMotif;
+    private JButton valider;
     
     public ChoixMotif(ViewGraphic owner){
         super(owner,true);
-        motifs = new ArrayList<JButton>();
+        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+
         quelMotif = new JLabel("Quelle motif voulez vous?");
-        for(int i=1; i<=10;++i){
-            motifs.add(new JButton(i + ""));
+        comboMotifs = new JComboBox<String>();
+
+        for(Motif motif : Motif.values()) {
+            comboMotifs.addItem(motif.toString());
         }
-        motifs.add(new JButton("valet"));
-        motifs.add(new JButton("dame"));
-        motifs.add(new JButton("roi"));
+        comboMotifs.setPreferredSize(new Dimension(150, 25));
+        valider = new JButton("Valider");
         init();
     }
 
     private void init(){
-        JPanel panel =new JPanel();
+        JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
         GridBagConstraints cont = new GridBagConstraints();
         cont.fill = GridBagConstraints.BOTH;
         cont.gridx=0;
         cont.gridy=0;
         panel.add(quelMotif,cont);
+
         cont.gridy++;
-        for(int i=0; i<motifs.size();++i){
-           panel.add(motifs.get(i), cont);
-           cont.gridx++;
-        }
+        panel.add(comboMotifs, cont);
+
+        cont.gridy++;
+
+        valider.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                retour = Motif.fromString((String) comboMotifs.getSelectedItem()).getNumero();
+                ChoixMotif.this.setVisible(false);
+            }
+        });
+
+        panel.add(valider, cont);
+
         this.setContentPane(panel);
         this.pack();
     } 
-    
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        for(int i=0; i< motifs.size();++i){
-            if(e.getSource() == motifs.get(i)){
-                retour = i;
-                this.setVisible(false);
-            }
-        }
-    }
+
     public int showDialog(){
         this.setVisible(true);
         return retour;

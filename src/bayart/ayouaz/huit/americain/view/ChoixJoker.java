@@ -8,7 +8,7 @@ package bayart.ayouaz.huit.americain.view;
 import bayart.ayouaz.huit.americain.model.Joueur;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JDialog;
+import javax.swing.*;
 
 /**
  *
@@ -16,7 +16,8 @@ import javax.swing.JDialog;
  */
 public class ChoixJoker extends JDialog implements ActionListener{
     public ChoixJoker(ViewGraphic owner, Joueur j){
-        
+
+        this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
     }
     @Override
     public void actionPerformed(ActionEvent e) {

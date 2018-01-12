@@ -24,14 +24,14 @@ public class ThreadIA extends Thread implements Serializable {
 
     @Override
     public void run() {
-        while(true){ //attention pas de while true, rajouter condition de sortie
+        while(partie.isPartieEnCours()){
             if(partie.getJoueurQuiJoue() instanceof Ia && partie.getJoueurQuiJoue().getPeutJouer()){
                 System.out.println(partie.getJoueurQuiJoue());
                 partie.jouerCarte(((Ia)partie.getJoueurQuiJoue()).jouer(partie.getCarteDefausse()));
             }
 
             try {
-                Thread.sleep(3000);
+                Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
