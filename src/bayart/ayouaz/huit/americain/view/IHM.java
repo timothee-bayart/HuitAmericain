@@ -33,4 +33,6 @@ public interface IHM {
     public void changerSens();
     public int changerProchainMotif(Motif[] motifs);
     public void jokerPrendApparence(Carte carte);
+
+    public String getDernierMessage();
 }

@@ -47,7 +47,6 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
 
     @Override
     public void afficherMessage(String message){
-//        dernierMessage = message;
         label.setText(message);
     }
 
@@ -453,6 +452,11 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
         consigne += "Le joker prends l'apparence de la carte : " + carte.toString();
         consigne += "</center></html>";
         this.afficherMessage(consigne);
+    }
+
+    @Override
+    public String getDernierMessage() {
+        return this.label.getText();
     }
 
 }

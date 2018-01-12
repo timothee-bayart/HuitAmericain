@@ -275,8 +275,15 @@ public class PartieGraphique implements Serializable {
                 this.joueurs = partieGraphique.joueurs;
                 this.variantes = partieGraphique.variantes;
 
+                //Il faut mettre à jour l'itérateur
+                this.joueursIt = this.joueurs.iterator();
+                Joueur joueur;
+                do {
+                    joueur = this.joueursIt.next();
+                } while (joueur != this.joueurQuiJoue);
+
                 this.getFenetre().afficherPlateau(this.joueurs, this.carteDefausse);
-//                this.getFenetre().afficherMessage(partieGraphique.getFenetre().dernierMessage);
+                this.getFenetre().afficherMessage(partieGraphique.getFenetre().getDernierMessage());
                 ThreadIA tia = new ThreadIA(this);
                 tia.start();
 
