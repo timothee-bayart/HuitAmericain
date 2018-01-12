@@ -381,17 +381,24 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
 
     @Override
     public void piocherObligatoire(int nbCartes, Joueur QuiPioche) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consigne = "<html><center>";
+        consigne += "-> "+QuiPioche + " pioche " + nbCartes + "carte(s).";
+        consigne += "</center></html>";
+        this.afficherMessage(consigne);
     }
 
     @Override
     public void sauterTour(Joueur quiVaEtreSauter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consigne = "<html><center>";
+        consigne += "-> " + quiVaEtreSauter + " saute son tour";
+        consigne += "</center></html>";
+        this.afficherMessage(consigne);
     }
 
     @Override
-    public void changerProchaineCouleur(Couleur[] couleurs) {
-        this.afficherMessage("IL FAUT TRAVAILLER LE CHANGEMENT DE COULEUR");
+    public int changerProchaineCouleur(Couleur[] couleurs) {
+        ChoixCouleur cc = new ChoixCouleur(this);
+        return cc.showDialog();
     }
 
     @Override
@@ -421,23 +428,31 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
     }
 
     @Override
-    public void fairePiocherJoueur(Joueur[] quiVaPiocher) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int fairePiocherJoueur(Joueur[] quiVaPiocher) {
+        ChoixJoueurQuiPioche cjqp = new ChoixJoueurQuiPioche(this, quiVaPiocher);
+        return cjqp.showDialog();
     }
 
     @Override
     public void changerSens() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consigne = "<html><center>";
+        consigne += "Le sens est inversé";
+        consigne += "</center></html>";
+        this.afficherMessage(consigne);
     }
 
     @Override
-    public void changerProchainMotif(Motif[] motifs) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int changerProchainMotif(Motif[] motifs) {
+        ChoixMotif cm = new ChoixMotif(this);
+        return cm.showDialog();
     }
 
     @Override
     public void jokerPrendApparence(Carte carte) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String consigne = "<html><center>";
+        consigne += "Le joker prends l'apparence de la carte : " + carte.toString();
+        consigne += "</center></html>";
+        this.afficherMessage(consigne);
     }
 
 }

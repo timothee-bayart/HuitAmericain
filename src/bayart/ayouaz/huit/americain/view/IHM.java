@@ -23,14 +23,14 @@ public interface IHM {
     public void afficherMessage(String message);
     public void afficherPseudoDepart();
     public void afficherMenuDepart();
-    public void piocherObligatoire(int nbCartes, Joueur QuiPioche);
-    public void sauterTour(Joueur quiVaEtreSauter);
-    public void changerProchaineCouleur(Couleur[] couleurs);
-    public void ilFautJouer(Couleur couleur);
-    public void ilFautJouer(Carte carte);
-    public void rejouer(Joueur quiRejoue);
-    public void fairePiocherJoueur(Joueur [] quiVaPiocher);
+    public void piocherObligatoire(int nbCartes, Joueur QuiPioche);//fait
+    public void sauterTour(Joueur quiVaEtreSauter);//fait
+    public int changerProchaineCouleur(Couleur[] couleurs);//fait
+    public void ilFautJouer(Couleur couleur);//fait
+    public void ilFautJouer(Carte carte);//fait
+    public void rejouer(Joueur quiRejoue);//fait
+    public int fairePiocherJoueur(Joueur [] quiVaPiocher);
     public void changerSens();
-    public void changerProchainMotif(Motif[] motifs);
+    public int changerProchainMotif(Motif[] motifs);
     public void jokerPrendApparence(Carte carte);
 }
