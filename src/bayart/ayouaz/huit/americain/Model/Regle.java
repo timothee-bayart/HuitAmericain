@@ -2,11 +2,14 @@ package bayart.ayouaz.huit.americain.model;
 
 import bayart.ayouaz.huit.americain.controller.PartieGraphique;
 import bayart.ayouaz.huit.americain.model.enums.Couleur;
+
+import java.io.Serializable;
+
 /**
  * 
  * Cette classe permet de definir à l'avance comment il faudra jouer.
  */
-public abstract class Regle {
+public abstract class Regle implements Serializable {
 
     protected int nbPaquet;
     protected int nbCarteParPaquet;

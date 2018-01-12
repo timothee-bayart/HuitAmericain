@@ -4,6 +4,7 @@ package bayart.ayouaz.huit.americain.model;
 import bayart.ayouaz.huit.americain.model.enums.Couleur;
 import bayart.ayouaz.huit.americain.model.enums.Motif;
 
+import java.io.Serializable;
 import java.util.Observable;
 
 /**
@@ -11,7 +12,7 @@ import java.util.Observable;
  * Cette classe permet de modéliser une seule carte.
  * On spécifie la couleur et le motif (son nombre)
  */
-public class Carte extends Observable {
+public class Carte extends Observable implements Serializable {
 	
     private Couleur couleur;
     private Motif motif;

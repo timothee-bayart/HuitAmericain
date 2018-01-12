@@ -1,12 +1,13 @@
 package bayart.ayouaz.huit.americain.model;
 
+import java.io.Serializable;
 import java.util.Observable;
 
 /**
  * 
  * Les joueurs sont ceux qui vont pouvoir interagir avec le jeu.
  */
-public class Joueur extends Observable {
+public class Joueur extends Observable implements Serializable {
 
     protected int score;
     protected String nom;

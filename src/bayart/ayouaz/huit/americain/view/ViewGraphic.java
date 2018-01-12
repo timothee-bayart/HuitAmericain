@@ -47,6 +47,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
 
     @Override
     public void afficherMessage(String message){
+//        dernierMessage = message;
         label.setText(message);
     }
 
@@ -127,6 +128,22 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
                 controleur.choisirRegle();
             }
         });
+
+        if(this.controleur.isPartieSauvegardee()){
+            JButton btn = new JButton("Charger la sauvegarde");
+            constraint.gridx = 0;
+            constraint.gridy++;
+            btn.setPreferredSize(new Dimension(150, 25));
+            panel.add(btn, constraint);
+
+            btn.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent arg0){
+                    controleur.chargerPartieSauvegardee();
+                }
+            });
+
+        }
     }
 
     public void afficherVariantesDepart(Regle[] variantes, Regle varianteSelected){
@@ -169,6 +186,24 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
     }
 
     public void afficherPlateau(LinkedHashSet<Joueur> joueurs, Carte defausse){
+        JMenuBar menuBar = new JMenuBar();
+        JMenuItem item1 = new JMenuItem("Sauvegarder & quitter");
+        item1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane pane = new JOptionPane("Sauvegarde effectuée.\nReprenez votre partie plus tard !\n\nA bientôt...");
+                pane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                JDialog dialog = pane.createDialog(null, "Partie sauvegardée");
+                dialog.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+                dialog.setVisible(true);
+                controleur.sauvegarderPartie();
+                controleur.quitterJeu();
+            }
+        });
+        menuBar.add(item1);
+        this.setJMenuBar(menuBar);
+
+
         ArrayList<JButton> cartesJoueurBtns = new ArrayList<JButton>();
         ArrayList<JLabel> mainsIaLbl = new ArrayList<JLabel>(); // Attention pas arraylist !!! et iterator !!
 

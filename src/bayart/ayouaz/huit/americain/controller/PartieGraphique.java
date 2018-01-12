@@ -5,6 +5,7 @@ import bayart.ayouaz.huit.americain.model.*;
 import bayart.ayouaz.huit.americain.view.IHM;
 import bayart.ayouaz.huit.americain.view.ViewGraphic;
 
+import java.io.*;
 import java.util.*;
 
 /**
@@ -13,10 +14,11 @@ import java.util.*;
  * appelle toute les bonnes fonctions des bonnes classes, dans le bon ordre.
  * Dans le design pattern MVC, c'est le controlleur
  */
-public class PartieGraphique {
+public class PartieGraphique implements Serializable {
 
     private final static int NOMBRE_DE_CARTE_A_DISTRIBUER = 7;
     private final static int NOMBRE_DE_JOUEURS_MINIMUM = 2;
+    private final static String PARTIE_GRAPHIQUE_FILE_PATH = "res/partieGraphique.ser";
 
     private Regle regle;
 //    private int nbManche;
@@ -28,7 +30,7 @@ public class PartieGraphique {
     private Joueur joueurQuiJoue;
     private Joueur prochainJoueurQuiVaJouer;
     private Joueur joueurReel;
-    private Iterator<Joueur> joueursIt;
+    private transient Iterator<Joueur> joueursIt;
     private Regle[] variantes;
     private IHM fen;
 //    private Joueur gagnant;
@@ -247,6 +249,88 @@ public class PartieGraphique {
                 this.prochainJoueurQuiVaJouer = null; // le prochain joueur n'est plus bon !
             }
         } while (iterator.hasNext() && joueur != this.joueurQuiJoue);
+    }
+
+    public boolean isPartieSauvegardee(){
+        File file = new File(PARTIE_GRAPHIQUE_FILE_PATH);
+        return (file.exists() && !file.isDirectory());
+    }
+
+    public void chargerPartieSauvegardee(){
+        if(this.isPartieSauvegardee()){
+            try{
+                FileInputStream fis = new FileInputStream(PARTIE_GRAPHIQUE_FILE_PATH);
+                BufferedInputStream bis = new BufferedInputStream(fis);
+                ObjectInputStream input = new ObjectInputStream (bis);
+                PartieGraphique partieGraphique = (PartieGraphique) input.readObject();
+
+                this.regle = partieGraphique.regle;
+                this.pioche = partieGraphique.pioche;
+                this.carteDefausse = partieGraphique.carteDefausse;
+                this.dernierCoupJoue = partieGraphique.dernierCoupJoue;
+                this.joueurQuiJoue = partieGraphique.joueurQuiJoue;
+                this.prochainJoueurQuiVaJouer = partieGraphique.prochainJoueurQuiVaJouer;
+                this.joueurReel = partieGraphique.joueurReel;
+
+                this.joueurs = partieGraphique.joueurs;
+                this.variantes = partieGraphique.variantes;
+
+                this.getFenetre().afficherPlateau(this.joueurs, this.carteDefausse);
+//                this.getFenetre().afficherMessage(partieGraphique.getFenetre().dernierMessage);
+                ThreadIA tia = new ThreadIA(this);
+                tia.start();
+
+
+            } catch (IOException e){
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void sauvegarderPartie() {
+
+        if(!this.isPartieSauvegardee()){
+            try {
+                new File(PARTIE_GRAPHIQUE_FILE_PATH).createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        try {
+            fos = new FileOutputStream(PARTIE_GRAPHIQUE_FILE_PATH);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(this);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+    }
+
+    public void quitterJeu() {
+        System.exit(0);
     }
 
 //

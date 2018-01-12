@@ -7,11 +7,13 @@ package bayart.ayouaz.huit.americain.model;
 
 import bayart.ayouaz.huit.americain.controller.PartieGraphique;
 
+import java.io.Serializable;
+
 /**
  *
  * @author ed
  */
-public class ThreadIA extends Thread{
+public class ThreadIA extends Thread implements Serializable {
 
     private PartieGraphique partie;
 
