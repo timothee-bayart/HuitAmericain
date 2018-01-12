@@ -38,7 +38,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
 
         this.setTitle("Huit Americain");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setPreferredSize(new Dimension(1800, 600));
+        this.setPreferredSize(new Dimension(900, 600));
         this.setVisible(true);
 
         controleur.setFenetre(this);

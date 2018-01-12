@@ -275,6 +275,7 @@ public class PartieGraphique implements Serializable {
                 ObjectInputStream input = new ObjectInputStream (bis);
                 PartieGraphique partieGraphique = (PartieGraphique) input.readObject();
 
+                this.partieEnCours = partieGraphique.partieEnCours;
                 this.regle = partieGraphique.regle;
                 this.pioche = partieGraphique.pioche;
                 this.carteDefausse = partieGraphique.carteDefausse;
