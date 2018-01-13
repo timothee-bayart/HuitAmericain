@@ -20,22 +20,20 @@
       <file leaf-file-name="ViewTerminal.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/view/ViewTerminal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="110" column="19" lean-forward="true" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
+            <state relative-caret-position="211">
+              <caret line="124" column="32" lean-forward="false" selection-start-line="124" selection-start-column="32" selection-end-line="124" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4214#4215#0" expanded="true" />
-                <element signature="e#4285#4286#0" expanded="true" />
-                <element signature="e#5132#5133#0" expanded="true" />
-                <element signature="e#5200#5201#0" expanded="true" />
-                <element signature="e#5430#5431#0" expanded="true" />
-                <element signature="e#5491#5492#0" expanded="true" />
-                <element signature="e#5877#5878#0" expanded="true" />
-                <element signature="e#5932#5933#0" expanded="true" />
-                <element signature="e#6310#6311#0" expanded="true" />
-                <element signature="e#6386#6387#0" expanded="true" />
-                <element signature="e#6441#6442#0" expanded="true" />
-                <element signature="e#6468#6469#0" expanded="true" />
+                <element signature="e#5240#5241#0" expanded="true" />
+                <element signature="e#5308#5309#0" expanded="true" />
+                <element signature="e#5538#5539#0" expanded="true" />
+                <element signature="e#5596#5597#0" expanded="true" />
+                <element signature="e#5982#5983#0" expanded="true" />
+                <element signature="e#6037#6038#0" expanded="true" />
+                <element signature="e#6415#6416#0" expanded="true" />
+                <element signature="e#6491#6492#0" expanded="true" />
+                <element signature="e#6546#6547#0" expanded="true" />
+                <element signature="e#6573#6574#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -44,9 +42,12 @@
       <file leaf-file-name="PartieGraphique.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/controller/PartieGraphique.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="93" column="21" lean-forward="true" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
-              <folding />
+            <state relative-caret-position="160">
+              <caret line="369" column="26" lean-forward="false" selection-start-line="369" selection-start-column="16" selection-end-line="369" selection-end-column="26" />
+              <folding>
+                <element signature="e#13054#13055#0" expanded="true" />
+                <element signature="e#13084#13085#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,15 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>LinkedHashMap</find>
-      <find>Iterator</find>
-      <find>Linked</find>
-      <find>couleur</find>
-      <find>demar</find>
-      <find>fairePio</find>
-      <find>changerPro</find>
-      <find>dernier</find>
-      <find>dern</find>
       <find>dernierm</find>
       <find>A &quot;</find>
       <find>Il faut</find>
@@ -114,6 +106,15 @@
       <find>afficherMenuDepart</find>
       <find>update</find>
       <find>System.out.printLn(joueur</find>
+      <find>getNombreDe</find>
+      <find>afficherPla</find>
+      <find>System.out.printLn</find>
+      <find>va rejouer</find>
+      <find>Il faut jouer un</find>
+      <find>partieTermine</find>
+      <find>afficherPartie</find>
+      <find>partieTe</find>
+      <find>System.ex</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -168,8 +169,8 @@
         <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/view/ViewGraphic.java" />
         <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/controller/Main.java" />
         <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/model/Input.java" />
-        <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/view/ViewTerminal.java" />
         <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/controller/PartieGraphique.java" />
+        <option value="$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/view/ViewTerminal.java" />
       </list>
     </option>
   </component>
@@ -538,7 +539,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/view/ViewTerminal.java</url>
-          <line>99</line>
+          <line>100</line>
           <properties />
           <option name="timeStamp" value="188" />
         </line-breakpoint>
@@ -902,22 +903,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/view/IHM.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="20" column="16" lean-forward="false" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/view/ViewGraphic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="390" column="17" lean-forward="false" selection-start-line="390" selection-start-column="17" selection-end-line="390" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/model/ThreadIA.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -952,32 +937,49 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/view/IHM.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="25" column="16" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/view/ViewGraphic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27">
+          <caret line="149" column="30" lean-forward="false" selection-start-line="149" selection-start-column="16" selection-end-line="149" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/controller/PartieGraphique.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="93" column="21" lean-forward="true" selection-start-line="93" selection-start-column="21" selection-end-line="93" selection-end-column="21" />
-          <folding />
+        <state relative-caret-position="160">
+          <caret line="369" column="26" lean-forward="false" selection-start-line="369" selection-start-column="16" selection-end-line="369" selection-end-column="26" />
+          <folding>
+            <element signature="e#13054#13055#0" expanded="true" />
+            <element signature="e#13084#13085#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bayart/ayouaz/huit/americain/view/ViewTerminal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="110" column="19" lean-forward="true" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
+        <state relative-caret-position="211">
+          <caret line="124" column="32" lean-forward="false" selection-start-line="124" selection-start-column="32" selection-end-line="124" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4214#4215#0" expanded="true" />
-            <element signature="e#4285#4286#0" expanded="true" />
-            <element signature="e#5132#5133#0" expanded="true" />
-            <element signature="e#5200#5201#0" expanded="true" />
-            <element signature="e#5430#5431#0" expanded="true" />
-            <element signature="e#5491#5492#0" expanded="true" />
-            <element signature="e#5877#5878#0" expanded="true" />
-            <element signature="e#5932#5933#0" expanded="true" />
-            <element signature="e#6310#6311#0" expanded="true" />
-            <element signature="e#6386#6387#0" expanded="true" />
-            <element signature="e#6441#6442#0" expanded="true" />
-            <element signature="e#6468#6469#0" expanded="true" />
+            <element signature="e#5240#5241#0" expanded="true" />
+            <element signature="e#5308#5309#0" expanded="true" />
+            <element signature="e#5538#5539#0" expanded="true" />
+            <element signature="e#5596#5597#0" expanded="true" />
+            <element signature="e#5982#5983#0" expanded="true" />
+            <element signature="e#6037#6038#0" expanded="true" />
+            <element signature="e#6415#6416#0" expanded="true" />
+            <element signature="e#6491#6492#0" expanded="true" />
+            <element signature="e#6546#6547#0" expanded="true" />
+            <element signature="e#6573#6574#0" expanded="true" />
           </folding>
         </state>
       </provider>

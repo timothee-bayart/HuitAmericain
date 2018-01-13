@@ -47,6 +47,7 @@ public class ViewTerminal implements Observer , IHM{
 
     @Override
     public void afficherPlateau(LinkedHashSet<Joueur> joueurs, Carte defausse) {
+        System.out.println(controleur.getJoueurQuiJoue() + " doit jouer");
         System.out.println("defausse : "+defausse);
         int taille=0;
         GroupeDeCarte gc = null;
@@ -121,6 +122,7 @@ public class ViewTerminal implements Observer , IHM{
     @Override
     public void afficherPartieTerminee(Joueur[] joueurs) {
         System.out.println(joueurs[0] + " remporte la partie!");
+        controleur.quitterJeu();
     }
 
     @Override
@@ -157,7 +159,7 @@ public class ViewTerminal implements Observer , IHM{
 
     @Override
     public void rejouer(Joueur quiRejoue) {
-        System.out.println(quiRejoue + " va rejouer");
+        System.out.println("Le joueur va rejouer");
     }
 
     @Override

@@ -33,7 +33,7 @@ public class ThreadIA extends Thread implements Serializable {
                     e.printStackTrace();
                 }
 
-                System.out.println(partie.getJoueurQuiJoue());
+//                System.out.println(partie.getJoueurQuiJoue());
                 partie.jouerCarte(((Ia)partie.getJoueurQuiJoue()).jouer(partie.getCarteDefausse()));
             }
 

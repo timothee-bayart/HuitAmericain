@@ -119,8 +119,8 @@ public class PartieGraphique implements Serializable {
                         this.joueurs.size()+ " joueur(s) prêts<br />"+
                         "Jeu en "+this.regle+"<center></html>"
         );
-        if(fen instanceof ViewTerminal)
-            fen.afficherMenuDepart();
+//        if(fen instanceof ViewTerminal)
+//            fen.afficherMenuDepart();
     }
 
     public void distribuerCartes() {
@@ -182,7 +182,7 @@ public class PartieGraphique implements Serializable {
             this.dernierCoupJoue = carte;
             this.pioche.ajouterCarte(this.carteDefausse);
             this.carteDefausse.setDefausse(joueurQuiJoue.getMain().retirerCarte(carte));
-            System.out.println(this.pioche.getNombreDeCartes());
+//            System.out.println(this.pioche.getNombreDeCartes());
 
             if (regle.isJoueurAGagne(joueurQuiJoue.getMain())) {
                 this.partieEnCours = false;
