@@ -387,11 +387,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
 
     @Override
     public void update(Observable o, Object j) {
-        if( o instanceof Joueur && j instanceof String && j == "ajouteJoueur"/* && j == null*/){
-//            if(joueurs.isEmpty()){
-//                joueurNonIA=((Joueur)o).toString();
-//            }
-//            joueurs.add((Joueur)o);
+        if( o instanceof Joueur && j instanceof String && j == "ajouteJoueur"){
             this.afficherMenuDepart();
         }
         if( o instanceof Joueur && j instanceof String && j == "piocher"){

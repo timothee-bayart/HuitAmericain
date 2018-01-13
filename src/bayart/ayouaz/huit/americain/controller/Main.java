@@ -5,7 +5,10 @@
  */
 package bayart.ayouaz.huit.americain.controller;
 
+import bayart.ayouaz.huit.americain.model.Input;
+import bayart.ayouaz.huit.americain.view.IHM;
 import bayart.ayouaz.huit.americain.view.ViewGraphic;
+import bayart.ayouaz.huit.americain.view.ViewTerminal;
 
 /**
  *
@@ -15,7 +18,10 @@ public class Main {
 
     public static void main(String[] args) {
         PartieGraphique p = new PartieGraphique();
-        ViewGraphic vg = new ViewGraphic(p);
+        System.out.println("Quelle vue voulez vous? \n 0 - terminal\n 1 - graphique");
+        IHM ihm;
+        //ihm = new ViewTerminal(p);
+        ihm = new ViewGraphic(p);
     }
 
 }
