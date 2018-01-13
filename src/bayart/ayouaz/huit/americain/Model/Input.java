@@ -36,6 +36,12 @@ public class Input {
     }
     
     public static String demanderString(){
-        return CLAVIER.nextLine();
+        String val =  CLAVIER.nextLine();
+        if(val.isEmpty()){
+            return CLAVIER.nextLine();
+
+        } else {
+            return val;
+        }
     }
 }

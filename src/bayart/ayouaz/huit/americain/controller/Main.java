@@ -19,9 +19,14 @@ public class Main {
     public static void main(String[] args) {
         PartieGraphique p = new PartieGraphique();
         System.out.println("Quelle vue voulez vous? \n 0 - terminal\n 1 - graphique");
+        int choix = Input.demanderEntier(0,1);
+
         IHM ihm;
-        //ihm = new ViewTerminal(p);
-        ihm = new ViewGraphic(p);
+        if(choix == 0){
+            ihm = new ViewTerminal(p);
+        } else if(choix == 1){
+            ihm = new ViewGraphic(p);
+        }
     }
 
 }
