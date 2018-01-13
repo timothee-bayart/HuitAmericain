@@ -95,8 +95,8 @@ public class PartieGraphique implements Serializable {
                 this.joueurs.size()+ " joueur(s) prêts<br />"+
                 "Jeu en "+this.regle+"<center></html>"
             );
-        if(fen instanceof ViewTerminal)
-            fen.afficherMenuDepart();
+//        if(fen instanceof ViewTerminal)
+//            fen.afficherMenuDepart();
     }
 
     public void choisirRegle() {
@@ -169,7 +169,7 @@ public class PartieGraphique implements Serializable {
     }
 
     public void jouerCarte(Carte carte) {
-        System.out.println(joueurQuiJoue);
+//        System.out.println(joueurQuiJoue);
         if(carte == null){ //piocher
             this.dernierCoupJoue = null;
             joueurQuiJoue.piocher(pioche.retirerCarte());
@@ -205,7 +205,7 @@ public class PartieGraphique implements Serializable {
     }
 
     public synchronized void changerTour() {
-        System.out.println("zae");
+//        System.out.println("zae");
         if (this.prochainJoueurQuiVaJouer != null) {
             this.joueurQuiJoue = this.prochainJoueurQuiVaJouer;
         } else {

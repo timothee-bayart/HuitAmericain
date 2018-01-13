@@ -2,6 +2,8 @@ package bayart.ayouaz.huit.americain.view;
 
 import bayart.ayouaz.huit.americain.controller.PartieGraphique;
 import static bayart.ayouaz.huit.americain.model.Affichage.MENU_PRINCIPAL;
+import static com.sun.corba.se.impl.util.Utility.printStackTrace;
+
 import bayart.ayouaz.huit.americain.model.Carte;
 import bayart.ayouaz.huit.americain.model.GroupeDeCarte;
 import bayart.ayouaz.huit.americain.model.Ia;
@@ -57,7 +59,18 @@ public class ViewTerminal implements Observer , IHM{
                 }
             }
         }
-        controleur.carteSelectionnee(gc.getCarte(Input.demanderEntier(0, taille)));
+        System.out.println("[-1] Piocher");
+        if(!(controleur.getJoueurQuiJoue() instanceof Ia)){
+            int out = Input.demanderEntier(-1, taille);
+            if(out==-1){
+                controleur.carteSelectionnee(null);
+            } else{
+                controleur.carteSelectionnee(gc.getCarte(out));
+            }
+        }
+
+
+//        controleur.carteSelectionnee(gc.getCarte(Input.demanderEntier(0, taille)));
     }
 
     @Override

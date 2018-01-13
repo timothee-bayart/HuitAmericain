@@ -13,22 +13,24 @@ import java.util.Scanner;
  * Cette classe permet une utilisation plus simple et plus haut niveau des scanners.
  */
 public class Input {
-    public static Scanner CLAVIER = new Scanner(System.in);
+//    public static Scanner CLAVIER = new Scanner(System.in);
     
     public static int demanderEntier(int min, int max){
         int nombre = 0;
         boolean choixEffectue = false;
 
+        Scanner scanner = new Scanner(System.in);
+
         do{
             try {
-                nombre = CLAVIER.nextInt();
+                nombre = scanner.nextInt();
 
                 if(nombre>=min && nombre<=max){
                     choixEffectue = true;
                 }
 
             } catch(InputMismatchException e) {
-                CLAVIER.next();
+                scanner.next();
             }
         } while(!choixEffectue);
 
@@ -36,12 +38,8 @@ public class Input {
     }
     
     public static String demanderString(){
-        String val =  CLAVIER.nextLine();
-        if(val.isEmpty()){
-            return CLAVIER.nextLine();
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
 
-        } else {
-            return val;
-        }
     }
 }
