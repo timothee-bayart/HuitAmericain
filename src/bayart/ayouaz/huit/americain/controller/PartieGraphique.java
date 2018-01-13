@@ -22,8 +22,6 @@ public class PartieGraphique implements Serializable {
     private final static String PARTIE_GRAPHIQUE_FILE_PATH = "res/partieGraphique.ser";
 
     private Regle regle;
-//    private int nbManche;
-//    private int nbMancheTotal;
     private GroupeDeCarte pioche;
     private Carte carteDefausse;
     private Carte dernierCoupJoue;
@@ -35,8 +33,6 @@ public class PartieGraphique implements Serializable {
     private Regle[] variantes;
     private IHM fen;
     private boolean partieEnCours = false;
-//    private Joueur gagnant;
-//    private TreeSet<Joueur> perdants = new TreeSet<Joueur> ();
 
     public void setFenetre(IHM v) {
         fen = v;
@@ -85,7 +81,6 @@ public class PartieGraphique implements Serializable {
             numeroJoueur++;
         } while(!this.joueurs.add(nouveauJoueur));
 
-//        this.joueurs.add(nouveauJoueur);
         if(fen instanceof Observer)
             nouveauJoueur.addObserver((Observer)fen);          //ajouter l'observateur sur joueur
             nouveauJoueur.notifyObservers("ajouteJoueur");
@@ -95,8 +90,6 @@ public class PartieGraphique implements Serializable {
                 this.joueurs.size()+ " joueur(s) prêts<br />"+
                 "Jeu en "+this.regle+"<center></html>"
             );
-//        if(fen instanceof ViewTerminal)
-//            fen.afficherMenuDepart();
     }
 
     public void choisirRegle() {
@@ -119,8 +112,6 @@ public class PartieGraphique implements Serializable {
                         this.joueurs.size()+ " joueur(s) prêts<br />"+
                         "Jeu en "+this.regle+"<center></html>"
         );
-//        if(fen instanceof ViewTerminal)
-//            fen.afficherMenuDepart();
     }
 
     public void distribuerCartes() {
@@ -169,7 +160,6 @@ public class PartieGraphique implements Serializable {
     }
 
     public void jouerCarte(Carte carte) {
-//        System.out.println(joueurQuiJoue);
         if(carte == null){ //piocher
             this.dernierCoupJoue = null;
             joueurQuiJoue.piocher(pioche.retirerCarte());
@@ -182,7 +172,6 @@ public class PartieGraphique implements Serializable {
             this.dernierCoupJoue = carte;
             this.pioche.ajouterCarte(this.carteDefausse);
             this.carteDefausse.setDefausse(joueurQuiJoue.getMain().retirerCarte(carte));
-//            System.out.println(this.pioche.getNombreDeCartes());
 
             if (regle.isJoueurAGagne(joueurQuiJoue.getMain())) {
                 this.partieEnCours = false;
@@ -205,7 +194,6 @@ public class PartieGraphique implements Serializable {
     }
 
     public synchronized void changerTour() {
-//        System.out.println("zae");
         if (this.prochainJoueurQuiVaJouer != null) {
             this.joueurQuiJoue = this.prochainJoueurQuiVaJouer;
         } else {
