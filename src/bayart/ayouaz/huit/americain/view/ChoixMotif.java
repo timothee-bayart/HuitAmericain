@@ -10,20 +10,21 @@ import bayart.ayouaz.huit.americain.model.enums.Motif;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.*;
 
 /**
- *
- * @author ed
+ * Cette classe est un popup designé pour s'afficher avec le mode graphique afin
+ * de choisir le prochaine motif à jouer
  */
 public class ChoixMotif extends JDialog{
-//    private ArrayList<JButton> motifs;
     private JComboBox comboMotifs;
     private int retour;
     private JLabel quelMotif;
     private JButton valider;
-    
+    /**
+     * Constructeur
+     * @param owner necessaire pour dire que la fenetre est parent de ce popup 
+     */
     public ChoixMotif(ViewGraphic owner){
         super(owner,true);
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -38,7 +39,9 @@ public class ChoixMotif extends JDialog{
         valider = new JButton("Valider");
         init();
     }
-
+    /**
+     * Cette fonction place les boutons et autres labels graphiques
+     */
     private void init(){
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
@@ -66,7 +69,10 @@ public class ChoixMotif extends JDialog{
         this.setContentPane(panel);
         this.pack();
     } 
-
+    /**
+     * Fonction appelé par la fenetre afin d'ouvrir la popup
+     * @return la valeur du motif choisi
+     */
     public int showDialog(){
         this.setVisible(true);
         return retour;

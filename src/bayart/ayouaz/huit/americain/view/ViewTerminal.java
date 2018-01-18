@@ -16,7 +16,11 @@ import bayart.ayouaz.huit.americain.model.enums.Motif;
 import java.util.LinkedHashSet;
 import java.util.Observable;
 import java.util.Observer;
-
+/**
+ * Cette classe represente la vue terminal avec toutes les fonctions necessaire
+ * à l'afficage
+ * @see IHM
+ */
 public class ViewTerminal implements Observer , IHM{
     private PartieGraphique controleur;
     public static final String[] MENU_PRINCIPAL = new String[] {

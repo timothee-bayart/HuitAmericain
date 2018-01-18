@@ -15,11 +15,16 @@ import javax.swing.*;
 
 /**
  *
- * @author ed
+ * Cette classe est un popup designé pour s'afficher avec le mode graphique afin
+ * de choisir la prochaine couleur à jouer
  */
 public class ChoixCouleur extends JDialog implements ActionListener{
     private JButton carre, coeur, pic, trefle;
     private int retour;
+    /**
+     * Constructeur
+     * @param owner necessaire pour dire que la fenetre est parent de ce popup 
+     */
     public ChoixCouleur(ViewGraphic owner){
         super(owner,true);
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -35,6 +40,9 @@ public class ChoixCouleur extends JDialog implements ActionListener{
         init();
     }
     
+    /**
+     * Cette fonction place les boutons et autres labels graphiques
+     */
     private void init(){
         JPanel panel = new JPanel();
         panel.setLayout(new GridBagLayout());
@@ -52,7 +60,10 @@ public class ChoixCouleur extends JDialog implements ActionListener{
         this.setContentPane(panel);
         this.pack();
     }
-    
+    /**
+     * Fonction qui gere les cliques sur les boutons
+     *
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == carre){
@@ -72,6 +83,10 @@ public class ChoixCouleur extends JDialog implements ActionListener{
             this.setVisible(false);
         }
     }
+    /**
+     * Fonction appelé par la fenetre afin d'ouvrir la popup
+     * @return la valeur de la couleur choisie
+     */
     public int showDialog(){
         this.setVisible(true);
         return retour;

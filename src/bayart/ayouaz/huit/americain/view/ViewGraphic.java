@@ -17,7 +17,11 @@ import java.util.Observable;
 import java.util.Observer;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
+/**
+ * Cette classe represente la vue graphique avec toutes les fonctions necessaire
+ * à l'afficage
+ * @see IHM
+ */
 public class ViewGraphic extends JFrame implements Observer, IHM {
     private JButton[] menu;
     private JComboBox<String> comboVariantes;

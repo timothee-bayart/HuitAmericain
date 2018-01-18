@@ -14,13 +14,19 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 /**
- *
- * @author ed
+ * Cette classe est un popup designé pour s'afficher avec le mode graphique afin
+ * de choisir le joueur qui doit jouer
  */
 public class ChoixJoueurQuiPioche extends JDialog implements ActionListener{
     private ArrayList<JButton> joueurs;
     private JLabel quiPioche;
     private int retour;
+    /**
+     * * Constructeur
+     * @param owner necessaire pour dire que la fenetre est parent de ce popup 
+     * @param j c'est le tableau de joueurs. Pour les afficher et choisir qui tirer
+     *
+     */
     public ChoixJoueurQuiPioche(ViewGraphic owner, Joueur[]j){
         super(owner, true);
         joueurs = new ArrayList<>();
@@ -34,6 +40,10 @@ public class ChoixJoueurQuiPioche extends JDialog implements ActionListener{
         init();
     }
     
+    
+    /**
+     *  Cette fonction place les boutons et autres labels graphiques
+     */
     private void init(){
         JPanel panel =new JPanel();
         panel.setLayout(new GridBagLayout());
@@ -50,6 +60,9 @@ public class ChoixJoueurQuiPioche extends JDialog implements ActionListener{
         this.setContentPane(panel);
         this.pack();
     }
+/**
+ * Methode qui gere les actions claviers
+ */
     @Override
     public void actionPerformed(ActionEvent e) {
         for(int i=0; i<joueurs.size();++i){
@@ -59,6 +72,10 @@ public class ChoixJoueurQuiPioche extends JDialog implements ActionListener{
             }
         }
     }
+    /**
+     * Fonction appelé par la fenetre afin d'ouvrir la popup
+     * @return la valeur de la couleur choisie
+     */
     public int showDialog(){
         this.setVisible(true);
         return retour;
