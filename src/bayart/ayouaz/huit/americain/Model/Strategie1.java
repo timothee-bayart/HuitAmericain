@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Cette classe permet aux IA d'avoir une stategie coherente à jouer.
  */
 public class Strategie1 implements Strategie, Serializable {
-
+        
 	@Override
 	public Carte jouer(Carte carteDefausse, GroupeDeCarte main, Regle regle) {
 		

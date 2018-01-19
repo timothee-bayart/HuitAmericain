@@ -6,8 +6,9 @@ import bayart.ayouaz.huit.americain.model.enums.Couleur;
 import static bayart.ayouaz.huit.americain.model.enums.Motif.*;
 import static bayart.ayouaz.huit.americain.model.enums.Motif.HUIT;
 /**
- * 
- * Cette classe permet de propser la variante minimale du jeu. Avec les specificités de chaque cartes.
+ * C'est une sous classe de Strategie
+ * Cette classe permet de propser la variante standard du jeu. Avec les specificités de chaque cartes.
+ * @see Strategie Pour plus d'infos sur les methodes
  */
 public class Variante2 extends Regle {
 

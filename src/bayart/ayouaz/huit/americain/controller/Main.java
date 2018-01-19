@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package bayart.ayouaz.huit.americain.controller;
 
 import bayart.ayouaz.huit.americain.model.Input;
@@ -12,7 +8,8 @@ import bayart.ayouaz.huit.americain.view.ViewTerminal;
 
 /**
  *
- * @author ed
+ * Main du programme. Cette classe lance le programme et instancie ce qui est 
+ * necessaire pour jouer.
  */
 public class Main {
 

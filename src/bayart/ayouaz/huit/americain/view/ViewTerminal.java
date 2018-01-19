@@ -1,8 +1,6 @@
 package bayart.ayouaz.huit.americain.view;
 
 import bayart.ayouaz.huit.americain.controller.PartieGraphique;
-import static bayart.ayouaz.huit.americain.model.Affichage.MENU_PRINCIPAL;
-import static com.sun.corba.se.impl.util.Utility.printStackTrace;
 
 import bayart.ayouaz.huit.americain.model.Carte;
 import bayart.ayouaz.huit.americain.model.GroupeDeCarte;

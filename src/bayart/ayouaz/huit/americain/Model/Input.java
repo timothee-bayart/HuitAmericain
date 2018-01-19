@@ -14,7 +14,12 @@ import java.util.Scanner;
  */
 public class Input {
 //    public static Scanner CLAVIER = new Scanner(System.in);
-    
+    /**
+     * Cette methode permet de demande un entier à l'utilisateur
+     * @param min la borne inferieur
+     * @param max la borne supperieur
+     * @return la valeur entrée par l'utilisateur
+     */
     public static int demanderEntier(int min, int max){
         int nombre = 0;
         boolean choixEffectue = false;
@@ -36,7 +41,10 @@ public class Input {
 
         return nombre;
     }
-    
+    /**
+     * Cette methode permet de demander un String à l'utilisateur
+     * @return le string entré par l'utilisateur.
+     */
     public static String demanderString(){
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();

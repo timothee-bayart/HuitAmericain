@@ -3,7 +3,6 @@ package bayart.ayouaz.huit.americain.controller;
 import bayart.ayouaz.huit.americain.model.enums.*;
 import bayart.ayouaz.huit.americain.model.*;
 import bayart.ayouaz.huit.americain.view.IHM;
-import bayart.ayouaz.huit.americain.view.ViewGraphic;
 import bayart.ayouaz.huit.americain.view.ViewTerminal;
 
 import java.io.*;
@@ -13,7 +12,7 @@ import java.util.*;
  *
  * Cette classe fait office de tronc centrale dans le jeu. C'est elle qui
  * appelle toute les bonnes fonctions des bonnes classes, dans le bon ordre.
- * Dans le design pattern MVC, c'est le controlleur
+ * Dans le design pattern MVC, elle fait aussi office de controlleur
  */
 public class PartieGraphique implements Serializable {
 
@@ -38,7 +37,9 @@ public class PartieGraphique implements Serializable {
         fen = v;
         this.fen.afficherPseudoDepart();
     }
-
+    /**
+     * constructeur
+     */
     public PartieGraphique() {
         this.variantes = new Regle[]{
             new Variante1(1),
@@ -72,7 +73,9 @@ public class PartieGraphique implements Serializable {
             this.fen.afficherMessage("Veuillez saisir votre nom (alphabétique) de joueur");
         }
     }
-    
+    /**
+     * Cette methode permet d'ajouter une intelligence artificielle dans la partie.
+     */
     public void ajouterIA(){
         int numeroJoueur = 1;
         Joueur nouveauJoueur;
@@ -91,11 +94,16 @@ public class PartieGraphique implements Serializable {
                 "Jeu en "+this.regle+"<center></html>"
             );
     }
-
+    /**
+     * Cette methode permet d'appeler la fenetre pour lui dire d'afficher la liste des regles.
+     */
     public void choisirRegle() {
         fen.afficherVariantesDepart(this.variantes, this.regle);
     }
-
+    /**
+     * Cette methode va changer la regle du jeu courante.
+     * @param regle c'est la nouvelle regle qui sera utilisée
+     */
     public void choisirVariante(Regle regle) {
         this.regle = regle;
 
@@ -113,7 +121,10 @@ public class PartieGraphique implements Serializable {
                         "Jeu en "+this.regle+"<center></html>"
         );
     }
-
+    /**
+     * Cette methode permet de distribuer toutes les cartes à tous les joueurs. 
+     * Et d'en mettre une sur la défausse.
+     */
     public void distribuerCartes() {
         for (int i = 0; i < NOMBRE_DE_CARTE_A_DISTRIBUER; i++) {
             this.joueursIt = this.joueurs.iterator();
@@ -132,7 +143,10 @@ public class PartieGraphique implements Serializable {
             }
         } while (this.carteDefausse == null);
     }
-
+    /**
+     * Cette methode va initialiser la partie. Elle vérifie avant tout si le bon
+     * nombre de joueur est présent et si une regle a bien été choisie
+     */
     public void demarrer() {
         if (regle != null && joueurs.size() >= PartieGraphique.NOMBRE_DE_JOUEURS_MINIMUM) {
             this.partieEnCours = true;
@@ -150,7 +164,11 @@ public class PartieGraphique implements Serializable {
         if(fen instanceof ViewTerminal)
             fen.afficherPlateau(joueurs, carteDefausse);
     }
-
+    /**
+     * methode du controleur apres que l'interface ait reçu un clique de bouton
+     * pour choisir une carte.
+     * @param carte c'est la carte que veut jouer le joueur.
+     */
     public void carteSelectionnee(Carte carte){
         if(!(joueurQuiJoue instanceof Ia)){
             this.jouerCarte(carte);
@@ -158,7 +176,12 @@ public class PartieGraphique implements Serializable {
             fen.afficherPlateau(joueurs, carteDefausse);
         }
     }
-
+    /**
+     * Cette methode permet de tester si le joueur peut jouer le coup qu'il demande.
+     * Elle vérifie si le joueur veut piocher. Et enfin, elle applique les effets
+     * des cartes si necessaire.
+     * @param carte La carte que le joueur veut jouer. Null si le joueur veut piocher.
+     */
     public void jouerCarte(Carte carte) {
         if(carte == null){ //piocher
             this.dernierCoupJoue = null;
@@ -186,13 +209,19 @@ public class PartieGraphique implements Serializable {
             fen.afficherPlateau(joueurs, carteDefausse);
     }
 
+    /**
+     * Cette methode permet d'obtenir le joueur qui jouera au prochain tour
+     * @return le prochain joueur.
+     */
     private Joueur getProchainJoueur() {
         if (!this.joueursIt.hasNext()) {
             this.joueursIt = this.joueurs.iterator();
         }
         return joueursIt.next();
     }
-
+    /**
+     * Cette methode change le tour du jeu et passe au joueur suivant.
+     */
     public synchronized void changerTour() {
         if (this.prochainJoueurQuiVaJouer != null) {
             this.joueurQuiJoue = this.prochainJoueurQuiVaJouer;
@@ -210,40 +239,66 @@ public class PartieGraphique implements Serializable {
 
         this.prochainJoueurQuiVaJouer = this.getProchainJoueur();
     }
-
+    /**
+     * Cette methode permet d'obtenir la derniere carte jouée
+     * @return la derniere carte jouée
+     */
     public Carte getDernierCoupJoue() {
         return this.dernierCoupJoue;
     }
-    
+    /**
+     * Cette methode est un getter pour l'objet de type IHM de la classe
+     * @return l'objet IHM de la classe
+     */
     public IHM getFenetre(){
         return fen;
     }
-    
+    /**
+     * Cette methode permet d'obtenir le joueur qui doit jouer
+     * @return le joueur qui joue
+     */
     public Joueur getJoueurQuiJoue() {
         return this.joueurQuiJoue;
     }
     
-
+    /**
+     * Permet d'obtenir un tableau contenant tous les joueurs.
+     * @return le tableau de joueurs
+     */
     public LinkedHashSet<Joueur> getJoueurs() {
         return this.joueurs;
     }
-
+    /**
+     * Permet d'obtenir la carte sur le dessus de la defausse
+     * @return 
+     */
     public Carte getCarteDefausse(){
         return this.carteDefausse;
     }
-
+    /**
+     * Permet d'obtenir le nombre de joueur actuellement présents dans le jeu.
+     * @return le nombre de joueurs.
+     */
     public int getNbJoueurs() {
         return this.joueurs.size();
     }
-
+    /**
+     * Cette methode permet de prendre une carte de la pioche
+     * @return la carte au sommet de la pioche.
+     */
     public Carte retirerCartePioche() {
         return this.pioche.retirerCarte();
     }
-    
+    /**
+     * Cet getter permet d'obtenir le joueur qui jouera au prochain tour.
+     * @return Le prochain joueur
+     */
     public Joueur getProchainJoueurQuiVaJouer() {
         return this.prochainJoueurQuiVaJouer;
     }
-    
+    /**
+     * Cette methode permet de changer le sens du jeu.
+     */
     public void changerSens() {
         ArrayList<Joueur> list = new ArrayList<Joueur>(this.joueurs); //creer une liste à partir d'un set
         Collections.reverse(list); //inverser l'ordre des éléments dans la liste
@@ -262,12 +317,17 @@ public class PartieGraphique implements Serializable {
             }
         } while (iterator.hasNext() && joueur != this.joueurQuiJoue);
     }
-
+    /**
+     * Cette methode permet de verifier si la partie est sauvegardée
+     * @return un boolean indiquant si la partie est sauvegardée ou non.
+     */
     public boolean isPartieSauvegardee(){
         File file = new File(PARTIE_GRAPHIQUE_FILE_PATH);
         return (file.exists() && !file.isDirectory());
     }
-
+    /**
+     * Cette methode permet de charger un partie sauvegardée.
+     */
     public void chargerPartieSauvegardee(){
         if(this.isPartieSauvegardee()){
             try{
@@ -314,7 +374,9 @@ public class PartieGraphique implements Serializable {
             }
         }
     }
-
+    /**
+     * Cette methode permet de sauvegarder une partie
+     */
     public void sauvegarderPartie() {
 
         if(!this.isPartieSauvegardee()){
@@ -354,11 +416,16 @@ public class PartieGraphique implements Serializable {
         }
 
     }
-
+    /**
+     * Cette methode permet de quitter le jeu en tuant le processus
+     */
     public void quitterJeu() {
         System.exit(0);
     }
-
+    /**
+     * Cette methode permet d'obtenir le classement apres la fin de la partie
+     * @return les joueurs dans l'ordre du meilleur au pire.
+     */
     public Joueur[] getClassement(){
         Joueur[] classement = this.joueurs.toArray(new Joueur[this.joueurs.size()]);
         //on fait un tri par insertion pour trier les jours en fonction du nombre de carte en main
@@ -377,7 +444,10 @@ public class PartieGraphique implements Serializable {
 
         return classement;
     }
-
+    /**
+     * Cette methode vérifie si la partie est en cours ou si elle est finie.
+     * @return un boolean indiquant l'état de la partie.
+     */
     public boolean isPartieEnCours() {
         return partieEnCours;
     }
