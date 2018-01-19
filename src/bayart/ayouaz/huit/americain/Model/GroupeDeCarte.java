@@ -53,6 +53,12 @@ public class GroupeDeCarte extends Observable implements Serializable {
     }
 
     /**
+     * Constructeur par défault
+     */
+    public GroupeDeCarte() {
+    }
+
+    /**
      * Mélange le groupe de carte
      */
     public void melanger(){

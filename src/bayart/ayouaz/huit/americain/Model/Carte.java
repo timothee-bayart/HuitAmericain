@@ -28,6 +28,12 @@ public class Carte extends Observable implements Serializable {
     }
 
     /**
+     * Constructeur par défault
+     */
+    public Carte() {
+    }
+
+    /**
      * C'est un setteur permetant de définir la couleur de la carte
      * @param couleur la couleur de la carte
      */
