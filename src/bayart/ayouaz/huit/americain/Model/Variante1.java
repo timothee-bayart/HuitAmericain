@@ -70,7 +70,6 @@ public class Variante1 extends Regle {
                             indexJoueurPioche++;
                         }
                     }
-                    //partie.getFenetre().fairePiocherJoueur(joueursPossibles);
 
                     int choixJoueur;
                     if(partie.getJoueurQuiJoue() instanceof Ia){
@@ -90,8 +89,6 @@ public class Variante1 extends Regle {
                     break;
 
                 case HUIT: // Les 8 permettent de changer de couleur à n’importe quel moment
-                    //partie.getFenetre().changerProchaineCouleur(Couleur.values());
-
                     int choixCouleur;
                     if(partie.getJoueurQuiJoue() instanceof Ia){
                         choixCouleur = (int) (Math.random() * 4);
@@ -100,7 +97,6 @@ public class Variante1 extends Regle {
                     }
 
                     super.nouvelleCouleur = Couleur.values()[choixCouleur];
-                    partie.getFenetre().ilFautJouer(super.nouvelleCouleur);
                     break;
 
                 case DIX: // Oblige le joueur qui la pose à rejouer
@@ -126,7 +122,6 @@ public class Variante1 extends Regle {
                     super.carteCreeeParJoker = new Carte();
 
                     // on demande la couleur que le joueur veut
-                    //partie.getFenetre().changerProchaineCouleur(Couleur.values());
 
                     int choixCouleurJoker;
                     if(partie.getJoueurQuiJoue() instanceof Ia){

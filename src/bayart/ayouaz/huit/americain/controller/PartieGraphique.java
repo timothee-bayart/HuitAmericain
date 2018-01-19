@@ -157,12 +157,15 @@ public class PartieGraphique implements Serializable {
             ThreadIA tia = new ThreadIA(this);
             tia.start();
             changerTour();
+            if(fen instanceof ViewTerminal)
+                fen.afficherPlateau(joueurs, carteDefausse);
         } else {
             this.fen.afficherMessage("Veuillez ajouter au moins "+ (NOMBRE_DE_JOUEURS_MINIMUM - this.getNbJoueurs()) +" joueur(s) pour commencer");
             System.out.println("Veuillez ajouter au moins "+ (NOMBRE_DE_JOUEURS_MINIMUM - this.getNbJoueurs()) +" joueur(s) pour commencer");
+
+            if(fen instanceof ViewTerminal)
+                fen.afficherMenuDepart();
         }
-        if(fen instanceof ViewTerminal)
-            fen.afficherPlateau(joueurs, carteDefausse);
     }
     /**
      * methode du controleur apres que l'interface ait reçu un clique de bouton

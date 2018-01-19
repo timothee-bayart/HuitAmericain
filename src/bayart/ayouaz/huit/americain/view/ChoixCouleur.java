@@ -69,16 +69,13 @@ public class ChoixCouleur extends JDialog implements ActionListener{
         if(e.getSource() == carre){
             retour = Couleur.CARREAU.getNumero();
             this.setVisible(false);
-        }
-        if(e.getSource() == trefle){
+        } else if(e.getSource() == trefle){
             retour = Couleur.TREFLE.getNumero();
             this.setVisible(false);
-        }
-        if(e.getSource() == coeur){
+        } else if(e.getSource() == coeur){
             retour = Couleur.COEUR.getNumero();
             this.setVisible(false);
-        }
-        if(e.getSource() == pic){
+        } else if(e.getSource() == pic){
             retour = Couleur.PIC.getNumero();
             this.setVisible(false);
         }

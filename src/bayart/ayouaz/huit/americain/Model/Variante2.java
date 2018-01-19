@@ -2,6 +2,7 @@ package bayart.ayouaz.huit.americain.model;
 
 import bayart.ayouaz.huit.americain.controller.PartieGraphique;
 import bayart.ayouaz.huit.americain.model.enums.Couleur;
+import bayart.ayouaz.huit.americain.model.interfaces.Strategie;
 
 import static bayart.ayouaz.huit.americain.model.enums.Motif.*;
 import static bayart.ayouaz.huit.americain.model.enums.Motif.HUIT;
@@ -69,7 +70,6 @@ public class Variante2 extends Regle {
                     }
 
                     super.nouvelleCouleur = Couleur.values()[choixCouleur];
-                    partie.getFenetre().ilFautJouer(super.nouvelleCouleur);
                     break;
 
                 case DIX: // Oblige le joueur qui la pose à rejouer

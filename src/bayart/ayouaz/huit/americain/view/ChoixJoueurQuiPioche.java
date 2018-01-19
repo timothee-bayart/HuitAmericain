@@ -11,6 +11,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.*;
 
 /**
@@ -18,24 +19,25 @@ import javax.swing.*;
  * de choisir le joueur qui doit jouer
  */
 public class ChoixJoueurQuiPioche extends JDialog implements ActionListener{
-    private ArrayList<JButton> joueurs;
+    private ArrayList<JButton> joueursJBt; //boutons avec le nom des joueursJBt, ArrayList car on a besoin d'une liste ordonnée
     private JLabel quiPioche;
     private int retour;
     /**
      * * Constructeur
      * @param owner necessaire pour dire que la fenetre est parent de ce popup 
-     * @param j c'est le tableau de joueurs. Pour les afficher et choisir qui tirer
+     * @param j c'est le tableau de joueursJBt. Pour les afficher et choisir qui tirer
      *
      */
-    public ChoixJoueurQuiPioche(ViewGraphic owner, Joueur[]j){
+    public ChoixJoueurQuiPioche(ViewGraphic owner, Joueur[] j){
         super(owner, true);
-        joueurs = new ArrayList<>();
+        joueursJBt = new ArrayList<>();
 
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         quiPioche = new JLabel("Qui doit piocher?");
         for(int i=0; i<j.length;++i){
-            joueurs.add(new JButton(j[i].toString()));
-            joueurs.get(i).addActionListener(this);
+            JButton boutton = new JButton(j[i].toString());
+            boutton.addActionListener(this);
+            joueursJBt.add(boutton);
         }
         init();
     }
@@ -53,8 +55,10 @@ public class ChoixJoueurQuiPioche extends JDialog implements ActionListener{
         cont.gridy=0;
         panel.add(quiPioche,cont);
         cont.gridy++;
-        for(int i=0; i<joueurs.size();++i){
-           panel.add(joueurs.get(i), cont);
+
+        Iterator<JButton> it = joueursJBt.iterator();
+        while(it.hasNext()){
+           panel.add(it.next(), cont);
            cont.gridx++;
         }
         this.setContentPane(panel);
@@ -65,11 +69,14 @@ public class ChoixJoueurQuiPioche extends JDialog implements ActionListener{
  */
     @Override
     public void actionPerformed(ActionEvent e) {
-        for(int i=0; i<joueurs.size();++i){
-            if(e.getSource() == joueurs.get(i)){
-                retour = i;
+        int index = 0;
+        Iterator<JButton> it = joueursJBt.iterator();
+        while(it.hasNext()) {
+            if(e.getSource() == it.next()){
+                retour = index;
                 this.setVisible(false);
             }
+            index++;
         }
     }
     /**

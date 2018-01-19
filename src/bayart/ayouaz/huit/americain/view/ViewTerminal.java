@@ -33,15 +33,12 @@ public class ViewTerminal implements Observer , IHM{
         if( o instanceof Joueur && j instanceof String && j == "ajouteJoueur"){
             this.afficherMenuDepart();
         }
-        if( o instanceof Joueur && j instanceof String && j == "piocher"){
-            //this.afficherPlateau(this.controleur.getJoueurs(), this.controleur.getCarteDefausse());
-        }
-        if( o instanceof Carte && j instanceof String && j == "setDefausse"){
-            //this.afficherPlateau(this.controleur.getJoueurs(), this.controleur.getCarteDefausse());
-        }
-        
     }
 
+    /**
+     * Constructeur
+     * @param p le controlleur de la partie
+     */
     public ViewTerminal(PartieGraphique p) {
         controleur = p;
         controleur.setFenetre(this);
@@ -71,9 +68,6 @@ public class ViewTerminal implements Observer , IHM{
                 controleur.carteSelectionnee(gc.getCarte(out));
             }
         }
-
-
-//        controleur.carteSelectionnee(gc.getCarte(Input.demanderEntier(0, taille)));
     }
 
     @Override

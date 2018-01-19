@@ -30,7 +30,11 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
     private JPanel panel;
     private GridBagConstraints constraint;
     private PartieGraphique controleur;
-    
+
+    /**
+     * Constructeur
+     * @param p le controlleur de la partie
+     */
     public ViewGraphic(PartieGraphique p){
         controleur=p;
         label = new JLabel();
@@ -174,6 +178,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
         this.pack();
     }
 
+    @Override
     public void afficherVariantesDepart(Regle[] variantes, Regle varianteSelected){
         label.setText("Veuillez choisir la variante");
         comboVariantes = new JComboBox<String>();
@@ -213,6 +218,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
         });
     }
 
+    @Override
     public void afficherPlateau(LinkedHashSet<Joueur> joueurs, Carte defausse){
         JMenuBar menuBar = new JMenuBar();
         JMenuItem item1 = new JMenuItem("Sauvegarder & quitter");
@@ -299,9 +305,12 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
     }
 
 
-
-
-
+    /**
+     * Permet de créer un JLabel avec une image et du texte
+     * @param imageFileName le nom du fichier de l'image
+     * @param text le texte à afficher à côté de l'image
+     * @param position la position du texte par rapport à l'image
+     */
     private JLabel createImageJLabelWithText(String imageFileName, String text, int position){
         Image img = null;
         try {
@@ -316,18 +325,10 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
         return label;
     }
 
-
-    private JLabel createImageJLabel(String imageFileName){
-        JLabel label = new JLabel();
-        try {
-            Image img = ImageIO.read(new FileInputStream("res/"+imageFileName));
-            label.setIcon(new ImageIcon(img));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return label;
-    }
-
+    /**
+     * Permet de créer un JLabel avec l'image de la carte
+     * @param carte la carte a représenter
+     */
     private JLabel createImageJLabel(Carte carte){
         JLabel label = new JLabel();
         try {
@@ -339,6 +340,10 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
         return label;
     }
 
+    /**
+     * Permet de créer un JButton avec une image
+     * @param imageFileName le fichier de l'image
+     */
     private JButton createImageButton(String imageFileName){
         JButton button = new JButton();
         try {
@@ -351,6 +356,10 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
         return button;
     }
 
+    /**
+     * Permet de créer un JButton avec une image à partir d'une carte
+     * @param carte la carte que l'on souhaite afficher
+     */
     private JButton createImageButton(Carte carte){
         JButton button = new JButton();
         try {
@@ -363,19 +372,9 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
         return button;
     }
 
-
-
-
-
-
-    private void afficherMainJoueur(){
-
-    }
-
-    private void afficherMainIas(){
-
-    }
-
+    /**
+     * Cette classe interne permet de définir un ActionListenner sur les boutons de la vue
+     */
     private class CarteBtnActionListener implements ActionListener{
         private Carte carte;
 
