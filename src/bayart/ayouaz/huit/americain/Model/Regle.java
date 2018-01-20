@@ -42,7 +42,7 @@ public abstract class Regle implements Serializable {
     public abstract boolean isCoupJouable(Carte coupJoue, Carte carteDefausse);
     /**
      * 
-     * @param paquetDuJoueurEnCours
+     * @param paquetDuJoueurEnCours le paquet du joueur qui viens de jouer
      * @return verifie que le paquet est vide ou non pour savoir s'il a gagné.
      */
     public abstract boolean isJoueurAGagne(GroupeDeCarte paquetDuJoueurEnCours);

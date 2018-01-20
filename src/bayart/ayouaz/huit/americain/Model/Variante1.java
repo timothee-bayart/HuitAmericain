@@ -3,6 +3,7 @@ package bayart.ayouaz.huit.americain.model;
 import bayart.ayouaz.huit.americain.controller.PartieGraphique;
 import bayart.ayouaz.huit.americain.model.enums.Couleur;
 import bayart.ayouaz.huit.americain.model.enums.Motif;
+import bayart.ayouaz.huit.americain.model.interfaces.Strategie;
 
 import static bayart.ayouaz.huit.americain.model.enums.Motif.*;
 import static bayart.ayouaz.huit.americain.model.enums.Motif.HUIT;

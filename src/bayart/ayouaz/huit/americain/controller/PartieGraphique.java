@@ -52,6 +52,7 @@ public class PartieGraphique implements Serializable {
     /**
      * Cette methode va initialiser le jeur. Demander le nom des joueurs, la
      * variante, et va générer la pioche.
+     * @param nom le nom du joueur à ajouter
      */
     public void ajouterJoueur(String nom) {
         if (Joueur.isNomValide(nom)) {
@@ -71,6 +72,8 @@ public class PartieGraphique implements Serializable {
             );
         } else {
             this.fen.afficherMessage("Veuillez saisir votre nom (alphabétique) de joueur");
+            if(this.fen instanceof ViewTerminal)
+                this.fen.afficherPseudoDepart();
         }
     }
     /**
@@ -273,7 +276,7 @@ public class PartieGraphique implements Serializable {
     }
     /**
      * Permet d'obtenir la carte sur le dessus de la defausse
-     * @return 
+     * @return la carte de la défausse
      */
     public Carte getCarteDefausse(){
         return this.carteDefausse;

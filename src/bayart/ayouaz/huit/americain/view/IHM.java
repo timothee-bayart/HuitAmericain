@@ -106,7 +106,7 @@ public interface IHM {
     public int changerProchainMotif(Motif[] motifs);
     /**
      * Choisis l'apparence que le joker va prendre
-     * @param carte 
+     * @param carte la carte correspondant à l'apparence qu'a pris le jocker
      */
     public void jokerPrendApparence(Carte carte);
     /**

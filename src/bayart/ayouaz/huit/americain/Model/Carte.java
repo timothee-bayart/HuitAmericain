@@ -62,6 +62,7 @@ public class Carte extends Observable implements Serializable {
 
     /**
      * C'est un getter utilisé pour récupérer la couleur de la carte
+     * @return la couleur de la carte
      */
 	public Couleur getCouleur() {
 		return couleur;
@@ -69,6 +70,7 @@ public class Carte extends Observable implements Serializable {
 
 	/**
      * C'est un getter utilisé pour récupérer le motif de la carte
+     * @return le motif de la carte
      */
 	public Motif getMotif() {
 		return motif;
@@ -95,6 +97,7 @@ public class Carte extends Observable implements Serializable {
 
     /**
      * C'est un getter utilisé pour récupérer dynamiquement le nom du fichier image de la carte
+     * @return le nom de fichier de l'image correspondant à la carte
      */
     public String getImageFileName(){
         if(this.motif == Motif.JOKER){

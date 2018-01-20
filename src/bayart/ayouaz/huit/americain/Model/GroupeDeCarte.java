@@ -76,6 +76,7 @@ public class GroupeDeCarte extends Observable implements Serializable {
     /**
      * Permet de retirer une carte dans le groupe de carte
      * @param aRetirer la carte que l'on veut retirer
+     * @return retourne la carte qui a été retirée
      */
     public Carte retirerCarte(Carte aRetirer) {
 		this.cartes.remove(aRetirer);
@@ -84,6 +85,7 @@ public class GroupeDeCarte extends Observable implements Serializable {
 
     /**
      * Permet de piocher une carte en utilisant le groupeDeCarte comme une pile
+     * @return retourne la carte qui a été retirée
      */
     public Carte retirerCarte() {
          return this.cartes.poll();
@@ -92,6 +94,7 @@ public class GroupeDeCarte extends Observable implements Serializable {
     /**
      * Permet de récupérer une carte à un certain index
      * @param index l'index de la carte a retourner
+     * @return retourne la carte à l'index spécifié
      */
     public Carte getCarte(int index) {
     	return this.cartes.get(index);
@@ -121,6 +124,7 @@ public class GroupeDeCarte extends Observable implements Serializable {
 
     /**
      * Getter qui retourne le nombre de cartes dans le groupe de carte
+     * @return le nombre de carte dans le groupe de carte
      */
 	public int getNombreDeCartes() {
 		return this.cartes.size();
@@ -128,6 +132,7 @@ public class GroupeDeCarte extends Observable implements Serializable {
 
     /**
      * Getter qui retourne si le groupe de carte est vide ou non
+     * @return true si le groupe de contient aucune carte, false si il en contient
      */
 	public boolean estVide(){
         return this.cartes.isEmpty();

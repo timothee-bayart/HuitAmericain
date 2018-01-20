@@ -314,7 +314,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
     private JLabel createImageJLabelWithText(String imageFileName, String text, int position){
         Image img = null;
         try {
-            img = ImageIO.read(new FileInputStream("res/"+imageFileName));
+            img = ImageIO.read(getClass().getResourceAsStream("/res/"+imageFileName));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -332,7 +332,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
     private JLabel createImageJLabel(Carte carte){
         JLabel label = new JLabel();
         try {
-            Image img = ImageIO.read(new FileInputStream("res/"+carte.getImageFileName()));
+            Image img = ImageIO.read(getClass().getResourceAsStream("/res/"+carte.getImageFileName()));
             label.setIcon(new ImageIcon(img));
         } catch (Exception e) {
             e.printStackTrace();
@@ -347,7 +347,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
     private JButton createImageButton(String imageFileName){
         JButton button = new JButton();
         try {
-            Image img = ImageIO.read(new FileInputStream("res/"+imageFileName));
+            Image img = ImageIO.read(getClass().getResourceAsStream("/res/"+imageFileName));
             button.setIcon(new ImageIcon(img));
         } catch (Exception e) {
             e.printStackTrace();
@@ -363,7 +363,7 @@ public class ViewGraphic extends JFrame implements Observer, IHM {
     private JButton createImageButton(Carte carte){
         JButton button = new JButton();
         try {
-            Image img = ImageIO.read(new FileInputStream("res/"+carte.getImageFileName()));
+            Image img = ImageIO.read(getClass().getResourceAsStream("/res/"+carte.getImageFileName()));
             button.setIcon(new ImageIcon(img));
         } catch (Exception e) {
             e.printStackTrace();
